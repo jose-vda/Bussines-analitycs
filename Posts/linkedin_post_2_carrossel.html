@@ -840,5 +840,51 @@ async function downloadAllSlides() {
 }
 </script>
 
+<script>
+(() => {
+  const BASE_W = 360;
+  const BASE_H = 450;
+  const PROFILES = {
+    instagram: { scale: 4, mime: 'image/jpeg', quality: 0.98, suffix: 'ig_ultra' },
+    master: { scale: 8, mime: 'image/png', quality: 1, suffix: 'master_ultra' }
+  };
+  function getPostPrefix() { const m = window.location.pathname.match(/linkedin_post_(\d+)_carrossel\.html$/); return m ? `p${m[1]}` : 'lifelink'; }
+  async function renderSlide(slideEl, profile) {
+    const originalAnim = slideEl.style.animation; slideEl.style.animation = 'none';
+    slideEl.querySelectorAll('*').forEach(el => { el.dataset.oldAnim = el.style.animation; el.style.animation = 'none'; });
+    try {
+      const canvas = await html2canvas(slideEl, { scale: profile.scale, useCORS: true, allowTaint: false, backgroundColor: null, width: BASE_W, height: BASE_H, logging: false });
+      return await new Promise(resolve => canvas.toBlob(resolve, profile.mime, profile.quality));
+    } finally {
+      slideEl.style.animation = originalAnim;
+      slideEl.querySelectorAll('*').forEach(el => { el.style.animation = el.dataset.oldAnim || ''; });
+    }
+  }
+  function saveBlob(blob, filename) { if (!blob) return; const link = document.createElement('a'); link.download = filename; link.href = URL.createObjectURL(blob); link.click(); setTimeout(() => URL.revokeObjectURL(link.href), 1500); }
+  window.downloadSlide = async function(index, filename) {
+    const slides = document.querySelectorAll('.slide'); const slide = slides[index]; if (!slide) return;
+    try { const igBlob = await renderSlide(slide, PROFILES.instagram); const masterBlob = await renderSlide(slide, PROFILES.master); saveBlob(igBlob, `${filename}_${PROFILES.instagram.suffix}.jpg`); saveBlob(masterBlob, `${filename}_${PROFILES.master.suffix}.png`); }
+    catch (err) { console.error('Error generating HQ slide:', err); alert('Erro ao gerar imagem HQ. Tenta novamente.'); }
+  };
+  window.downloadAllSlides = async function() {
+    const btn = document.getElementById('downloadAllBtn'); const progressWrap = document.getElementById('progressBarWrap'); const progressFill = document.getElementById('progressBarFill'); const progressText = document.getElementById('progressText');
+    const slides = document.querySelectorAll('.slide'); const prefix = getPostPrefix(); const total = slides.length;
+    btn.disabled = true; btn.textContent = '⏳ A gerar ZIP HQ...'; progressWrap.style.display = 'block'; progressText.style.display = 'block';
+    const zip = new JSZip();
+    for (let i = 0; i < total; i++) {
+      const slideNum = i + 1; progressText.textContent = `A processar slide ${slideNum}/${total} em Ultra HQ...`; progressFill.style.width = `${(i / total) * 100}%`;
+      try { const igBlob = await renderSlide(slides[i], PROFILES.instagram); const masterBlob = await renderSlide(slides[i], PROFILES.master); if (igBlob) zip.file(`${prefix}_slide_${slideNum}_${PROFILES.instagram.suffix}.jpg`, igBlob); if (masterBlob) zip.file(`${prefix}_slide_${slideNum}_${PROFILES.master.suffix}.png`, masterBlob); } catch (err) { console.error(`Erro no slide ${slideNum}:`, err); }
+      await new Promise(r => setTimeout(r, 80));
+    }
+    progressFill.style.width = '100%'; progressText.textContent = '📦 A compactar pacote HQ...';
+    try { const content = await zip.generateAsync({ type: 'blob' }); saveBlob(content, `${prefix}_slides_hq.zip`); progressText.textContent = '✅ ZIP HQ descarregado!'; }
+    catch (err) { console.error('Erro ao gerar ZIP HQ:', err); progressText.textContent = '❌ Erro ao gerar ZIP HQ'; }
+    btn.disabled = false; btn.textContent = '📥 Descarregar Todos os Slides (ULTRA HQ + IG)';
+    setTimeout(() => { progressWrap.style.display = 'none'; progressText.style.display = 'none'; progressFill.style.width = '0%'; }, 2500);
+  };
+  document.addEventListener('DOMContentLoaded', () => { const btn = document.getElementById('downloadAllBtn'); if (btn) btn.textContent = '📥 Descarregar Todos os Slides (ULTRA HQ + IG)'; });
+})();
+</script>
+
 </body>
 </html>

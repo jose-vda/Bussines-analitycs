@@ -1,2 +1,1 @@
 # Bussines-analitycs
-# Bussines-analitycs

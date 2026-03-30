@@ -46,9 +46,15 @@
         .wave-tab { padding: 10px 20px; border-radius: 99px; background: white; border: 1px solid #E2E8F0; font-size: 13px; font-weight: 800; cursor: pointer; transition: 0.3s; white-space: nowrap; }
         .wave-tab.active { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.3); }
         .wave-section { margin-bottom: 80px; padding-top: 60px; scroll-margin-top: 120px; }
-        .wave-header { margin-bottom: 40px; border-left: 6px solid var(--primary); padding-left: 20px; }
+        .wave-header { margin-bottom: 40px; border-left: 6px solid var(--primary); padding-left: 20px; position: relative; padding-right: 170px; }
         .wave-num { font-size: 11px; font-weight: 900; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; }
         .wave-header h2 { font-size: 36px; font-weight: 900; margin: 5px 0; }
+        .wave-collapse-btn { position: absolute; top: 0; right: 0; border: 1px solid #E2E8F0; background: white; color: var(--text); border-radius: 12px; padding: 10px 14px; font-size: 12px; font-weight: 800; cursor: pointer; transition: 0.3s; }
+        .wave-collapse-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .wave-section.collapsed .grid { display: none; }
+        .wave-section.collapsed { margin-bottom: 24px; }
+        .toggle-all-btn { border: 1px solid #E2E8F0; background: white; color: var(--text); border-radius: 99px; padding: 10px 18px; font-size: 12px; font-weight: 800; cursor: pointer; transition: 0.3s; margin-left: 10px; white-space: nowrap; }
+        .toggle-all-btn:hover { border-color: var(--primary); color: var(--primary); }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
         .card { background: white; border-radius: 28px; padding: 32px; border: 1px solid #E2E8F0; display: flex; flex-direction: column; transition: 0.4s; }
         .card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px -15px rgba(15, 23, 42, 0.15); border-color: var(--primary); }
@@ -80,10 +86,13 @@
             .nav-waves { padding-left: 45px; } /* Space for logo area */
             .wave-tab { padding: 8px 16px; font-size: 12px; }
             .wave-header h2 { font-size: 28px; }
+            .wave-header { padding-right: 0; }
+            .wave-collapse-btn { position: static; margin-top: 10px; width: 100%; }
             .grid { grid-template-columns: 1fr; gap: 16px; }
             .card { padding: 24px; border-radius: 20px; }
             .card h3 { font-size: 20px; height: auto; margin-bottom: 8px; }
             .card-actions { grid-template-columns: 1fr; }
+            .toggle-all-btn { margin-left: 8px; padding: 8px 14px; }
         }
     </style>
 </head>
@@ -99,6 +108,7 @@
         <button class="wave-tab" onclick="scrollToWave(3, this)">3. Confiança</button>
         <button class="wave-tab" onclick="scrollToWave(4, this)">4. Pulso Local</button>
         <button class="wave-tab" onclick="scrollToWave(5, this)">5. Escala</button>
+        <button id="toggle-all-waves" class="toggle-all-btn" onclick="toggleAllWaves()">Colapsar Todas</button>
     </div></div></div>
     <div class="container">
     <section class="wave-section" id="wave-1">
@@ -3237,15 +3247,64 @@
             </div>
         </div></div></section></div>
     <script>
+        let allWavesCollapsed = false;
+
+        function setWaveCollapsed(section, collapsed) {
+            section.classList.toggle('collapsed', collapsed);
+            const btn = section.querySelector('.wave-collapse-btn');
+            if (btn) btn.textContent = collapsed ? 'Expandir Wave' : 'Colapsar Wave';
+        }
+
+        function toggleWave(section) {
+            const collapsed = section.classList.contains('collapsed');
+            setWaveCollapsed(section, !collapsed);
+            updateToggleAllButton();
+        }
+
+        function updateToggleAllButton() {
+            const sections = Array.from(document.querySelectorAll('.wave-section'));
+            const collapsedCount = sections.filter(section => section.classList.contains('collapsed')).length;
+            allWavesCollapsed = collapsedCount === sections.length;
+            const button = document.getElementById('toggle-all-waves');
+            if (button) button.textContent = allWavesCollapsed ? 'Expandir Todas' : 'Colapsar Todas';
+        }
+
+        function toggleAllWaves() {
+            const sections = document.querySelectorAll('.wave-section');
+            const shouldCollapse = !allWavesCollapsed;
+            sections.forEach(section => setWaveCollapsed(section, shouldCollapse));
+            allWavesCollapsed = shouldCollapse;
+            updateToggleAllButton();
+        }
+
+        function initWaveCollapsers() {
+            document.querySelectorAll('.wave-section').forEach((section, index) => {
+                const header = section.querySelector('.wave-header');
+                if (!header) return;
+                const btn = document.createElement('button');
+                btn.className = 'wave-collapse-btn';
+                btn.type = 'button';
+                btn.textContent = 'Colapsar Wave';
+                btn.addEventListener('click', () => toggleWave(section));
+                header.appendChild(btn);
+                if (index > 0) setWaveCollapsed(section, true);
+            });
+            updateToggleAllButton();
+        }
+
         function scrollToWave(num, btn) {
             document.querySelectorAll('.wave-tab').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            document.getElementById('wave-' + num).scrollIntoView({ behavior: 'smooth' });
+            const wave = document.getElementById('wave-' + num);
+            if (wave.classList.contains('collapsed')) setWaveCollapsed(wave, false);
+            wave.scrollIntoView({ behavior: 'smooth' });
+            updateToggleAllButton();
         }
         function togglePitch(rank) { document.getElementById('pitch-' + rank).classList.toggle('active'); }
         function copyPitch(rank) {
             const text = document.getElementById('text-' + rank).innerText;
             navigator.clipboard.writeText(text).then(() => alert('Pitch copiado!'));
         }
+        document.addEventListener('DOMContentLoaded', initWaveCollapsers);
     </script>
 </body></html>

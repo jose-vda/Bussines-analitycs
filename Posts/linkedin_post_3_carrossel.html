@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LifeLink — LinkedIn Carousel Post 3</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#DC2626;--primary-dark:#991B1B;--primary-50:#FEF2F2;--primary-100:#FEE2E2;--primary-200:#FECACA;--primary-300:#FCA5A5;--primary-400:#F87171;--primary-500:#EF4444;--primary-600:#DC2626;--primary-700:#B91C1C;--primary-800:#991B1B;--primary-900:#7F1D1D;--white:#FFF;--slate-50:#F8FAFC;--slate-100:#F1F5F9;--slate-200:#E2E8F0;--slate-300:#CBD5E1;--slate-400:#94A3B8;--slate-500:#64748B;--slate-600:#475569;--slate-700:#334155;--slate-800:#1E293B;--slate-900:#0F172A;--green:#22C55E;--green-dark:#15803D;--green-50:#F0FDF4;--green-100:#DCFCE7;--green-200:#BBF7D0}
+body{font-family:'DM Sans',-apple-system,sans-serif;background:#f1f5f9;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;align-items:center;padding:40px 20px;gap:32px}
+.page-header{text-align:center;max-width:700px}.page-header h1{font-size:28px;font-weight:900;color:var(--slate-900);margin-bottom:8px}.page-header p{font-size:15px;color:var(--slate-500);line-height:1.6}.page-header .tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--primary);background:var(--primary-50);border:1px solid var(--primary-200);padding:5px 16px;border-radius:100px;margin-bottom:16px}
+.slides-wrapper{display:flex;flex-wrap:wrap;justify-content:center;gap:28px;max-width:1400px}.slide-container{display:flex;flex-direction:column;align-items:center;gap:10px}.slide-label{font-size:12px;font-weight:700;color:var(--slate-400);letter-spacing:1px;text-transform:uppercase}
+.slide{width:360px;height:450px;border-radius: 16px;overflow:hidden;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:40px 36px;box-shadow:0 8px 40px rgba(0,0,0,.08),0 1px 3px rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s}.slide:hover{transform:translateY(-4px);box-shadow:0 16px 60px rgba(0,0,0,.12),0 2px 6px rgba(0,0,0,.06)}
+.slide-white{background:#fff}.slide-cream{background:linear-gradient(160deg,#FFF 0%,var(--primary-50) 40%,#FFF 100%)}.slide-warm{background:linear-gradient(160deg,#FFF 0%,#FFF7ED 50%,var(--primary-50) 100%)}.slide-red{background:linear-gradient(160deg,var(--primary) 0%,var(--primary-800) 100%)}.slide-soft-red{background:linear-gradient(160deg,var(--primary-50) 0%,var(--primary-100) 40%,#fff 100%)}.slide-light-gray{background:linear-gradient(160deg,var(--slate-50) 0%,#fff 100%)}.slide-green-soft{background:linear-gradient(160deg,#FFF 0%,var(--green-50) 40%,#FFF 100%)}
+.slide::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0}.slide-cream::before{background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(220,38,38,.05),transparent 70%)}.slide-red::before{background:radial-gradient(ellipse 60% 40% at 50% 10%,rgba(255,255,255,.1),transparent 70%)}.slide-green-soft::before{background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(34,197,94,.05),transparent 70%)}
+.slide>*{position:relative;z-index:1}
+.slide-accent-top{position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--primary),var(--primary-400));z-index:2}.slide-accent-top.green{background:linear-gradient(90deg,var(--green),#86efac)}
+.logo{width:64px;height:64px;border-radius:18px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;flex-shrink:0}.logo.red{background:var(--primary);box-shadow:0 12px 30px rgba(220,38,38,.25)}.logo.white-glass{background:rgba(255,255,255,.2);backdrop-filter:blur(8px);border:2px solid rgba(255,255,255,.3)}.logo svg{width:32px;height:32px}
+.slide-tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;padding:5px 16px;border-radius:100px;margin-bottom:20px}.slide-tag.red{color:var(--primary);background:var(--primary-50);border:1px solid var(--primary-200)}.slide-tag.white{color:#fff;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3)}.slide-tag.green{color:var(--green-dark);background:var(--green-50);border:1px solid var(--green-200)}
+.main-title{font-size:32px;font-weight:900;line-height:1.2;margin-bottom:16px}.main-title.dark{color:var(--slate-900)}.main-title.white{color:#fff}.main-title .accent{color:var(--primary)}.main-title .accent-green{color:var(--green-dark)}
+.slide-subtitle{font-size:15px;font-weight:500;line-height:1.65;max-width:290px}.slide-subtitle.muted{color:var(--slate-500)}.slide-subtitle.white{color:rgba(255,255,255,.85)}
+.line{width:48px;height:3px;border-radius:2px;margin:16px 0}.line.red{background:var(--primary)}.line.white{background:rgba(255,255,255,.3)}.line.green{background:var(--green)}
+.icon-feature{display:flex;align-items:flex-start;gap:14px;text-align:left;width:100%;padding:8px 0}.icon-circle{width:44px;height:44px;border-radius: 16px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}.icon-circle.red-soft{background:var(--primary-50);border:1px solid var(--primary-200)}.icon-circle.white-bg{background:rgba(255,255,255,.2)}.icon-circle.green-soft{background:var(--green-50);border:1px solid var(--green-200)}
+.feature-text h4{font-size:13px;font-weight:800;margin-bottom:2px}.feature-text h4.dark{color:var(--slate-800)}.feature-text h4.white{color:#fff}.feature-text p{font-size:11px;font-weight:500;line-height:1.45}.feature-text p.muted{color:var(--slate-500)}.feature-text p.white-muted{color:rgba(255,255,255,.7)}
+.big-stat{font-size:80px;font-weight:900;line-height:1;margin-bottom:8px}.big-stat.red{color:var(--primary)}.big-stat.white{color:#fff}.big-stat.green{color:var(--green)}.stat-suffix{font-size:28px;font-weight:700;opacity:.5}.stat-caption{font-size:16px;font-weight:700;margin-bottom:12px}.stat-caption.dark{color:var(--slate-700)}.stat-caption.white{color:#fff}
+.slide-footer{position:absolute;bottom:24px;left:36px;right:36px;display:flex;justify-content:space-between;align-items:center;z-index:2}.footer-brand{font-size:13px;font-weight:800;letter-spacing:-.5px}.footer-brand.dark{color:var(--slate-300)}.footer-brand.dark span{color:var(--primary-200)}.footer-brand.white{color:rgba(255,255,255,.4)}.footer-brand.white span{color:rgba(255,255,255,.2)}.footer-page{font-size:11px;font-weight:700;letter-spacing:1px}.footer-page.dark{color:var(--slate-300)}.footer-page.white{color:rgba(255,255,255,.3)}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}.pulse{animation:pulse 2.4s ease-in-out infinite}
+.swipe-hint{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:var(--slate-400);letter-spacing:1px;text-transform:uppercase;position:absolute;bottom:52px}.swipe-arrow{font-size:16px;animation:swipeRight 1.5s ease-in-out infinite}@keyframes swipeRight{0%,100%{transform:translateX(0);opacity:.4}50%{transform:translateX(6px);opacity:1}}
+.feature-grid{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:10px}.feature-card{background:#fff;border:1px solid var(--slate-200);border-radius: 16px;padding:16px 12px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.04)}.feature-card .emoji{font-size:28px;margin-bottom:8px}.feature-card h4{font-size:12px;font-weight:800;color:var(--slate-800);margin-bottom:4px}.feature-card p{font-size:10px;font-weight:500;color:var(--slate-500);line-height:1.4}
+.stat-row{display:flex;gap:8px;width:100%;margin-top:12px}.mini-stat{flex:1;background:#fff;border:1px solid var(--slate-200);border-radius: 16px;padding:16px 8px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.04)}.mini-stat-value{font-size:22px;font-weight:900;color:var(--primary);line-height:1;margin-bottom:6px}.mini-stat-label{font-size:9px;font-weight:700;color:var(--slate-500);text-transform:uppercase;letter-spacing:.5px;line-height:1.3}
+.post-section{max-width:700px;width:100%;margin-top:40px}.post-section-label{font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--primary);margin-bottom:16px}.post-box{background:#fff;border:1px solid var(--slate-200);border-radius: 16px;padding:32px;box-shadow:0 2px 8px rgba(0,0,0,.04)}.post-box pre{font-family:'DM Sans',sans-serif;font-size:14px;color:var(--slate-700);line-height:1.85;white-space:pre-wrap;word-wrap:break-word}
+.copy-btn{margin-top:16px;background:var(--primary);color:#fff;border:none;padding:10px 24px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:background .2s,transform .2s}.copy-btn:hover{background:var(--primary-700);transform:translateY(-1px)}
+.download-controls{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:700px;width:100%}.download-all-btn{display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:#fff;border:none;padding:14px 32px;border-radius: 16px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:800;cursor:pointer;transition:all .2s;box-shadow:0 4px 16px rgba(220,38,38,.25)}.download-all-btn:hover{background:var(--primary-700);transform:translateY(-2px);box-shadow:0 8px 24px rgba(220,38,38,.3)}.download-all-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.download-single-btn{display:inline-flex;align-items:center;gap:4px;background:#fff;color:var(--primary);border:1px solid var(--primary-200);padding:6px 12px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;cursor:pointer;transition:all .2s;margin-top:8px}.download-single-btn:hover{background:var(--primary-50);border-color:var(--primary)}
+.progress-bar-wrap{width:100%;max-width:400px;height:6px;background:var(--slate-200);border-radius:3px;overflow:hidden;display:none}.progress-bar-fill{height:100%;background:var(--primary);border-radius:3px;width:0%;transition:width .3s}.progress-text{font-size:12px;font-weight:700;color:var(--slate-500);display:none}
+
+/* Injected Upgrades */
+.bg-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(148,163,184,0.18) 1.5px,transparent 1.5px);background-size:16px 16px;z-index:0;pointer-events:none}
+.slide-red .bg-dots{background-image:radial-gradient(rgba(255,255,255,0.12) 1.5px,transparent 1.5px)}
+.slide-green-soft .bg-dots{background-image:radial-gradient(rgba(34,197,94,0.1) 1.5px,transparent 1.5px)}
+.prog-bar{display:flex;gap:4px;align-items:center}.prog-dot{width:16px;height:3px;border-radius:2px;background:rgba(148,163,184,0.25)}.prog-dot.active{background:var(--primary)}.prog-dot.active.green{background:var(--green)}.prog-dot.active.amber{background:var(--amber)}.prog-dot.white{background:rgba(255,255,255,0.3)}.prog-dot.active.white{background:#fff}
+.founder-badge{display:flex;align-items:center;gap:8px;z-index:2}.founder-avatar{width:28px;height:28px;border-radius:50%;background:var(--slate-200);border:2px solid #fff;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.1)}.founder-avatar svg{width:14px;height:14px;color:var(--slate-400)}.founder-info{text-align:right}.founder-name{font-size:10px;font-weight:800;color:var(--slate-800);line-height:1;margin-bottom:2px}.founder-role{font-size:8px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--slate-500)}
+.founder-badge.dark .founder-name{color:#fff}.founder-badge.dark .founder-role{color:rgba(255,255,255,.6)}.founder-badge.dark .founder-avatar{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2)}
+
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="tag">LinkedIn Carousel — Post 3</div>
+  <h1>Os Heróis Invisíveis</h1>
+  <p>Carrossel com 8 slides — Quem são os socorristas voluntários e porque são a chave para salvar vidas.</p>
+</div>
+
+<div class="download-controls">
+  <button class="download-all-btn" id="downloadAllBtn" onclick="downloadAllSlides()">📥 Descarregar Todos os Slides (HD 1080×1350)</button>
+  <div class="progress-bar-wrap" id="progressBarWrap"><div class="progress-bar-fill" id="progressBarFill"></div></div>
+  <div class="progress-text" id="progressText"></div>
+</div>
+
+<div class="slides-wrapper">
+
+  <!-- SLIDE 1 -->
+  <div class="slide-container">
+    <div class="slide-label">Slide 1 — Capa</div>
+    <button class="download-single-btn" onclick="downloadSlide(0, 'p3_slide_1')">📥 HD</button>
+    <div class="slide slide-cream">
+      <div class="bg-dots"></div>
+      <div class="slide-accent-top"></div>
+      <div style="font-size:56px;margin-bottom:12px">🦸‍♂️</div>
+      <div class="slide-tag red">Socorristas</div>
+      <div class="main-title dark" style="font-size:26px">Há voluntários<br>treinados ao teu lado.<br><span class="accent">Mas ninguém sabe.</span></div>
+      <div class="line red"></div>
+      <div class="slide-subtitle muted" style="font-size:13px">Os heróis invisíveis que podem salvar a tua vida — se soubesses que existem.</div>
+      <div class="slide-footer"><span class="footer-brand dark">Life<span>Link</span></span><div class="prog-bar"><div class="active"></div><div class="prog-dot"></div><div class="prog-dot"></div><div class="prog-dot"></div><div class="prog-dot"></div><div class="prog-dot"></div><div class="prog-dot"></div><div class="prog-dot"></div></div></div>
+      <div class="swipe-hint">Desliza <span class="swipe-arrow">→</span></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2 -->
+  <div class="slide-container">
+    <div class="slide-label">Slide 2 — Quem são</div>
+    <button class="download-single-btn" onclick="downloadSlide(1, 'p3_slide_2')">📥 HD</button>
+    <div class="slide slide-white">
+      <div class="bg-dots"></div>
+      <div class="slide-accent-top"></div>
+      <div class="slide-tag red">Quem são</div>
+      <div class="main-title dark" style="font-size:22px;margin-bottom:20px">Pessoas comuns.<br><span class="accent">Competências extraordinárias.</span></div>
+      <div style="text-align:left;width:100%">
+        <div class="icon-feature"><div class="icon-circle red-soft">🩺</div><div class="feature-text"><h4 class="dark">Profissionais de Saúde</h4><p class="muted">Enfermeiros, médicos, paramédicos fora de serviço</p></div></div>
+        <div class="icon-feature"><div class="icon-circle red-soft">🚒</div><div class="feature-text"><h4 class="dark">Bombeiros & Socorristas</h4><p class="muted">Voluntários com experiência operacional</p></div></div>
+        <div class="icon-feature"><div class="icon-circle red-soft">🎓</div><div class="feature-text"><h4 class="dark">Cidadãos Formados</h4><p class="muted">Pessoas com cursos de primeiros socorros</p></div></div>
+        <div class="icon-feature"><div class="icon-circle red-soft">💪</div><div class="feature-text"><h4 class="dark">Voluntários de ONGs</h4><p class="muted">Cruz Vermelha, escuteiros, proteção civil</p></div></div>
+      </div>
+      <div class="slide-footer"><span class="footer-brand dark">Life<span>Link</span></span><div class="prog-bar"><div class="prog-dot"></div><div class="active"></div><div class="prog-dot"></div><div class="prog-dot"></div><div class="prog-dot"></div><div class="prog-dot"></div><div class="prog-dot"></div><div class="prog-dot"></div></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 -->
+  <div class="slide-container">
+    <div class="slide-label">Slide 3 — Cenário</div>
+    <button class="download-single-btn" onclick="downloadSlide(2, 'p3_slide_3')">📥 HD</button>
+    <div class="slide slide-soft-red">
+      <div class="bg-dots"></div>
+      <div class="slide-accent-top"></div>
+      <div class="slide-tag red">Facto</div>
+      <div class="main-title dark" style="font-size:22px;margin-bottom:8px">A pessoa sentada ao<br>teu lado no café</div>
+      <div class="main-title dark" style="font-size:20px;opacity:.9;margin-bottom:8px">pode ser a diferença entre</div>
+      <div style="display:flex;gap:12px;align-items:center;margin:8px 0">
+        <div style="background:var(--primary);color:#fff;padding:8px 16px;border-radius:8px;font-size:18px;font-weight:900">VIDA</div>
+        <div style="font-size:14px;font-weight:700;color:var(--slate-400)">e</div>
+        <div style="background:var(--slate-200);color:var(--slate-600);padding:8px 16px;border-radius:8px;font-size:18px;font-weight:900">MORTE</div>
+      </div>
+      <div class="line red"></div>
+      <div class="slide-subtitle muted" style="font-size:12px">O problema? Não há forma de saber quem tem competências para ajudar quando alguém precisa.</div>
+      <div class="slide-footer"><span class="footer-brand dark">Life<span>Link</span></span><div class="prog-bar"><div class="prog-dot"></div><div class="prog-dot"></div><div class="active"></div><div class="prog-dot"></div><div class="prog-dot"></div><div class="prog-dot"></div><div class="prog-dot"></div><div class="prog-dot"></div></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4 — RED -->
+  <div class="slide-container">
+    <div class="slide-label">Slide 4 — O Problema</div>
+    <button class="download-single-btn" onclick="downloadSlide(3, 'p3_slide_4')">📥 HD</button>
+    <div class="slide slide-red">
+      <div class="bg-dots"></div>
+      <div class="slide-tag white">O Invisível</div>
+      <div class="main-title white" style="font-size:22px">São milhares<br>em Portugal.</div>
+      <div class="line white"></div>
+      <div class="main-title white" style="font-size:20px;opacity:.85;margin-bottom:20px">Mas não têm como<br>ser <em>ativados</em>.</div>
+      <div style="text-align:left;width:100%">
+        <div class="icon-feature"><div class="icon-circle white-bg">👻</div><div class="feature-text"><h4 class="white">Invisíveis ao sistema</h4><p class="white-muted">Sem registo, sem coordenação</p></div></div>
+        <div class="icon-feature"><div class="icon-circle white-bg">📍</div><div class="feature-text"><h4 class="white">Sem localização</h4><p class="white-muted">Ninguém sabe onde estão</p></div></div>
+        <div class="icon-feature"><div class="icon-circle white-bg">🔕</div><div class="feature-text"><h4 class="white">Sem notificação</h4><p class="white-muted">Não são alertados quando há emergência</p></div></div>
+      </div>
+      <div class="slide-footer"><span class="footer-brand white">Life<span>Link</span></span><div class="prog-bar"><div class="prog-dot white"></div><div class="prog-dot white"></div><div class="prog-dot white"></div><div class="active white"></div><div class="prog-dot white"></div><div class="prog-dot white"></div><div class="prog-dot white"></div><div class="prog-dot white"></div></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5 -->
+  <div class="slide-container">
+    <div class="slide-label">Slide 5 — LifeLink</div>
+    <button class="download-single-btn" onclick="downloadSlide(4, 'p3_slide_5')">📥 HD</button>
+    <div class="slide slide-white">
+      <div class="bg-dots"></div>
+      <div class="slide-accent-top"></div>
+      <div class="slide-tag red">Com LifeLink</div>
+      <div class="main-title dark" style="font-size:22px;margin-bottom:20px">Cada voluntário ganha<br><span class="accent">superpoderes digitais.</span></div>
+      <div class="feature-grid">
+        <div class="feature-card"><div class="emoji">📍</div><h4>Geolocalização</h4><p>Sempre visível quando disponível</p></div>
+        <div class="feature-card" style="border-color:var(--primary-200);background:var(--primary-50)"><div class="emoji">🔔</div><h4 style="color:var(--primary)">Alertas Push</h4><p>Notificado em <1 segundo</p></div>
+        <div class="feature-card"><div class="emoji">🗺️</div><h4>Rota ao Local</h4><p>Navegação até à vítima</p></div>
+        <div class="feature-card"><div class="emoji">📋</div><h4>Perfil Verificado</h4><p>Competências e certificações</p></div>
+      </div>
+      <div class="slide-footer"><span class="footer-brand dark">Life<span>Link</span></span><div class="prog-bar"><div class="prog-dot"></div><div class="prog-dot"></div><div class="prog-dot"></div><div class="prog-dot"></div><div class="active"></div><div class="prog-dot"></div><div class="prog-dot"></div><div class="prog-dot"></div></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6 -->
+  <div class="slide-container">
+    <div class="slide-label">Slide 6 — Perfil</div>
+    <button class="download-single-btn" onclick="downloadSlide(5, 'p3_slide_6')">📥 HD</button>
+    <div class="slide slide-light-gray">
+      <div class="bg-dots"></div>
+      <div class="slide-accent-top"></div>
+      <div class="slide-tag red">O Perfil</div>
+      <div class="main-title dark" style="font-size:22px;margin-bottom:20px">Cada herói tem<br>o seu <span class="accent">perfil único.</span></div>
+      <div style="text-align:left;width:100%">
+        <div class="icon-feature"><div class="icon-circle red-soft">🩺</div><div class="feature-text"><h4 class="dark">Competências</h4><p class="muted">RCP, DEA, trauma, pediátrica...</p></div></div>
+        <div class="icon-feature"><div class="icon-circle red-soft">🏆</div><div class="feature-text"><h4 class="dark">Certificações</h4><p class="muted">Cursos verificados e válidos</p></div></div>
+        <div class="icon-feature"><div class="icon-circle red-soft">📊</div><div class="feature-text"><h4 class="dark">Estatísticas</h4><p class="muted">Respostas, tempo médio, avaliação</p></div></div>
+        <div class="icon-feature"><div class="icon-circle red-soft">🎯</div><div class="feature-text"><h4 class="dark">Disponibilidade</h4><p class="muted">Raio de ação e horários</p></div></div>
+      </div>
+      <div class="slide-footer"><span class="footer-brand dark">Life<span>Link</span></span><div class="prog-bar"><div class="prog-dot"></div><div class="prog-dot"></div><div class="prog-dot"></div><div class="prog-dot"></div><div class="prog-dot"></div><div class="active"></div><div class="prog-dot"></div><div class="prog-dot"></div></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7 — GREEN -->
+  <div class="slide-container">
+    <div class="slide-label">Slide 7 — Impacto</div>
+    <button class="download-single-btn" onclick="downloadSlide(6, 'p3_slide_7')">📥 HD</button>
+    <div class="slide slide-green-soft">
+      <div class="bg-dots"></div>
+      <div class="slide-accent-top green"></div>
+      <div class="slide-tag green">Impacto</div>
+      <div class="main-title dark" style="font-size:22px;margin-bottom:8px">Quando socorristas se<br>tornam <span class="accent-green">visíveis</span></div>
+      <div class="big-stat green" style="font-size:64px">3×</div>
+      <div class="stat-caption dark">mais probabilidade de<br>ajuda nos primeiros 5 min</div>
+      <div class="line green"></div>
+      <div style="display:flex;gap:8px;width:100%;margin-top:8px">
+        <div style="flex:1;text-align:center;padding:12px 4px;background:var(--green-50);border:1px solid var(--green-200);border-radius:10px"><div style="font-size:18px;font-weight:900;color:var(--green-dark)">500+</div><div style="font-size:9px;font-weight:600;color:var(--slate-400);margin-top:2px">META INICIAL</div></div>
+        <div style="flex:1;text-align:center;padding:12px 4px;background:var(--green-50);border:1px solid var(--green-200);border-radius:10px"><div style="font-size:18px;font-weight:900;color:var(--green-dark)">24/7</div><div style="font-size:9px;font-weight:600;color:var(--slate-400);margin-top:2px">COBERTURA</div></div>
+        <div style="flex:1;text-align:center;padding:12px 4px;background:var(--green-50);border:1px solid var(--green-200);border-radius:10px"><div style="font-size:18px;font-weight:900;color:var(--green-dark)">&lt;5'</div><div style="font-size:9px;font-weight:600;color:var(--slate-400);margin-top:2px">RESPOSTA</div></div>
+      </div>
+      <div class="slide-footer"><span class="footer-brand dark">Life<span>Link</span></span><div class="prog-bar"><div class="prog-dot"></div><div class="prog-dot"></div><div class="prog-dot"></div><div class="prog-dot"></div><div class="prog-dot"></div><div class="prog-dot"></div><div class="active"></div><div class="prog-dot"></div></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 8 — CTA -->
+  <div class="slide-container">
+    <div class="slide-label">Slide 8 — CTA</div>
+    <button class="download-single-btn" onclick="downloadSlide(7, 'p3_slide_8')">📥 HD</button>
+    <div class="slide slide-warm">
+      <div class="bg-dots"></div>
+      <div class="slide-accent-top"></div>
+      <div class="logo red pulse"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      <div class="main-title dark" style="font-size:24px">Queres ser um<br><span class="accent">herói disponível?</span></div>
+      <div class="line red"></div>
+      <div class="slide-subtitle muted" style="font-size:14px">Em breve poderás registar-te como socorrista voluntário no LifeLink.</div>
+      <div style="font-size:12px;color:var(--slate-400);margin-top:20px;font-weight:600">Comenta 🦸 se queres fazer parte</div>
+      <div class="slide-footer"><span class="footer-brand dark">Life<span>Link</span></span><div class="founder-badge"><div class="founder-info"><div class="founder-name">Founder</div><div class="founder-role">LifeLink CEO</div></div><div class="founder-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div></div><div class="prog-dot"></div><div class="prog-dot"></div><div class="prog-dot"></div><div class="prog-dot"></div><div class="prog-dot"></div><div class="prog-dot"></div><div class="active"></div></div></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="post-section">
+  <div class="post-section-label">📝 Texto do Post — Copiar e Colar</div>
+  <div class="post-box">
+    <pre id="post-text">A pessoa sentada ao teu lado no café pode salvar a tua vida.
+
+Mas provavelmente não sabes disso. E ela também não sabe que é precisa.
+
+Em Portugal existem milhares de pessoas com formação em primeiros socorros:
+
+🩺 Enfermeiros e médicos fora de serviço
+🚒 Bombeiros voluntários
+🎓 Cidadãos com cursos de RCP e DEA
+💪 Voluntários da Cruz Vermelha e proteção civil
+
+O problema?
+
+São invisíveis ao sistema. Quando alguém colapsa na rua, não há forma de saber que um enfermeiro está a 50 metros. Não há forma de o alertar. Não há forma de o ativar.
+
+É por isso que estamos a construir o LifeLink.
+
+Com o LifeLink, cada socorrista voluntário ganha:
+📍 Geolocalização — visível quando disponível
+🔔 Alertas push — notificado em menos de 1 segundo
+🗺️ Rota ao local — navegação até à vítima
+📋 Perfil verificado — competências e certificações
+
+O resultado?
+Quando alguém precisa de ajuda, o voluntário mais próximo e mais qualificado é ativado automaticamente.
+
+3× mais probabilidade de ajuda nos primeiros 5 minutos.
+
+A missão é clara: tornar visíveis aqueles que querem ajudar. E facilitar-lhes o trabalho.
+
+Queres ser um herói disponível? Em breve poderás registar-te. 🦸
+
+Comenta 🦸 se queres fazer parte desta rede.
+
+—
+
+#LifeLink #Voluntariado #PrimeirosSocorros #Socorristas #ImpactoSocial #HealthTech #Portugal #Comunidade #Heróis</pre>
+  </div>
+  <button class="copy-btn" onclick="copyText()">📋 Copiar texto do post</button>
+</div>
+
+<script>
+function copyText(){const t=document.getElementById('post-text').textContent;navigator.clipboard.writeText(t).then(()=>{const b=document.querySelector('.copy-btn');b.textContent='✅ Copiado!';setTimeout(()=>{b.textContent='📋 Copiar texto do post'},2000)})}
+const SCALE=3;
+async function downloadSlide(i,fn){const s=document.querySelectorAll('.slide');const sl=s[i];if(!sl)return;sl.style.animation='none';sl.querySelectorAll('*').forEach(e=>e.style.animation='none');try{const c=await html2canvas(sl,{scale:SCALE,useCORS:true,allowTaint:false,backgroundColor:null,width:360,height:450,logging:false});const blob=await new Promise(r=>c.toBlob(r,'image/png'));if(blob){const l=document.createElement('a');l.download=`${fn}.png`;l.href=URL.createObjectURL(blob);l.click()}else{console.error('Blob generation failed')}}catch(e){console.error(e)}sl.style.animation='';sl.querySelectorAll('*').forEach(e=>e.style.animation='')}
+
+async function downloadAllSlides() {
+  const btn = document.getElementById('downloadAllBtn');
+  const progressWrap = document.getElementById('progressBarWrap');
+  const progressFill = document.getElementById('progressBarFill');
+  const progressText = document.getElementById('progressText');
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+
+  btn.disabled = true;
+  btn.textContent = '⏳ A gerar ZIP...';
+  progressWrap.style.display = 'block';
+  progressText.style.display = 'block';
+
+  const zip = new JSZip();
+  const folderName = "LifeLink_Post_3_Slides";
+  const names = ['p3_slide_1_capa','p3_slide_2_quem','p3_slide_3_cenario','p3_slide_4_problema','p3_slide_5_lifelink','p3_slide_6_perfil','p3_slide_7_impacto','p3_slide_8_cta'];
+
+  for (let i = 0; i < total; i++) {
+    progressText.textContent = `A processar Slide ${i + 1}/${total}...`;
+    progressFill.style.width = `${((i) / total) * 100}%`;
+
+    const sl = slides[i];
+    const originalTransform = sl.style.transform;
+    sl.style.transform = 'none';
+    sl.style.animation = 'none';
+    sl.querySelectorAll('*').forEach(e => {
+      e.dataset.oldAnim = e.style.animation;
+      e.style.animation = 'none';
+    });
+
+    try {
+      const canvas = await html2canvas(sl, {
+        scale: SCALE,
+        useCORS: true,
+        allowTaint: false,
+        backgroundColor: null,
+        width: 360,
+        height: 450,
+        logging: false
+      });
+      const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+      if (blob) {
+        zip.file(`${names[i]}.png`, blob);
+      } else {
+        console.error(`Failed to generate blob for slide ${i+1}`);
+      }
+    } catch (e) {
+      console.error('Error generating slide:', e);
+    } finally {
+      sl.style.transform = originalTransform;
+      sl.style.animation = '';
+      sl.querySelectorAll('*').forEach(e => {
+        e.style.animation = e.dataset.oldAnim || '';
+      });
+    }
+    await new Promise(r => setTimeout(r, 100));
+  }
+
+  progressFill.style.width = '100%';
+  progressText.textContent = '📦 A criar ficheiro ZIP...';
+
+  try {
+    const content = await zip.generateAsync({type: 'blob'});
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(content);
+    link.download = `${folderName}.zip`;
+    link.click();
+    progressText.textContent = '✅ ZIP descarregado!';
+  } catch (err) {
+    console.error('Error generating zip:', err);
+    progressText.textContent = '❌ Erro ao gerar ZIP';
+  }
+
+  btn.textContent = '✅ Concluído!';
+  btn.disabled = false;
+  setTimeout(() => {
+    btn.innerHTML = '📥 Descarregar Todos (ZIP)';
+    progressWrap.style.display = 'none';
+    progressText.style.display = 'none';
+    progressFill.style.width = '0%';
+  }, 3000);
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,2140 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LifeLink — Dossiê de Parceria</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100..1000:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+<style>
+  /* ── Reset ───────────────────────────────────────────────────────── */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* ── Tokens ──────────────────────────────────────────────────────── */
+  :root {
+    --primary: #DC2626; --primary-vibrant: #FF1F1F;
+    --primary-dark: #991B1B;
+    --primary-50: #FEF2F2;
+    --primary-100: #FEE2E2;
+    --primary-200: #FECACA;
+    --primary-300: #FCA5A5;
+    --primary-400: #F87171;
+    --primary-700: #B91C1C;
+    --primary-900: #7F1D1D;
+    --white: #FFFFFF;
+    --slate-50: #F8FAFC;
+    --slate-100: #F1F5F9;
+    --slate-200: #E2E8F0;
+    --slate-300: #CBD5E1;
+    --slate-400: #94A3B8;
+    --slate-500: #64748B;
+    --slate-600: #475569;
+    --slate-700: #334155;
+    --slate-800: #1E293B;
+    --slate-900: #0F172A;
+  }
+
+  /* ── Base ─────────────────────────────────────────────────────────── */
+  html { font-size: 11pt; }
+  body {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    color: var(--slate-800);
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    line-height: 1.6;
+  }
+
+  /* ── Print layout ────────────────────────────────────────────────── */
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+    background: var(--white);
+  }
+
+  .page:last-child { page-break-after: auto; }
+
+  .page-inner {
+    padding: 48px 56px 64px;
+    min-height: 297mm;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Screen preview ──────────────────────────────────────────────── */
+  @media screen {
+    body { background: #e5e7eb; padding: 32px 0; }
+    .page {
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+      margin-bottom: 32px;
+      border-radius: 4px;
+    }
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .page { box-shadow: none; margin: 0 auto; border-radius: 0; }
+    .no-print { display: none !important; }
+  }
+
+  /* ── Typography ──────────────────────────────────────────────────── */
+  h1 { font-size: 28pt; font-weight: 900; line-height: 1.15; color: var(--slate-900); }
+  h2 { font-size: 18pt; font-weight: 900; line-height: 1.2; color: var(--slate-900); margin-bottom: 6px; }
+  h3 { font-size: 12pt; font-weight: 800; color: var(--slate-900); margin-bottom: 4px; }
+  h4 { font-size: 10pt; font-weight: 700; color: var(--slate-700); margin-bottom: 2px; }
+  p { font-size: 10pt; color: var(--slate-600); line-height: 1.65; }
+  .text-red { color: var(--primary); }
+  .text-small { font-size: 9pt; }
+  .text-xs { font-size: 8pt; color: var(--slate-400); }
+  .text-xxs { font-size: 7.5pt; color: var(--slate-400); }
+  .text-center { text-align: center; }
+  .text-white { color: var(--white); }
+  .font-bold { font-weight: 700; }
+  .font-black { font-weight: 900; }
+
+  /* ── Layout ──────────────────────────────────────────────────────── */
+  .flex { display: flex; }
+  .flex-col { display: flex; flex-direction: column; }
+  .items-center { align-items: center; }
+  .items-start { align-items: flex-start; }
+  .justify-center { justify-content: center; }
+  .justify-between { justify-content: space-between; }
+  .flex-1 { flex: 1; }
+  .gap-4 { gap: 4px; }
+  .gap-8 { gap: 8px; }
+  .gap-12 { gap: 12px; }
+  .gap-16 { gap: 16px; }
+  .gap-20 { gap: 20px; }
+  .gap-24 { gap: 24px; }
+  .gap-32 { gap: 32px; }
+  .mt-4 { margin-top: 4px; }
+  .mt-8 { margin-top: 8px; }
+  .mt-12 { margin-top: 12px; }
+  .mt-16 { margin-top: 16px; }
+  .mt-20 { margin-top: 20px; }
+  .mt-24 { margin-top: 24px; }
+  .mt-32 { margin-top: 32px; }
+  .mt-auto { margin-top: auto; }
+  .mb-4 { margin-bottom: 4px; }
+  .mb-8 { margin-bottom: 8px; }
+  .mb-12 { margin-bottom: 12px; }
+  .mb-16 { margin-bottom: 16px; }
+  .mb-24 { margin-bottom: 24px; }
+  .mb-32 { margin-bottom: 32px; }
+  .w-full { width: 100%; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 12px; }
+
+  /* ── Decorative elements ─────────────────────────────────────────── */
+  .page-red-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--primary), var(--primary-700));
+  }
+
+  .page-footer {
+    position: absolute;
+    bottom: 24px;
+    left: 56px;
+    right: 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 8pt;
+    color: var(--slate-400);
+    border-top: 1px solid var(--slate-200);
+    padding-top: 8px;
+  }
+
+  .page-number {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 8pt;
+  }
+
+  .section-tag {
+    display: inline-block;
+    font-size: 7.5pt;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--primary);
+    background: linear-gradient(135deg, var(--primary-50) 0%, #FFF5F5 100%);
+    border: 1px solid var(--primary-200);
+    padding: 3px 12px;
+    border-radius: 100px;
+    margin-bottom: 12px;
+  }
+
+  .section-tag.white {
+    color: var(--white);
+    background: rgba(255,255,255,0.15);
+    border-color: rgba(255,255,255,0.3);
+  }
+
+  .divider {
+    width: 48px;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 2px;
+    margin: 12px 0;
+  }
+
+  .divider-full {
+    width: 100%;
+    height: 1px;
+    background: var(--slate-200);
+    margin: 16px 0;
+  }
+
+  /* ── Cards ───────────────────────────────────────────────────────── */
+  .card {
+    background: var(--white);
+    border: 1px solid var(--slate-200);
+    border-radius: 16px;
+    padding: 16px;
+  }
+
+  .card-red {
+    background: linear-gradient(135deg, var(--primary-vibrant), var(--primary-dark));
+    border-radius: 16px;
+    padding: 16px;
+    color: var(--white);
+  }
+
+  .card-red h3, .card-red h4, .card-red p, .card-red li { color: var(--white); }
+
+  .card-slate {
+    background: var(--slate-50);
+    border: 1px solid var(--slate-200);
+    border-radius: 16px;
+    padding: 16px;
+  }
+
+  .card-outline {
+    border: 2px solid var(--primary-200);
+    border-radius: 16px;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--primary-50) 0%, #FFF5F5 100%);
+  }
+
+  .card-dark {
+    background: var(--slate-900);
+    border-radius: 16px;
+    padding: 16px;
+    color: var(--white);
+  }
+
+  .card-dark h3, .card-dark h4, .card-dark p { color: var(--white); }
+  .card-dark li { color: rgba(255,255,255,0.8); }
+
+  /* ── Icon ─────────────────────────────────────────────────────────── */
+  .icon-box {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--primary-50) 0%, #FFF5F5 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .icon-box.red {
+    background: var(--primary);
+  }
+
+  .icon-box.white {
+    background: rgba(255,255,255,0.15);
+  }
+
+  /* ── Lists ───────────────────────────────────────────────────────── */
+  ul { list-style: none; }
+
+  ul.check li {
+    font-size: 9.5pt;
+    color: var(--slate-600);
+    line-height: 1.6;
+    padding-left: 18px;
+    position: relative;
+    margin-bottom: 3px;
+  }
+
+  ul.check li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: 900;
+    font-size: 9pt;
+  }
+
+  ul.dot li {
+    font-size: 9.5pt;
+    color: var(--slate-600);
+    line-height: 1.55;
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 2px;
+  }
+
+  ul.dot li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--primary-300);
+  }
+
+  ul.dot.white li { color: rgba(255,255,255,0.85); }
+  ul.dot.white li::before { background: rgba(255,255,255,0.4); }
+
+  /* ── Table ───────────────────────────────────────────────────────── */
+  table.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+  }
+
+  table.data-table th {
+    background: var(--slate-900);
+    color: var(--white);
+    font-weight: 700;
+    padding: 8px 10px;
+    text-align: left;
+    font-size: 8.5pt;
+    letter-spacing: 0.5px;
+  }
+
+  table.data-table th:first-child { border-radius: 8px 0 0 0; }
+  table.data-table th:last-child { border-radius: 0 8px 0 0; }
+
+  table.data-table td {
+    padding: 7px 10px;
+    border-bottom: 1px solid var(--slate-200);
+    color: var(--slate-700);
+    vertical-align: top;
+  }
+
+  table.data-table tr:last-child td { border-bottom: none; }
+  table.data-table tr:nth-child(even) td { background: var(--slate-50); }
+
+  /* ── Timeline ────────────────────────────────────────────────────── */
+  .tl {
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .tl::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--primary-300), var(--primary));
+    border-radius: 1px;
+  }
+
+  .tl-item {
+    position: relative;
+    padding: 6px 0;
+  }
+
+  .tl-dot {
+    position: absolute;
+    left: -24px;
+    top: 10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 2.5px solid var(--primary);
+  }
+
+  .tl-dot.filled { background: var(--primary); }
+
+  .tl-step {
+    font-size: 8pt;
+    font-weight: 800;
+    color: var(--primary);
+    background: linear-gradient(135deg, var(--primary-50) 0%, #FFF5F5 100%);
+    border: 1px solid var(--primary-200);
+    padding: 1px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-right: 8px;
+  }
+
+  .tl-text {
+    font-size: 9.5pt;
+    color: var(--slate-700);
+    font-weight: 500;
+  }
+
+  /* ── Roadmap phase ───────────────────────────────────────────────── */
+  .rm-phase {
+    padding: 14px;
+    border-radius: 10px;
+    border-left: 4px solid;
+  }
+
+  .rm-phase.done { background: #F0FDF4; border-color: #22C55E; }
+  .rm-phase.next { background: linear-gradient(135deg, var(--primary-50) 0%, #FFF5F5 100%); border-color: var(--primary); }
+  .rm-phase.future { background: var(--slate-50); border-color: var(--slate-400); }
+
+  .rm-tag {
+    display: inline-block;
+    font-size: 7pt;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+
+  .rm-tag.done { background: #DCFCE7; color: #15803D; }
+  .rm-tag.next { background: var(--primary-100); color: var(--primary-700); }
+  .rm-tag.future { background: var(--slate-200); color: var(--slate-700); }
+
+  /* ── Cover ───────────────────────────────────────────────────────── */
+  .cover {
+    background: linear-gradient(160deg, var(--white) 0%, var(--primary-50) 40%, var(--white) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 297mm;
+    position: relative;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(to right, var(--primary), var(--primary-dark));
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(to right, var(--primary), var(--primary-dark));
+  }
+
+  .cover-logo {
+    width: 88px;
+    height: 88px;
+    border-radius: 16px;
+    background: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 32px;
+    box-shadow: 0 20px 40px -8px rgba(220,38,38,0.3);
+  }
+
+  .cover-logo svg { width: 48px; height: 48px; }
+
+  .cover h1 {
+    font-size: 42pt;
+    letter-spacing: -1.5px; text-shadow: 0 4px 12px rgba(220, 38, 38, 0.05);
+    margin-bottom: 4px;
+  }
+
+  .cover h1 span { color: var(--primary); }
+
+  .cover-sub {
+    font-size: 14pt;
+    color: var(--slate-500);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .cover-line {
+    width: 60px;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 2px;
+    margin: 20px 0;
+  }
+
+  .cover-type {
+    font-size: 10pt;
+    font-weight: 700;
+    color: var(--slate-400);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  .cover-meta {
+    font-size: 9pt;
+    color: var(--slate-400);
+    line-height: 1.8;
+  }
+
+  .cover-meta strong { color: var(--slate-600); }
+
+  /* ── Stat highlight ──────────────────────────────────────────────── */
+  .stat {
+    text-align: center;
+    padding: 12px;
+  }
+
+  .stat-num {
+    font-size: 24pt;
+    font-weight: 900;
+    color: var(--primary);
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+
+  .stat-label {
+    font-size: 8pt;
+    font-weight: 600;
+    color: var(--slate-500);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── Alert types ─────────────────────────────────────────────────── */
+  .alert-type {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: var(--slate-50);
+    border-radius: 8px;
+    border: 1px solid var(--slate-200);
+  }
+
+  .alert-emoji { font-size: 18px; }
+
+  .alert-name {
+    font-size: 9pt;
+    font-weight: 600;
+    color: var(--slate-700);
+  }
+
+  /* ── Diff item ───────────────────────────────────────────────────── */
+  .diff {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 8px 0;
+  }
+
+  .diff-badge {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    background: var(--primary);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 900;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── Partner section ─────────────────────────────────────────────── */
+  .partner-box {
+    border: 1px solid var(--slate-200);
+    border-radius: 10px;
+    padding: 14px;
+    background: var(--white);
+  }
+
+  .partner-box h4 {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
+    font-size: 10pt;
+    color: var(--slate-900);
+  }
+
+  /* ── Back cover ──────────────────────────────────────────────────── */
+  .back-cover {
+    background: linear-gradient(160deg, var(--primary) 0%, var(--primary-dark) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 297mm;
+    position: relative;
+  }
+
+  .back-logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 28px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(8px);
+    border: 2px solid rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .back-logo svg { width: 54px; height: 54px; }
+
+  .back-quote {
+    font-size: 22pt;
+    font-weight: 800;
+    color: var(--white);
+    max-width: 460px;
+    line-height: 1.35;
+    margin-top: 20px;
+  }
+
+  .back-line {
+    width: 60px;
+    height: 3px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 2px;
+    margin: 24px 0;
+  }
+
+  /* ── Print hint ──────────────────────────────────────────────────── */
+  .print-hint {
+    position: fixed;
+    top: 12px;
+    right: 16px;
+    background: var(--slate-900);
+    color: var(--white);
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 9pt;
+    font-weight: 600;
+    z-index: 100;
+    cursor: pointer;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  .print-hint:hover { background: var(--primary); }
+
+  .lang-toggle {
+    position: fixed;
+    top: 12px;
+    right: 180px;
+    background: var(--white);
+    color: var(--slate-900);
+    border: 1px solid var(--slate-200);
+    border-radius: 999px;
+    padding: 7px 12px;
+    font-size: 8.5pt;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(15,23,42,0.08);
+    z-index: 120;
+  }
+
+  .lang-toggle:hover {
+    background: linear-gradient(135deg, var(--primary-50) 0%, #FFF5F5 100%);
+    border-color: var(--primary-200);
+    color: var(--primary-700);
+  }
+
+  .view-toggle {
+    position: fixed;
+    top: 12px;
+    right: 250px;
+    background: var(--white);
+    color: var(--slate-900);
+    border: 1px solid var(--slate-200);
+    border-radius: 999px;
+    padding: 7px 12px;
+    font-size: 8.5pt;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(15,23,42,0.08);
+    z-index: 120;
+  }
+
+  .view-toggle:hover {
+    background: linear-gradient(135deg, var(--primary-50) 0%, #FFF5F5 100%);
+    border-color: var(--primary-200);
+    color: var(--primary-700);
+  }
+
+  @media screen and (max-width: 980px) {
+    body { background: #fff; padding: 0; }
+    .page {
+      width: 100%;
+      min-height: auto;
+      margin: 0 0 12px 0;
+      border-radius: 0;
+      box-shadow: none;
+      page-break-after: auto;
+    }
+    .page-inner {
+      min-height: auto;
+      padding: 24px 20px 32px;
+    }
+    .cover,
+    .back-cover {
+      min-height: auto;
+      padding: 48px 20px;
+    }
+    .grid-2,
+    .grid-3,
+    .grid-4,
+    .kpi-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .page-footer {
+      position: static;
+      left: auto;
+      right: auto;
+      bottom: auto;
+      margin-top: 20px;
+    }
+    .view-toggle { right: 250px; }
+    .lang-toggle { right: 120px; }
+    .print-hint { right: 12px; }
+    .page-red-bar { width: 4px; }
+  }
+
+  /* ── Highlight box ───────────────────────────────────────────────── */
+  .highlight {
+    background: linear-gradient(135deg, var(--primary-50) 0%, #FFF5F5 100%);
+    border-left: 4px solid var(--primary);
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0;
+  }
+
+  .highlight p { color: var(--slate-700); font-weight: 500; }
+
+  .source-note {
+    margin-top: 12px;
+    font-size: 7.5pt;
+    line-height: 1.45;
+    color: var(--slate-400);
+  }
+
+  .regulatory-note {
+    background: #FFF7ED;
+    border: 1px solid #FED7AA;
+    border-left: 4px solid #EA580C;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 14px;
+  }
+
+  .regulatory-note p {
+    font-size: 9pt;
+    line-height: 1.55;
+    color: #9A3412;
+    font-weight: 600;
+  }
+
+  /* ── Course card ─────────────────────────────────────────────────── */
+  .course-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--slate-100);
+  }
+
+  .course-row:last-child { border-bottom: none; }
+
+  .course-emoji { font-size: 16px; width: 24px; text-align: center; }
+
+  .course-name {
+    font-size: 9.5pt;
+    font-weight: 600;
+    color: var(--slate-800);
+    flex: 1;
+  }
+
+  .course-badge {
+    font-size: 7.5pt;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: linear-gradient(135deg, var(--primary-50) 0%, #FFF5F5 100%);
+    color: var(--primary);
+    border: 1px solid var(--primary-200);
+  }
+
+  /* ── Investor section ─────────────────────────────────────────────── */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  .kpi-card {
+    background: var(--white);
+    border: 1px solid var(--slate-200);
+    border-radius: 10px;
+    padding: 12px 10px;
+    text-align: center;
+  }
+
+  .kpi-value {
+    font-size: 15pt;
+    font-weight: 900;
+    color: var(--primary);
+    line-height: 1;
+    margin-bottom: 5px;
+  }
+
+  .kpi-label {
+    font-size: 7.8pt;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--slate-600);
+    text-transform: uppercase;
+    letter-spacing: 0.35px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Print button (screen only) -->
+<button id="view-toggle" class="view-toggle no-print" onclick="toggleViewMode()">Mobile</button>
+<button class="print-hint no-print" onclick="window.print()">&#128424; Imprimir / Guardar PDF</button>
+<button id="lang-toggle" class="lang-toggle no-print" onclick="toggleLanguage()">EN</button>
+
+<div id="doc-root">
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<!-- PAGE 1: CAPA                                                             -->
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div class="page">
+  <div class="cover">
+    <div class="cover-logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        <path d="M12 5.67v15.56" opacity="0.5"/>
+      </svg>
+    </div>
+    <h1>Life<span>Link</span></h1>
+    <div class="cover-sub">Conectando Heróis a Quem Precisa</div>
+    <div class="cover-line"></div>
+    <div class="cover-type">Dossiê de Parceria</div>
+    <div class="cover-meta">
+      <strong>Documento Confidencial</strong><br>
+      Março 2026
+    </div>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<!-- PAGE 2: ÍNDICE + SUMÁRIO EXECUTIVO                                       -->
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div class="page">
+  <div class="page-red-bar"></div>
+  <div class="page-inner">
+    <span class="section-tag">Índice</span>
+    <h2>Conteúdos</h2>
+    <div class="divider"></div>
+
+    <table style="width: 100%; margin-top: 16px; font-size: 10pt;">
+      <tr style="border-bottom: 1px solid var(--slate-200);">
+        <td style="padding: 10px 0; font-weight: 700; color: var(--primary);">01</td>
+        <td style="padding: 10px 8px; font-weight: 600; color: var(--slate-800);">Sumário Executivo</td>
+        <td style="padding: 10px 0; text-align: right; color: var(--slate-400); font-weight: 600;">2</td>
+      </tr>
+      <tr style="border-bottom: 1px solid var(--slate-200);">
+        <td style="padding: 10px 0; font-weight: 700; color: var(--primary);">02</td>
+        <td style="padding: 10px 8px; font-weight: 600; color: var(--slate-800);">O Problema</td>
+        <td style="padding: 10px 0; text-align: right; color: var(--slate-400); font-weight: 600;">3</td>
+      </tr>
+      <tr style="border-bottom: 1px solid var(--slate-200);">
+        <td style="padding: 10px 0; font-weight: 700; color: var(--primary);">03</td>
+        <td style="padding: 10px 8px; font-weight: 600; color: var(--slate-800);">A Solução LifeLink</td>
+        <td style="padding: 10px 0; text-align: right; color: var(--slate-400); font-weight: 600;">4</td>
+      </tr>
+      <tr style="border-bottom: 1px solid var(--slate-200);">
+        <td style="padding: 10px 0; font-weight: 700; color: var(--primary);">04</td>
+        <td style="padding: 10px 8px; font-weight: 600; color: var(--slate-800);">Funcionalidades Detalhadas</td>
+        <td style="padding: 10px 0; text-align: right; color: var(--slate-400); font-weight: 600;">5</td>
+      </tr>
+      <tr style="border-bottom: 1px solid var(--slate-200);">
+        <td style="padding: 10px 0; font-weight: 700; color: var(--primary);">05</td>
+        <td style="padding: 10px 8px; font-weight: 600; color: var(--slate-800);">Socorristas & Gamificação</td>
+        <td style="padding: 10px 0; text-align: right; color: var(--slate-400); font-weight: 600;">6</td>
+      </tr>
+      <tr style="border-bottom: 1px solid var(--slate-200);">
+        <td style="padding: 10px 0; font-weight: 700; color: var(--primary);">06</td>
+        <td style="padding: 10px 8px; font-weight: 600; color: var(--slate-800);">Life Care & LifeLink Academy</td>
+        <td style="padding: 10px 0; text-align: right; color: var(--slate-400); font-weight: 600;">7</td>
+      </tr>
+      <tr style="border-bottom: 1px solid var(--slate-200);">
+        <td style="padding: 10px 0; font-weight: 700; color: var(--primary);">07</td>
+        <td style="padding: 10px 8px; font-weight: 600; color: var(--slate-800);">Modelo de Negócio & Parcerias</td>
+        <td style="padding: 10px 0; text-align: right; color: var(--slate-400); font-weight: 600;">8</td>
+      </tr>
+      <tr style="border-bottom: 1px solid var(--slate-200);">
+        <td style="padding: 10px 0; font-weight: 700; color: var(--primary);">08</td>
+        <td style="padding: 10px 8px; font-weight: 600; color: var(--slate-800);">Roadmap & Visão de Futuro</td>
+        <td style="padding: 10px 0; text-align: right; color: var(--slate-400); font-weight: 600;">9</td>
+      </tr>
+      <tr>
+        <td style="padding: 10px 0; font-weight: 700; color: var(--primary);">09</td>
+        <td style="padding: 10px 8px; font-weight: 600; color: var(--slate-800);">Contacto & Próximos Passos</td>
+        <td style="padding: 10px 0; text-align: right; color: var(--slate-400); font-weight: 600;">10</td>
+      </tr>
+    </table>
+
+    <div class="divider-full mt-32"></div>
+
+    <!-- Sumário Executivo inline -->
+    <span class="section-tag mt-16">Sumário Executivo</span>
+    <h2>Visão Geral</h2>
+    <div class="divider"></div>
+
+    <p class="mt-12" style="font-size: 10.5pt; line-height: 1.75; color: var(--slate-700);">
+      <strong>LifeLink</strong> é uma plataforma móvel que conecta, em tempo real, pessoas em situação de emergência a <strong>socorristas voluntários</strong> nas proximidades. Quando alguém precisa de ajuda, após contactar o INEM, pode criar um alerta no LifeLink que notifica instantaneamente socorristas certificados na zona — reduzindo drasticamente o tempo até à primeira intervenção.
+    </p>
+
+    <p class="mt-8" style="font-size: 10.5pt; line-height: 1.75; color: var(--slate-700);">
+      Além do seu núcleo de resposta a emergências, a plataforma oferece funcionalidades complementares: o <strong>Life Care</strong> (banco de sangue integrado, saúde mental e gestor de saúde pessoal) e o <strong>LifeLink Academy</strong> (plataforma de cursos de primeiros socorros para formação e certificação de novos socorristas). Um sistema de <strong>gamificação</strong> com ranking de heróis incentiva a participação contínua da comunidade.
+    </p>
+
+    <div class="grid-4 mt-20">
+      <div class="stat">
+        <div class="stat-num">3&times;</div>
+        <div class="stat-label">Mais sobrevida com RCP precoce</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">&lt;5'</div>
+        <div class="stat-label">Tempo alvo de resposta</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">7</div>
+        <div class="stat-label">Tipos de emergência</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">8</div>
+        <div class="stat-label">Categorias de cursos</div>
+      </div>
+    </div>
+
+    <p class="source-note">
+      Nota metodológica: métricas apresentadas como referência de contexto para discussão de parceria.
+      Números sujeitos a validação institucional por município/região e atualização periódica com base
+      em fontes públicas e científicas (INEM, ERC/Resuscitation Council, DGS e literatura médica).
+    </p>
+
+    <div class="page-footer">
+      <span>LifeLink — Dossiê de Parceria</span>
+      <span>Confidencial</span>
+      <span class="page-number">2</span>
+    </div>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<!-- PAGE 3: O PROBLEMA                                                       -->
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div class="page">
+  <div class="page-red-bar"></div>
+  <div class="page-inner">
+    <span class="section-tag">01 — O Problema</span>
+    <h2>Emergências <span class="text-red">Não Esperam</span></h2>
+    <div class="divider"></div>
+
+    <p class="mt-8">
+      Em Portugal e na Europa, milhares de pessoas sofrem paragem cardíaca fora do hospital todos os anos. A taxa de sobrevida depende diretamente do tempo até à primeira intervenção — e cada minuto sem resposta reduz as probabilidades em cerca de 10%.
+    </p>
+
+    <div class="grid-2 mt-20 gap-16">
+      <div class="card flex gap-12 items-start">
+        <div class="icon-box">&#9201;</div>
+        <div>
+          <h3>Tempo é vida</h3>
+          <p class="mt-4">Após 3-5 minutos sem RCP, os danos cerebrais começam a tornar-se irreversíveis. O tempo médio de chegada de uma ambulância em zonas urbanas pode exceder os 10 minutos. Esta diferença mata.</p>
+        </div>
+      </div>
+      <div class="card flex gap-12 items-start">
+        <div class="icon-box">&#128683;</div>
+        <div>
+          <h3>Comunidade desconectada</h3>
+          <p class="mt-4">Em momentos críticos, pessoas ao redor querem ajudar mas não sabem como, não têm coordenação e não conhecem a localização dos DEAs mais próximos.</p>
+        </div>
+      </div>
+      <div class="card flex gap-12 items-start">
+        <div class="icon-box">&#128101;</div>
+        <div>
+          <h3>Socorristas invisíveis</h3>
+          <p class="mt-4">Existem milhares de voluntários com formação em primeiros socorros que estão nas proximidades em qualquer momento — mas não há forma de os identificar e ativar em tempo real.</p>
+        </div>
+      </div>
+      <div class="card flex gap-12 items-start">
+        <div class="icon-box">&#9889;</div>
+        <div>
+          <h3>DEAs subutilizados</h3>
+          <p class="mt-4">Portugal tem centenas de DEAs em espaços públicos (metro, centros comerciais, estações), mas a maioria das pessoas não sabe onde estão, tornando-os inúteis quando mais se precisa.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight mt-24">
+      <p style="font-size: 10.5pt;">
+        <strong class="text-red">Facto:</strong> A aplicação de RCP e DEA nos primeiros 3-5 minutos pode <strong>triplicar</strong> a taxa de sobrevida em paragem cardíaca. LifeLink existe para preencher este intervalo crítico entre o momento da emergência e a chegada da ajuda oficial.
+      </p>
+    </div>
+
+    <h3 class="mt-24 text-red">A Realidade em Números</h3>
+
+    <div class="grid-3 mt-12">
+      <div class="card-slate text-center" style="padding: 20px;">
+        <div class="stat-num" style="font-size: 18pt;">~10.000</div>
+        <div class="stat-label">Paragens cardíacas/ano em PT (estimativa)</div>
+      </div>
+      <div class="card-slate text-center" style="padding: 20px;">
+        <div class="stat-num" style="font-size: 18pt;">&lt;5%</div>
+        <div class="stat-label">Taxa de sobrevida sem intervenção precoce</div>
+      </div>
+      <div class="card-slate text-center" style="padding: 20px;">
+        <div class="stat-num" style="font-size: 18pt;">~10 min</div>
+        <div class="stat-label">Tempo médio de resposta de ambulância</div>
+      </div>
+    </div>
+
+    <p class="source-note">
+      Fontes de referência (a consolidar na versão institucional final): INEM, European Resuscitation Council,
+      Direção-Geral da Saúde e estudos internacionais sobre resposta pré-hospitalar e sobrevida em PCR.
+    </p>
+
+    <div class="page-footer">
+      <span>LifeLink — Dossiê de Parceria</span>
+      <span>Confidencial</span>
+      <span class="page-number">3</span>
+    </div>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<!-- PAGE 4: A SOLUÇÃO                                                        -->
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div class="page">
+  <div class="page-red-bar"></div>
+  <div class="page-inner">
+    <span class="section-tag">02 — A Solução</span>
+    <h2>Como LifeLink <span class="text-red">Funciona</span></h2>
+    <div class="divider"></div>
+
+    <p class="mt-8">
+      LifeLink é uma plataforma móvel (iOS e Android) que cria uma rede de resposta comunitária para emergências. O conceito é simples: quando alguém precisa de ajuda, após contactar os serviços de emergência oficiais, pode ativar socorristas voluntários próximos através da aplicação.
+    </p>
+
+    <!-- Flow -->
+    <h3 class="mt-24 text-red mb-12">Fluxo de Uma Emergência Real</h3>
+
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <span class="tl-step">1</span>
+        <span class="tl-text">Pessoa vê colega desmaiar na rua</span>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <span class="tl-step">2</span>
+        <span class="tl-text"><strong>Liga para o INEM</strong> — emergência oficial (protocolo obrigatório)</span>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <span class="tl-step">3</span>
+        <span class="tl-text">Abre <strong>LifeLink</strong> → cria alerta com tipo de emergência e localização automática</span>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <span class="tl-step">4</span>
+        <span class="tl-text">Todos os <strong>socorristas voluntários</strong> num raio próximo recebem notificação em tempo real</span>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <span class="tl-step">5</span>
+        <span class="tl-text">Primeiro socorrista disponível dirige-se ao local — aplica <strong>RCP, DEA, estabilização</strong></span>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <span class="tl-step">6</span>
+        <span class="tl-text">Coordenação com <strong>INEM / ambulância</strong> para transporte hospitalar</span>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot filled"></div>
+        <span class="tl-step" style="background: var(--primary); color: white; border-color: var(--primary);">&#10003;</span>
+        <span class="tl-text font-bold" style="color: var(--primary);">Comunidade salva uma vida</span>
+      </div>
+    </div>
+
+    <!-- Types of alerts -->
+    <h3 class="mt-32 text-red mb-12">Tipos de Emergência Suportados</h3>
+
+    <div class="grid-4 gap-12">
+      <div class="alert-type">
+        <span class="alert-emoji">&#10084;&#65039;</span>
+        <span class="alert-name">Cardíaca</span>
+      </div>
+      <div class="alert-type">
+        <span class="alert-emoji">&#128168;</span>
+        <span class="alert-name">Respiratória</span>
+      </div>
+      <div class="alert-type">
+        <span class="alert-emoji">&#129656;</span>
+        <span class="alert-name">Hemorragia</span>
+      </div>
+      <div class="alert-type">
+        <span class="alert-emoji">&#129460;</span>
+        <span class="alert-name">Trauma</span>
+      </div>
+      <div class="alert-type">
+        <span class="alert-emoji">&#128293;</span>
+        <span class="alert-name">Incêndio</span>
+      </div>
+      <div class="alert-type">
+        <span class="alert-emoji">&#127754;</span>
+        <span class="alert-name">Afogamento</span>
+      </div>
+      <div class="alert-type">
+        <span class="alert-emoji">&#128680;</span>
+        <span class="alert-name">Outro</span>
+      </div>
+      <div class="alert-type" style="border-color: var(--primary-200); background: linear-gradient(135deg, var(--primary-50) 0%, #FFF5F5 100%);">
+        <span class="alert-emoji">&#128205;</span>
+        <span class="alert-name text-red">+ GPS auto</span>
+      </div>
+    </div>
+
+    <div class="highlight mt-20">
+      <p>
+        <strong>Importante:</strong> LifeLink é um <strong>complemento</strong> aos serviços de emergência oficiais, não um substituto. O utilizador deve sempre contactar o INEM (112) antes de criar um alerta no LifeLink.
+      </p>
+    </div>
+
+    <div class="page-footer">
+      <span>LifeLink — Dossiê de Parceria</span>
+      <span>Confidencial</span>
+      <span class="page-number">4</span>
+    </div>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<!-- PAGE 5: FUNCIONALIDADES                                                  -->
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div class="page">
+  <div class="page-red-bar"></div>
+  <div class="page-inner">
+    <span class="section-tag">03 — Funcionalidades</span>
+    <h2>O Que LifeLink <span class="text-red">Oferece</span></h2>
+    <div class="divider"></div>
+
+    <p class="mt-8 mb-20">A aplicação integra quatro pilares funcionais numa única interface, desenhada para ser usada sob stress e em situações de urgência.</p>
+
+    <!-- Feature 1 -->
+    <div class="card mb-16" style="border-left: 4px solid var(--primary);">
+      <div class="flex gap-12 items-start">
+        <div class="icon-box red" style="color: white;">&#127757;</div>
+        <div class="flex-1">
+          <h3>Mapa em Tempo Real</h3>
+          <p class="mt-4">Mapa interativo com a localização do utilizador, desfibriladores (DEAs) públicos, hospitais próximos e alertas ativos na região. Usa GPS para localização precisa e mostra um radar visual com os DEAs mais próximos.</p>
+          <div class="grid-2 mt-8">
+            <ul class="check">
+              <li>Localização GPS em tempo real</li>
+              <li>DEAs mapeados (dados abertos do metro, centros comerciais, etc.)</li>
+            </ul>
+            <ul class="check">
+              <li>Hospitais e centros de saúde próximos</li>
+              <li>Alertas ativos na região visíveis no mapa</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 2 -->
+    <div class="card mb-16" style="border-left: 4px solid var(--primary);">
+      <div class="flex gap-12 items-start">
+        <div class="icon-box red" style="color: white;">&#128680;</div>
+        <div class="flex-1">
+          <h3>Criar Alerta de Emergência</h3>
+          <p class="mt-4">Interface simplificada para criar alertas com um clique. O utilizador seleciona o tipo de emergência, pode adicionar foto/descrição, e a localização é detectada automaticamente pelo GPS.</p>
+          <div class="grid-2 mt-8">
+            <ul class="check">
+              <li>7 tipos de emergência pré-definidos</li>
+              <li>Foto e descrição opcionais</li>
+            </ul>
+            <ul class="check">
+              <li>Localização automática por GPS</li>
+              <li>Envio em 1 clique (desenho para cenários de stress)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 3 -->
+    <div class="card mb-16" style="border-left: 4px solid var(--primary);">
+      <div class="flex gap-12 items-start">
+        <div class="icon-box red" style="color: white;">&#128694;</div>
+        <div class="flex-1">
+          <h3>Responder a Alertas (Socorristas)</h3>
+          <p class="mt-4">Socorristas recebem notificações push com o tipo de emergência e a localização. Podem aceitar o alerta, ver a rota até ao local e comunicar com quem pediu ajuda.</p>
+          <div class="grid-2 mt-8">
+            <ul class="check">
+              <li>Notificação push em tempo real</li>
+              <li>Rota e navegação até ao local</li>
+            </ul>
+            <ul class="check">
+              <li>Contacto direto com quem criou o alerta</li>
+              <li>Confirmação de chegada e status</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 4 -->
+    <div class="card" style="border-left: 4px solid var(--primary);">
+      <div class="flex gap-12 items-start">
+        <div class="icon-box red" style="color: white;">&#128100;</div>
+        <div class="flex-1">
+          <h3>Perfil & Histórico</h3>
+          <p class="mt-4">Cada utilizador tem um perfil com dados de saúde (tipo de sangue, alergias, medicamentos), histórico de alertas criados e respondidos, certificações de cursos e estatísticas de participação.</p>
+          <div class="grid-2 mt-8">
+            <ul class="check">
+              <li>Dados de saúde pessoais centralizados</li>
+              <li>Histórico completo de ações</li>
+            </ul>
+            <ul class="check">
+              <li>Certificações e badges conquistados</li>
+              <li>Estatísticas pessoais de participação</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>LifeLink — Dossiê de Parceria</span>
+      <span>Confidencial</span>
+      <span class="page-number">5</span>
+    </div>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<!-- PAGE 6: SOCORRISTAS & GAMIFICAÇÃO                                        -->
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div class="page">
+  <div class="page-red-bar"></div>
+  <div class="page-inner">
+    <span class="section-tag">04 — Socorristas</span>
+    <h2>A Comunidade de <span class="text-red">Heróis</span></h2>
+    <div class="divider"></div>
+
+    <p class="mt-8">
+      O coração do LifeLink são os socorristas voluntários — cidadãos treinados que se disponibilizam para ajudar quando alguém precisa. A plataforma cria mecanismos para recrutar, formar, motivar e reconhecer esta comunidade.
+    </p>
+
+    <!-- Who -->
+    <h3 class="mt-24 text-red mb-8">Quem Pode Ser Socorrista?</h3>
+
+    <div class="grid-2 gap-16">
+      <div class="card-slate">
+        <h4>&#129657; Profissionais de Saúde</h4>
+        <ul class="dot mt-8">
+          <li>Enfermeiros e médicos</li>
+          <li>Paramédicos e técnicos de emergência</li>
+          <li>Bombeiros com formação médica</li>
+        </ul>
+      </div>
+      <div class="card-slate">
+        <h4>&#128587; Cidadãos Treinados</h4>
+        <ul class="dot mt-8">
+          <li>Pessoas com cursos de primeiros socorros</li>
+          <li>Voluntários de ONGs de saúde</li>
+          <li>Cidadãos formados pela LifeLink Academy</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="mt-16">
+      O processo de registo como socorrista inclui a seleção de especialidades (RCP, DEA, trauma, etc.), upload de documentos comprovativos e validação pela plataforma. Dois perfis distintos: <strong>alertante</strong> (cria alertas) e <strong>socorrista</strong> (cria e responde a alertas).
+    </p>
+
+    <!-- Gamification -->
+    <h3 class="mt-24 text-red mb-8">Sistema de Gamificação</h3>
+
+    <p class="mb-16">A motivação contínua é essencial para manter a rede ativa. LifeLink usa gamificação para incentivar a participação sem trivializar o propósito.</p>
+
+    <div class="grid-3 gap-16">
+      <div class="card" style="border-top: 4px solid var(--primary); text-align: center; padding: 20px;">
+        <div style="font-size: 28px; margin-bottom: 8px;">&#127942;</div>
+        <h3>Leaderboard de Heróis</h3>
+        <p class="mt-8 text-small">Ranking público dos socorristas mais ativos. Visibilidade na comunidade e reconhecimento pelo impacto gerado.</p>
+      </div>
+      <div class="card" style="border-top: 4px solid var(--primary); text-align: center; padding: 20px;">
+        <div style="font-size: 28px; margin-bottom: 8px;">&#127941;</div>
+        <h3>Badges & Conquistas</h3>
+        <p class="mt-8 text-small">Badges por cada alerta respondido, cursos concluídos e marcos alcançados. Progresso visível no perfil pessoal.</p>
+      </div>
+      <div class="card" style="border-top: 4px solid var(--primary); text-align: center; padding: 20px;">
+        <div style="font-size: 28px; margin-bottom: 8px;">&#128220;</div>
+        <h3>Certificação Digital</h3>
+        <p class="mt-8 text-small">Certificados verificáveis para cada curso concluído. Valor para currículo profissional e credibilidade na rede.</p>
+      </div>
+    </div>
+
+    <div class="highlight mt-24">
+      <p>
+        <strong>Porquê gamificação?</strong> Estudos demonstram que sistemas de reconhecimento aumentam significativamente a taxa de retenção de voluntários. No LifeLink, cada ponto no ranking representa uma pessoa que foi ajudada — gamificação com propósito.
+      </p>
+    </div>
+
+    <div class="page-footer">
+      <span>LifeLink — Dossiê de Parceria</span>
+      <span>Confidencial</span>
+      <span class="page-number">6</span>
+    </div>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<!-- PAGE 7: LIFE CARE + ACADEMY                                              -->
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div class="page">
+  <div class="page-red-bar"></div>
+  <div class="page-inner">
+    <span class="section-tag">05 — Diferenciais</span>
+    <h2>Life Care & LifeLink <span class="text-red">Academy</span></h2>
+    <div class="divider"></div>
+
+    <p class="mt-8 mb-20">
+      Para além do núcleo de resposta a emergências, LifeLink oferece duas funcionalidades diferenciadoras que expandem o valor da plataforma para utilizadores e parceiros.
+    </p>
+
+    <!-- Life Care -->
+    <div class="card-red mb-24" style="padding: 20px;">
+      <h3 style="font-size: 13pt; margin-bottom: 12px;">&#128154; Life Care — Bem-Estar Comunitário</h3>
+      <div class="grid-3 gap-16 mt-8">
+        <div>
+          <h4 style="opacity: 0.9;">&#129656; Banco de Sangue</h4>
+          <ul class="dot white mt-8">
+            <li>Tipos de sangue em falta em tempo real</li>
+            <li>Centros de doação próximos com mapa</li>
+            <li>Histórico pessoal de doações</li>
+            <li>Notificações para doadores</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="opacity: 0.9;">&#129504; Saúde Mental</h4>
+          <ul class="dot white mt-8">
+            <li>Recursos de bem-estar e apoio</li>
+            <li>Comunidade de apoio integrada</li>
+            <li>Campanhas de sensibilização</li>
+            <li>Links para profissionais</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="opacity: 0.9;">&#128658; Apoio aos Bombeiros</h4>
+          <ul class="dot white mt-8">
+            <li>Doações para equipas e vítimas</li>
+            <li>Arrecadações e campanhas solidárias</li>
+            <li>Informações sobre causas e prevenção</li>
+            <li>Mobilização comunitária em períodos críticos</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Academy -->
+    <h3 class="text-red mb-8">&#127891; LifeLink Academy — Marketplace de Cursos</h3>
+
+    <p class="mb-16">
+      A aba de cursos permite que qualquer cidadão se forme em primeiros socorros e se torne socorrista do LifeLink. Os cursos são oferecidos por entidades parceiras certificadas e cobrem desde o nível básico ao avançado.
+    </p>
+
+    <h4 class="mb-8" style="font-size: 9.5pt; color: var(--slate-500); letter-spacing: 1px; text-transform: uppercase;">Categorias de Cursos Disponíveis</h4>
+
+    <div class="grid-2 gap-8">
+      <div class="course-row">
+        <span class="course-emoji">&#10084;&#65039;</span>
+        <span class="course-name">CPR / Reanimação Cardiopulmonar</span>
+        <span class="course-badge">Essencial</span>
+      </div>
+      <div class="course-row">
+        <span class="course-emoji">&#9889;</span>
+        <span class="course-name">Operador de DEA</span>
+        <span class="course-badge">Rápido</span>
+      </div>
+      <div class="course-row">
+        <span class="course-emoji">&#129658;</span>
+        <span class="course-name">Primeiros Socorros</span>
+        <span class="course-badge">Recomendado</span>
+      </div>
+      <div class="course-row">
+        <span class="course-emoji">&#129460;</span>
+        <span class="course-name">Suporte de Trauma</span>
+        <span class="course-badge">Avançado</span>
+      </div>
+      <div class="course-row">
+        <span class="course-emoji">&#128118;</span>
+        <span class="course-name">Emergência Pediátrica</span>
+        <span class="course-badge">Online</span>
+      </div>
+      <div class="course-row">
+        <span class="course-emoji">&#127956;</span>
+        <span class="course-name">Socorrismo em Montanha</span>
+        <span class="course-badge">Especializado</span>
+      </div>
+      <div class="course-row">
+        <span class="course-emoji">&#128293;</span>
+        <span class="course-name">Extinção de Incêndios</span>
+        <span class="course-badge">Certificado</span>
+      </div>
+      <div class="course-row">
+        <span class="course-emoji">&#127946;</span>
+        <span class="course-name">Nadador-Salvador</span>
+        <span class="course-badge">Novo</span>
+      </div>
+    </div>
+
+    <h4 class="mt-20 mb-8" style="font-size: 9.5pt; color: var(--slate-500); letter-spacing: 1px; text-transform: uppercase;">Exemplo de Ofertas do Marketplace</h4>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Curso</th>
+          <th>Entidade</th>
+          <th>Preço</th>
+          <th>Duração</th>
+          <th>Modo</th>
+          <th>Validade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>CPR/AED Profissional</strong></td>
+          <td>Cruz Vermelha Formação</td>
+          <td>119 €</td>
+          <td>12h</td>
+          <td>Presencial</td>
+          <td>24 meses</td>
+        </tr>
+        <tr>
+          <td><strong>Primeiros Socorros Essenciais</strong></td>
+          <td>MedSafe Academy</td>
+          <td>89 €</td>
+          <td>8h</td>
+          <td>Híbrido</td>
+          <td>24 meses</td>
+        </tr>
+        <tr>
+          <td><strong>Resposta a Trauma Urbano</strong></td>
+          <td>TraumaLab Lisboa</td>
+          <td>149 €</td>
+          <td>14h</td>
+          <td>Presencial</td>
+          <td>36 meses</td>
+        </tr>
+        <tr>
+          <td><strong>Operador de DEA</strong></td>
+          <td>DefibTech Training</td>
+          <td>69 €</td>
+          <td>6h</td>
+          <td>Online</td>
+          <td>24 meses</td>
+        </tr>
+        <tr>
+          <td><strong>Emergência Pediátrica</strong></td>
+          <td>Saúde Infantil Pro</td>
+          <td>129 €</td>
+          <td>10h</td>
+          <td>Online em direto</td>
+          <td>24 meses</td>
+        </tr>
+        <tr>
+          <td><strong>Segurança e Incêndios</strong></td>
+          <td>FireSafe Institute</td>
+          <td>99 €</td>
+          <td>9h</td>
+          <td>Híbrido</td>
+          <td>36 meses</td>
+        </tr>
+        <tr>
+          <td><strong>Socorro Aquático</strong></td>
+          <td>AquaSalva Portugal</td>
+          <td>139 €</td>
+          <td>16h</td>
+          <td>Presencial</td>
+          <td>24 meses</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="page-footer">
+      <span>LifeLink — Dossiê de Parceria</span>
+      <span>Confidencial</span>
+      <span class="page-number">7</span>
+    </div>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<!-- PAGE 8: MODELO DE NEGÓCIO                                                -->
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div class="page">
+  <div class="page-red-bar"></div>
+  <div class="page-inner">
+    <span class="section-tag">06 — Modelo de Negócio</span>
+    <h2>Modelo de Negócio & <span class="text-red">Parcerias</span></h2>
+    <div class="divider"></div>
+
+    <p class="mt-8 mb-16">
+      LifeLink procura parcerias estratégicas com entidades que partilham a missão de melhorar a resposta a emergências e a saúde comunitária. Cada tipo de parceiro beneficia de formas diferentes.
+    </p>
+
+    <div class="grid-2 gap-16">
+      <div class="partner-box">
+        <h4>&#127973; INEM / Bombeiros / Proteção Civil</h4>
+        <ul class="dot mt-8">
+          <li>Dados partilhados em tempo real sobre ocorrências</li>
+          <li>Coordenação otimizada entre voluntários e profissionais</li>
+          <li>Complemento aos serviços oficiais nos minutos críticos</li>
+          <li>Rede de cidadãos treinados como extensão do sistema</li>
+        </ul>
+        <div class="highlight mt-8" style="margin-bottom: 0;">
+          <p class="text-small"><strong>Proposta de valor:</strong> Rede de primeira resposta comunitária que complementa o SIEM, sem substituir os protocolos oficiais.</p>
+        </div>
+      </div>
+
+      <div class="partner-box">
+        <h4>&#127975; Hospitais / Clínicas / Grupos de Saúde</h4>
+        <ul class="dot mt-8">
+          <li>Alertas prévios de vítimas a caminho da urgência</li>
+          <li>Dados agregados de saúde comunitária</li>
+          <li>Recrutamento de socorristas entre profissionais</li>
+          <li>Redução da carga não planeada em emergência</li>
+        </ul>
+        <div class="highlight mt-8" style="margin-bottom: 0;">
+          <p class="text-small"><strong>Proposta de valor:</strong> Preparação antecipada para receção de vítimas e dados operacionais da comunidade envolvente.</p>
+        </div>
+      </div>
+
+      <div class="partner-box">
+        <h4>&#128737; Seguradoras de Saúde</h4>
+        <ul class="dot mt-8">
+          <li>Redução de sinistros (resposta rápida = melhor prognóstico)</li>
+          <li>Marketing de responsabilidade social junto de clientes</li>
+          <li>Dados epidemiológicos da comunidade</li>
+          <li>Diferencial competitivo no mercado segurador</li>
+        </ul>
+        <div class="highlight mt-8" style="margin-bottom: 0;">
+          <p class="text-small"><strong>Proposta de valor:</strong> Prevenção ativa que reduz custos com sinistros e posiciona a seguradora como agente de saúde comunitária.</p>
+        </div>
+      </div>
+
+      <div class="partner-box">
+        <h4>&#127970; Empresas / Corporativas</h4>
+        <ul class="dot mt-8">
+          <li>Segurança e saúde dos colaboradores em instalações</li>
+          <li>Programa de bem-estar integrado (saúde + emergência)</li>
+          <li>Responsabilidade social corporativa (CSR/ESG)</li>
+          <li>Badge de parceiro visível na aplicação</li>
+        </ul>
+        <div class="highlight mt-8" style="margin-bottom: 0;">
+          <p class="text-small"><strong>Proposta de valor:</strong> Proteção ativa dos colaboradores e posicionamento ESG com impacto social mensurável.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-dark mt-20" style="padding: 20px;">
+      <div class="flex gap-12 items-start">
+        <div class="icon-box white" style="font-size: 22px; color: white;">&#127963;</div>
+        <div>
+          <h3 style="font-size: 12pt;">Municípios / Câmaras Locais</h3>
+          <p class="mt-4" style="color: rgba(255,255,255,0.8); font-size: 9.5pt;">
+            Integração da rede LifeLink como infraestrutura de resposta comunitária municipal. Articulação com Proteção Civil, acesso a dados epidemiológicos locais e posicionamento como cidade moderna, segura e solidária. Possibilidade de pilotos regionais com cobertura geográfica definida.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="regulatory-note mt-12">
+      <p>
+        Governança e responsabilidade: qualquer integração operacional com INEM, Proteção Civil, hospitais
+        ou municípios depende de protocolos institucionais, enquadramento jurídico aplicável e validação
+        técnica prévia. O LifeLink atua como complemento comunitário, nunca como substituto de canais oficiais.
+      </p>
+    </div>
+
+    <h3 class="mt-20 text-red mb-8">Métricas-Chave para Piloto (90 Dias)</h3>
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-value">&lt;5 min</div>
+        <div class="kpi-label">Tempo alvo até primeira resposta comunitária</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">&gt;70%</div>
+        <div class="kpi-label">Alertas com socorrista mobilizado</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">500+</div>
+        <div class="kpi-label">Socorristas ativos na área-piloto</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">3-5</div>
+        <div class="kpi-label">Parcerias institucionais locais ativas</div>
+      </div>
+    </div>
+
+    <h3 class="mt-16 text-red mb-8">Estrutura de Parceria</h3>
+    <div class="grid-3 gap-12">
+      <div class="card-slate" style="padding: 12px;">
+        <h4 style="font-size: 9pt; color: var(--primary);">Nível 1 - Parceiro Local</h4>
+        <ul class="dot mt-8">
+          <li>Projeto-piloto em município ou zona urbana</li>
+          <li>Ativação operacional e medição de resultados</li>
+        </ul>
+      </div>
+      <div class="card-slate" style="padding: 12px;">
+        <h4 style="font-size: 9pt; color: var(--primary);">Nível 2 - Parceiro Regional</h4>
+        <ul class="dot mt-8">
+          <li>Expansão para múltiplas cidades/territórios</li>
+          <li>Governança conjunta e integração progressiva</li>
+        </ul>
+      </div>
+      <div class="card-slate" style="padding: 12px;">
+        <h4 style="font-size: 9pt; color: var(--primary);">Nível 3 - Parceiro Estratégico</h4>
+        <ul class="dot mt-8">
+          <li>Escala nacional, dados de impacto e visibilidade ESG</li>
+          <li>Co-desenvolvimento de soluções e inovação contínua</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="text-small mt-12" style="color: var(--slate-500);">
+      Próximo passo recomendado: workshop técnico de 45 minutos para definição de escopo, indicadores e plano de implementação do piloto.
+    </p>
+
+    <div class="page-footer">
+      <span>LifeLink — Dossiê de Parceria</span>
+      <span>Confidencial</span>
+      <span class="page-number">8</span>
+    </div>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<!-- PAGE 9: ROADMAP                                                          -->
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div class="page">
+  <div class="page-red-bar"></div>
+  <div class="page-inner">
+    <span class="section-tag">07 — Roadmap</span>
+    <h2>Visão de <span class="text-red">Futuro</span></h2>
+    <div class="divider"></div>
+
+    <p class="mt-8 mb-20">
+      LifeLink segue uma estratégia de desenvolvimento faseada, validando cada etapa antes de avançar para a seguinte.
+    </p>
+
+    <div class="flex-col gap-20">
+      <!-- Phase 1 -->
+      <div class="rm-phase done">
+        <span class="rm-tag done">&#10003; Fase 1 — MVP (Concluído)</span>
+        <p class="mt-4 font-bold" style="font-size: 10pt; color: var(--slate-800);">Fundação da Plataforma</p>
+        <div class="grid-2 mt-8">
+          <ul class="check">
+            <li>Aplicação móvel Flutter (iOS + Android)</li>
+            <li>Sistema de alertas com 7 tipos de emergência</li>
+            <li>Mapa em tempo real com DEAs e hospitais</li>
+            <li>Sistema de autenticação e perfil</li>
+          </ul>
+          <ul class="check">
+            <li>Leaderboard de heróis (gamificação)</li>
+            <li>Aba Life Care (sangue, saúde mental)</li>
+            <li>Aba de cursos (LifeLink Academy)</li>
+            <li>Histórico de alertas e ações</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="rm-phase next">
+        <span class="rm-tag next">&#128205; Fase 2 — Próximos 3-6 Meses</span>
+        <p class="mt-4 font-bold" style="font-size: 10pt; color: var(--slate-800);">Escala e Integração</p>
+        <div class="grid-2 mt-8">
+          <ul class="check">
+            <li>Integração com INEM/Bombeiros (mediante protocolos institucionais)</li>
+            <li>Notificações push otimizadas com geolocalização inteligente</li>
+            <li>Certificação digital verificável para socorristas</li>
+          </ul>
+          <ul class="check">
+            <li>Expansão geográfica (novas cidades em PT)</li>
+            <li>Parcerias iniciais (pilotos com primeiros parceiros)</li>
+            <li>Monetização da plataforma de cursos</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="rm-phase future">
+        <span class="rm-tag future">&#128640; Fase 3 — Médio Prazo (6-12 Meses)</span>
+        <p class="mt-4 font-bold" style="font-size: 10pt; color: var(--slate-800);">Expansão e Inovação</p>
+        <div class="grid-2 mt-8">
+          <ul class="check">
+            <li>APIs abertas para hospitais e seguradoras</li>
+            <li>Analytics avançado de saúde comunitária</li>
+            <li>Integração com wearables (smartwatches)</li>
+          </ul>
+          <ul class="check">
+            <li>Machine Learning para previsão de alertas</li>
+            <li>Expansão nacional completa</li>
+            <li>Preparação para internacionalização</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Differentials summary -->
+    <h3 class="mt-32 text-red mb-12">Diferenciais Competitivos</h3>
+
+    <div class="grid-2 gap-12">
+      <div class="diff">
+        <div class="diff-badge">&#10003;</div>
+        <div>
+          <h4>Conexão em Tempo Real</h4>
+          <p class="text-small mt-2">Único app que conecta cidadão a socorrista voluntário instantaneamente.</p>
+        </div>
+      </div>
+      <div class="diff">
+        <div class="diff-badge">&#10003;</div>
+        <div>
+          <h4>Gamificação com Propósito</h4>
+          <p class="text-small mt-2">Leaderboard, badges e reconhecimento que motivam participação contínua.</p>
+        </div>
+      </div>
+      <div class="diff">
+        <div class="diff-badge">&#10003;</div>
+        <div>
+          <h4>Integração com DEAs</h4>
+          <p class="text-small mt-2">Mapa com desfibriladores públicos e infraestrutura de saúde existente.</p>
+        </div>
+      </div>
+      <div class="diff">
+        <div class="diff-badge">&#10003;</div>
+        <div>
+          <h4>Resposta Antes da Ambulância</h4>
+          <p class="text-small mt-2">Socorristas próximos atuam nos minutos decisivos, antes da ajuda oficial.</p>
+        </div>
+      </div>
+      <div class="diff">
+        <div class="diff-badge">&#10003;</div>
+        <div>
+          <h4>Comunidade Empoderada</h4>
+          <p class="text-small mt-2">Cidadãos preparados e organizados, complementando o sistema oficial.</p>
+        </div>
+      </div>
+      <div class="diff">
+        <div class="diff-badge">&#10003;</div>
+        <div>
+          <h4>Privacidade e Segurança por Conceção</h4>
+          <p class="text-small mt-2">Proteção de dados sensíveis, controlo de acessos e evolução contínua para conformidade RGPD.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>LifeLink — Dossiê de Parceria</span>
+      <span>Confidencial</span>
+      <span class="page-number">9</span>
+    </div>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<!-- PAGE 10: CONTACTO                                                        -->
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div class="page">
+  <div class="page-red-bar"></div>
+  <div class="page-inner">
+    <span class="section-tag">08 — Próximos Passos</span>
+    <h2>Vamos Trabalhar <span class="text-red">Juntos</span></h2>
+    <div class="divider"></div>
+
+    <p class="mt-8 mb-24">
+      Estamos à procura de parceiros que partilhem a nossa visão de criar uma comunidade mais segura e preparada para emergências. Existem várias formas de colaboração possíveis.
+    </p>
+
+    <div class="grid-2 gap-20 mb-32">
+      <div class="card-outline" style="padding: 20px;">
+        <h3 class="text-red mb-8">&#129309; Formas de Parceria</h3>
+        <ul class="check">
+          <li><strong>Integração técnica</strong> — APIs e partilha de dados</li>
+          <li><strong>Programa piloto</strong> — Teste numa região específica</li>
+          <li><strong>Financiamento</strong> — Investimento ou patrocínio</li>
+          <li><strong>Formação</strong> — Parceiro de cursos na Academy</li>
+          <li><strong>Distribuição</strong> — Co-marketing e notoriedade de marca</li>
+          <li><strong>Dados</strong> — Partilha de dados de saúde pública</li>
+        </ul>
+      </div>
+
+      <div class="card-outline" style="padding: 20px;">
+        <h3 class="text-red mb-8">&#128640; Próximos Passos Sugeridos</h3>
+        <div class="tl" style="margin-top: 8px;">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <span class="tl-step">1</span>
+            <span class="tl-text">Reunião de alinhamento estratégico</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <span class="tl-step">2</span>
+            <span class="tl-text">Definição do modelo de parceria</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <span class="tl-step">3</span>
+            <span class="tl-text">Projeto-piloto / prova de conceito</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <span class="tl-step">4</span>
+            <span class="tl-text">Avaliação de resultados</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot filled"></div>
+            <span class="tl-step" style="background: var(--primary); color: white; border-color: var(--primary);">5</span>
+            <span class="tl-text font-bold">Parceria formal e escala</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="text-red mb-8">Compromissos do Piloto</h3>
+    <div class="grid-3 gap-12 mb-16">
+      <div class="card-slate" style="padding: 14px;">
+        <h4 style="color: var(--primary);">Operação</h4>
+        <ul class="dot mt-8">
+          <li>SLA de resposta e monitorização contínua</li>
+          <li>Canal direto para coordenação institucional</li>
+        </ul>
+      </div>
+      <div class="card-slate" style="padding: 14px;">
+        <h4 style="color: var(--primary);">Medição de Impacto</h4>
+        <ul class="dot mt-8">
+          <li>KPIs mensais com relatório executivo</li>
+          <li>Indicadores de impacto social e operacional</li>
+        </ul>
+      </div>
+      <div class="card-slate" style="padding: 14px;">
+        <h4 style="color: var(--primary);">Escalabilidade</h4>
+        <ul class="dot mt-8">
+          <li>Plano de expansão por fases validado</li>
+          <li>Modelo replicável para novas geografias</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Contact info -->
+    <div class="card-red" style="padding: 32px; text-align: center;">
+      <h3 style="font-size: 16pt; margin-bottom: 16px;">Contacto</h3>
+      <div style="display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;">
+        <div>
+          <p class="text-xs" style="color: rgba(255,255,255,0.5); margin-bottom: 2px;">EMAIL</p>
+          <p style="color: white; font-weight: 600; font-size: 10pt;">hello@lifelink.pt</p>
+        </div>
+        <div>
+          <p class="text-xs" style="color: rgba(255,255,255,0.5); margin-bottom: 2px;">LINKEDIN</p>
+          <p style="color: white; font-weight: 600; font-size: 10pt;">@lifelink</p>
+        </div>
+        <div>
+          <p class="text-xs" style="color: rgba(255,255,255,0.5); margin-bottom: 2px;">WEBSITE</p>
+          <p style="color: white; font-weight: 600; font-size: 10pt;">lifelink.pt</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-center mt-16 text-xs" style="color: var(--slate-300);">
+      Este documento é confidencial e destinado exclusivamente ao parceiro destinatário. A reprodução ou distribuição sem autorização prévia é proibida.
+    </p>
+
+    <div class="page-footer">
+      <span>LifeLink — Dossiê de Parceria</span>
+      <span>Confidencial</span>
+      <span class="page-number">10</span>
+    </div>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<!-- BACK COVER                                                               -->
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div class="page">
+  <div class="back-cover">
+    <div class="back-logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        <path d="M12 5.67v15.56" opacity="0.5"/>
+      </svg>
+    </div>
+    <h1 class="text-white" style="font-size: 36pt; letter-spacing: -0.5px;">Life<span style="opacity: 0.7;">Link</span></h1>
+    <div class="back-line"></div>
+    <div class="back-quote">
+      Juntos, somos mais rápidos.<br>Juntos, salvamos vidas.
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+  const i18nState = {
+    lang: 'pt',
+    ptHtml: '',
+    enHtml: ''
+  };
+  const viewState = {
+    mode: 'a4'
+  };
+
+  const i18nPairs = [
+    ['Conectando Heróis a Quem Precisa', 'Connecting Heroes to Those in Need'],
+    ['Dossiê de Parceria', 'Partnership Dossier'],
+    ['Documento Confidencial', 'Confidential Document'],
+    ['Março 2026', 'March 2026'],
+    ['Índice', 'Index'],
+    ['Conteúdos', 'Contents'],
+    ['Sumário Executivo', 'Executive Summary'],
+    ['Visão Geral', 'Overview'],
+    ['O Problema', 'The Problem'],
+    ['A Solução LifeLink', 'The LifeLink Solution'],
+    ['Funcionalidades Detalhadas', 'Detailed Features'],
+    ['Socorristas & Gamificação', 'Responders & Gamification'],
+    ['Life Care & LifeLink Academy', 'Life Care & LifeLink Academy'],
+    ['Modelo de Negócio & Parcerias', 'Business Model & Partnerships'],
+    ['Roadmap & Visão de Futuro', 'Roadmap & Future Vision'],
+    ['Contacto & Próximos Passos', 'Contact & Next Steps'],
+    ['Confidencial', 'Confidential'],
+    ['LifeLink — Dossiê de Parceria', 'LifeLink — Partnership Dossier'],
+    ['Além do seu núcleo de resposta a emergências, a plataforma oferece funcionalidades complementares: o <strong>Life Care</strong> (banco de sangue integrado, saúde mental e gestor de saúde pessoal) e o <strong>LifeLink Academy</strong> (plataforma de cursos de primeiros socorros para formação e certificação de novos socorristas). Um sistema de <strong>gamificação</strong> com ranking de heróis incentiva a participação contínua da comunidade.',
+     'Beyond its core emergency response capability, the platform offers complementary features: <strong>Life Care</strong> (integrated blood support, mental health and personal health support) and <strong>LifeLink Academy</strong> (a first-aid course platform for training and certifying new responders). A <strong>gamification</strong> system with a hero leaderboard encourages continuous community participation.'],
+    ['Mais sobrevida com RCP precoce', 'Higher survival with early CPR'],
+    ['Tempo alvo de resposta', 'Target response time'],
+    ['Tipos de emergência', 'Emergency types'],
+    ['Categorias de cursos', 'Course categories'],
+    ['Nota metodológica: métricas apresentadas como referência de contexto para discussão de parceria.\n      Números sujeitos a validação institucional por município/região e atualização periódica com base\n      em fontes públicas e científicas (INEM, ERC/Resuscitation Council, DGS e literatura médica).',
+     'Methodology note: metrics are presented as context references for partnership discussions.\n      Figures are subject to institutional validation by municipality/region and periodic updates based\n      on public and scientific sources (INEM, ERC/Resuscitation Council, DGS and medical literature).'],
+    ['01 — O Problema', '01 — The Problem'],
+    ['Emergências <span class="text-red">Não Esperam</span>', 'Emergencies <span class="text-red">Do Not Wait</span>'],
+    ['Em Portugal e na Europa, milhares de pessoas sofrem paragem cardíaca fora do hospital todos os anos. A taxa de sobrevida depende diretamente do tempo até à primeira intervenção — e cada minuto sem resposta reduz as probabilidades em cerca de 10%.',
+     'In Portugal and across Europe, thousands of people suffer out-of-hospital cardiac arrest every year. Survival rates depend directly on the time to first intervention — and every minute without response reduces survival chances by about 10%.'],
+    ['Tempo é vida', 'Time is life'],
+    ['Comunidade desconectada', 'Disconnected community'],
+    ['Socorristas invisíveis', 'Invisible responders'],
+    ['DEAs subutilizados', 'Underused AEDs'],
+    ['Facto:', 'Fact:'],
+    ['A Realidade em Números', 'Reality in Numbers'],
+    ['Paragens cardíacas/ano em PT (estimativa)', 'Cardiac arrests/year in Portugal (estimate)'],
+    ['Taxa de sobrevida sem intervenção precoce', 'Survival rate without early intervention'],
+    ['Tempo médio de resposta de ambulância', 'Average ambulance response time'],
+    ['02 — A Solução', '02 — The Solution'],
+    ['Como LifeLink <span class="text-red">Funciona</span>', 'How LifeLink <span class="text-red">Works</span>'],
+    ['Fluxo de Uma Emergência Real', 'Real Emergency Flow'],
+    ['Pessoa vê colega desmaiar na rua', 'A person sees someone collapse on the street'],
+    ['Liga para o INEM', 'Calls INEM'],
+    ['Tipos de Emergência Suportados', 'Supported Emergency Types'],
+    ['Cardíaca', 'Cardiac'],
+    ['Respiratória', 'Respiratory'],
+    ['Hemorragia', 'Hemorrhage'],
+    ['Trauma', 'Trauma'],
+    ['Incêndio', 'Fire'],
+    ['Afogamento', 'Drowning'],
+    ['Outro', 'Other'],
+    ['Importante:', 'Important:'],
+    ['03 — Funcionalidades', '03 — Features'],
+    ['O Que LifeLink <span class="text-red">Oferece</span>', 'What LifeLink <span class="text-red">Offers</span>'],
+    ['Mapa em Tempo Real', 'Real-Time Map'],
+    ['Criar Alerta de Emergência', 'Create Emergency Alert'],
+    ['Responder a Alertas (Socorristas)', 'Respond to Alerts (Responders)'],
+    ['Perfil & Histórico', 'Profile & History'],
+    ['04 — Socorristas', '04 — Responders'],
+    ['A Comunidade de <span class="text-red">Heróis</span>', 'The Community of <span class="text-red">Heroes</span>'],
+    ['Quem Pode Ser Socorrista?', 'Who Can Be a Responder?'],
+    ['Profissionais de Saúde', 'Healthcare Professionals'],
+    ['Cidadãos Treinados', 'Trained Citizens'],
+    ['Sistema de Gamificação', 'Gamification System'],
+    ['Leaderboard de Heróis', 'Hero Leaderboard'],
+    ['Badges & Conquistas', 'Badges & Achievements'],
+    ['Certificação Digital', 'Digital Certification'],
+    ['Porquê gamificação?', 'Why gamification?'],
+    ['05 — Diferenciais', '05 — Differentiators'],
+    ['Life Care & LifeLink <span class="text-red">Academy</span>', 'Life Care & LifeLink <span class="text-red">Academy</span>'],
+    ['Life Care — Bem-Estar Comunitário', 'Life Care — Community Well-Being'],
+    ['Banco de Sangue', 'Blood Support'],
+    ['Saúde Mental', 'Mental Health'],
+    ['Apoio aos Bombeiros', 'Firefighter Support'],
+    ['Doações para equipas e vítimas', 'Donations for teams and victims'],
+    ['Arrecadações e campanhas solidárias', 'Fundraising and solidarity campaigns'],
+    ['Informações sobre causas e prevenção', 'Information on causes and prevention'],
+    ['Mobilização comunitária em períodos críticos', 'Community mobilization during critical periods'],
+    ['LifeLink Academy — Marketplace de Cursos', 'LifeLink Academy — Course Marketplace'],
+    ['Categorias de Cursos Disponíveis', 'Available Course Categories'],
+    ['Exemplo de Ofertas do Marketplace', 'Marketplace Offer Examples'],
+    ['Curso', 'Course'],
+    ['Entidade', 'Provider'],
+    ['Preço', 'Price'],
+    ['Duração', 'Duration'],
+    ['Modo', 'Mode'],
+    ['Validade', 'Validity'],
+    ['Presencial', 'In-person'],
+    ['Híbrido', 'Hybrid'],
+    ['Online em direto', 'Live online'],
+    ['06 — Modelo de Negócio', '06 — Business Model'],
+    ['Modelo de Negócio & <span class="text-red">Parcerias</span>', 'Business Model & <span class="text-red">Partnerships</span>'],
+    ['Métricas-Chave para Piloto (90 Dias)', 'Key Pilot Metrics (90 Days)'],
+    ['Estrutura de Parceria', 'Partnership Structure'],
+    ['Nível 1 - Parceiro Local', 'Level 1 - Local Partner'],
+    ['Nível 2 - Parceiro Regional', 'Level 2 - Regional Partner'],
+    ['Nível 3 - Parceiro Estratégico', 'Level 3 - Strategic Partner'],
+    ['07 — Roadmap', '07 — Roadmap'],
+    ['Visão de <span class="text-red">Futuro</span>', 'Future <span class="text-red">Vision</span>'],
+    ['Diferenciais Competitivos', 'Competitive Differentiators'],
+    ['Conexão em Tempo Real', 'Real-Time Connection'],
+    ['Gamificação com Propósito', 'Purpose-Driven Gamification'],
+    ['Integração com DEAs', 'AED Integration'],
+    ['Resposta Antes da Ambulância', 'Response Before Ambulance Arrival'],
+    ['Comunidade Empoderada', 'Empowered Community'],
+    ['Privacidade e Segurança por Conceção', 'Privacy and Security by Design'],
+    ['08 — Próximos Passos', '08 — Next Steps'],
+    ['Vamos Trabalhar <span class="text-red">Juntos</span>', 'Let\'s Work <span class="text-red">Together</span>'],
+    ['Formas de Parceria', 'Partnership Formats'],
+    ['Próximos Passos Sugeridos', 'Suggested Next Steps'],
+    ['Compromissos do Piloto', 'Pilot Commitments'],
+    ['Operação', 'Operations'],
+    ['Medição de Impacto', 'Impact Measurement'],
+    ['Escalabilidade', 'Scalability'],
+    ['Contacto', 'Contact'],
+    ['Este documento é confidencial e destinado exclusivamente ao parceiro destinatário. A reprodução ou distribuição sem autorização prévia é proibida.',
+     'This document is confidential and intended exclusively for the recipient partner. Reproduction or distribution without prior authorization is prohibited.'],
+    ['Juntos, somos mais rápidos.<br>Juntos, salvamos vidas.', 'Together, we are faster.<br>Together, we save lives.'],
+    ['Imprimir / Guardar PDF', 'Print / Save PDF']
+  ];
+
+  function escapeRegExp(text) {
+    return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  function getEnglishHtml(sourceHtml) {
+    let translated = sourceHtml;
+    const orderedPairs = [...i18nPairs].sort((a, b) => b[0].length - a[0].length);
+    orderedPairs.forEach(([pt, en]) => {
+      translated = translated.replace(new RegExp(escapeRegExp(pt), 'g'), en);
+    });
+    return translated;
+  }
+
+  function updateLangButton() {
+    const btn = document.getElementById('lang-toggle');
+    btn.textContent = i18nState.lang === 'pt' ? 'EN' : 'PT';
+    btn.setAttribute('aria-label', i18nState.lang === 'pt' ? 'Translate to English' : 'Traduzir para Português');
+  }
+
+  function applyViewMode(mode) {
+    const body = document.body;
+    const viewBtn = document.getElementById('view-toggle');
+    viewState.mode = mode;
+    body.classList.toggle('view-mobile', mode === 'mobile');
+    body.classList.toggle('view-a4', mode === 'a4');
+
+    if (viewBtn) {
+      if (i18nState.lang === 'pt') {
+        viewBtn.textContent = mode === 'a4' ? 'Mobile' : 'A4';
+        viewBtn.setAttribute('aria-label', mode === 'a4' ? 'Ativar visualização mobile' : 'Ativar visualização A4');
+      } else {
+        viewBtn.textContent = mode === 'a4' ? 'Mobile' : 'A4';
+        viewBtn.setAttribute('aria-label', mode === 'a4' ? 'Enable mobile view' : 'Enable A4 view');
+      }
+    }
+  }
+
+  function toggleViewMode() {
+    applyViewMode(viewState.mode === 'a4' ? 'mobile' : 'a4');
+  }
+
+  function toggleLanguage() {
+    const root = document.getElementById('doc-root');
+    const printBtn = document.querySelector('.print-hint');
+
+    if (!i18nState.ptHtml) i18nState.ptHtml = root.innerHTML;
+    if (!i18nState.enHtml) i18nState.enHtml = getEnglishHtml(i18nState.ptHtml);
+
+    if (i18nState.lang === 'pt') {
+      root.innerHTML = i18nState.enHtml;
+      i18nState.lang = 'en';
+      document.documentElement.lang = 'en';
+      document.title = 'LifeLink — Partnership Dossier';
+      if (printBtn) printBtn.innerHTML = '&#128424; Print / Save PDF';
+    } else {
+      root.innerHTML = i18nState.ptHtml;
+      i18nState.lang = 'pt';
+      document.documentElement.lang = 'pt';
+      document.title = 'LifeLink — Dossiê de Parceria';
+      if (printBtn) printBtn.innerHTML = '&#128424; Imprimir / Guardar PDF';
+    }
+    updateLangButton();
+    applyViewMode(viewState.mode);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    updateLangButton();
+    const initialMode = window.matchMedia('(max-width: 980px)').matches ? 'mobile' : 'a4';
+    applyViewMode(initialMode);
+
+    // Auto-print if query param is present
+    if (window.location.search.includes('print=true')) {
+      setTimeout(() => {
+        window.print();
+      }, 800);
+    }
+  });
+</script>
+
+</body>
+</html>

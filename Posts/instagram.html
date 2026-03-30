@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeLink - Estratégia Instagram</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #DC2626;
+      --accent: #E1306C;
+      --bg: #F8FAFC;
+      --text: #0F172A;
+      --text-dim: #64748B;
+      --border: #E2E8F0;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 60px 24px;
+      background-image: 
+          radial-gradient(circle at 10% 90%, rgba(220, 38, 38, 0.05) 0%, transparent 40%),
+          radial-gradient(circle at 90% 10%, rgba(225, 48, 108, 0.05) 0%, transparent 40%);
+    }
+
+    .side-accent {
+      position: fixed;
+      left: 0; top: 0; bottom: 0;
+      width: 6px;
+      background: var(--primary);
+      z-index: 2000;
+      box-shadow: 2px 0 10px rgba(220, 38, 38, 0.2);
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    header { text-align: center; margin-bottom: 60px; }
+    .tag-line { font-size: 12px; font-weight: 900; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; display: block; }
+    header h1 { font-size: 56px; font-weight: 900; letter-spacing: -3px; margin-bottom: 16px; line-height: 0.95; }
+    .subtitle { color: var(--text-dim); font-size: 18px; max-width: 600px; margin: 0 auto; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.15);
+      border-color: var(--accent);
+    }
+    .post-meta { font-size: 11px; font-weight: 800; color: var(--text-dim); text-transform: uppercase; margin-bottom: 12px; }
+    .card h3 { font-size: 19px; font-weight: 800; margin-bottom: 8px; color: var(--text); }
+    .card p { font-size: 14px; color: var(--text-dim); flex-grow: 1; }
+    .footer-link { margin-top: 24px; font-size: 12px; font-weight: 800; color: var(--accent); display: flex; align-items: center; gap: 4px; opacity: 0.8; transition: 0.2s; }
+    .card:hover .footer-link { opacity: 1; gap: 8px; }
+    .back-nav { position: absolute; top: 40px; left: 40px; }
+    .back-link { text-decoration: none; color: var(--text-dim); font-weight: 700; font-size: 14px; transition: 0.2s; }
+    .back-link:hover { color: var(--primary); }
+
+    @media (max-width: 768px) {
+      body { padding: 100px 16px 40px 24px; }
+      .side-accent { width: 4px; }
+      .back-nav { top: 22px; left: 24px; }
+      header { margin-bottom: 40px; }
+      header h1 { font-size: 36px; letter-spacing: -1.5px; }
+      .subtitle { font-size: 16px; }
+      .grid { grid-template-columns: 1fr; gap: 16px; margin-top: 32px; }
+      .card { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="side-accent"></div>
+  <div class="container">
+    <div class="back-nav"><a href="index.html" class="back-link">← Voltar à Central</a></div>
+    <header>
+      <span class="tag-line">B2C & Engajamento</span>
+      <h1>Estratégia Instagram</h1>
+      <p class="subtitle">Estratégia completa de 12 conteúdos HD para o lançamento oficial LifeLink.</p>
+    </header>
+    <div class="grid">
+      <a href="linkedin_post_1_carrossel.html" class="card">
+        <div class="post-meta">Sem. 1</div>
+        <h3>Alguém Desmaia na Rua. E Agora?</h3>
+        <p>Como agir nos minutos críticos entre o colapso e a chegada do INEM.</p>
+        <div class="footer-link">Ver Carrossel HD →</div>
+      </a>
+      <a href="linkedin_post_2_carrossel.html" class="card">
+        <div class="post-meta">Sem. 1</div>
+        <h3>E Se os Heróis Já Estivessem ao Teu Lado?</h3>
+        <p>Apresentação oficial do LifeLink: a ponte entre a emergência e o socorro.</p>
+        <div class="footer-link">Ver Carrossel HD →</div>
+      </a>
+      <a href="linkedin_post_3_carrossel.html" class="card">
+        <div class="post-meta">Sem. 1</div>
+        <h3>Os Heróis Invisíveis</h3>
+        <p>Quem são os socorristas voluntários e porque são a chave para salvar vidas.</p>
+        <div class="footer-link">Ver Carrossel HD →</div>
+      </a>
+      <a href="linkedin_post_4_carrossel.html" class="card">
+        <div class="post-meta">Sem. 2</div>
+        <h3>E Se Salvar Vidas Desse Pontos?</h3>
+        <p>Gamificação no LifeLink: motivando e retendo heróis na plataforma.</p>
+        <div class="footer-link">Ver Carrossel HD →</div>
+      </a>
+      <a href="linkedin_post_5_carrossel.html" class="card">
+        <div class="post-meta">Sem. 2</div>
+        <h3>O Mapa que Salva Vidas</h3>
+        <p>Localização de DEAs em tempo real: a tecnologia contra o relógio.</p>
+        <div class="footer-link">Ver Carrossel HD →</div>
+      </a>
+      <a href="linkedin_post_6_carrossel.html" class="card">
+        <div class="post-meta">Sem. 2</div>
+        <h3>A Founder Story</h3>
+        <p>A motivação por trás da LifeLink e a jornada de impacto social.</p>
+        <div class="footer-link">Ver Carrossel HD →</div>
+      </a>
+      <a href="linkedin_post_7_carrossel.html" class="card">
+        <div class="post-meta">Sem. 3</div>
+        <h3>LifeLink Academy</h3>
+        <p>Transformando cidadãos em heróis qualificados através da formação.</p>
+        <div class="footer-link">Ver Carrossel HD →</div>
+      </a>
+      <a href="linkedin_post_8_carrossel.html" class="card">
+        <div class="post-meta">Sem. 3</div>
+        <h3>Life Care: Além da Emergência</h3>
+        <p>O ecossistema: banco de sangue, saúde mental e apoio aos bombeiros.</p>
+        <div class="footer-link">Ver Carrossel HD →</div>
+      </a>
+      <a href="linkedin_post_9_carrossel.html" class="card">
+        <div class="post-meta">Sem. 3</div>
+        <h3>Os 7 Tipos de Emergência</h3>
+        <p>Como o algoritmo LifeLink despacha a ajuda certa para cada situação.</p>
+        <div class="footer-link">Ver Carrossel HD →</div>
+      </a>
+      <a href="linkedin_post_10_carrossel.html" class="card">
+        <div class="post-meta">Sem. 4</div>
+        <h3>A Tecnologia Crítica</h3>
+        <p>Deep dive no stack tecnológico que garante 99.9% de fiabilidade.</p>
+        <div class="footer-link">Ver Carrossel HD →</div>
+      </a>
+      <a href="linkedin_post_11_carrossel.html" class="card">
+        <div class="post-meta">Sem. 4</div>
+        <h3>Parcerias & Impacto</h3>
+        <p>Como trabalhamos com hospitais, municípios e corporações (ESG).</p>
+        <div class="footer-link">Ver Carrossel HD →</div>
+      </a>
+      <a href="linkedin_post_12_carrossel.html" class="card">
+        <div class="post-meta">Sem. 4</div>
+        <h3>Visão de Futuro 2026</h3>
+        <p>O roadmap para salvar milhares de vidas nos próximos 12 meses.</p>
+        <div class="footer-link">Ver Carrossel HD →</div>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

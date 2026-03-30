@@ -1,0 +1,304 @@
+LifeLink | Parceiros Estratégicos
+Página 1
+ LifeLink
+Plano de Parceiros Estratégicos
+Documento para divulgação e captação de parceiros
+Versão: Março 2026
+Mercado-alvo: Portugal
+Confidencial para desenvolvimento de negócio
+LifeLink | Parceiros Estratégicos
+Página 2
+LifeLink
+Plano de Parceiros Estratégicos (1-100)
+Versão: Março 2026
+Âmbito: Portugal + entidades internacionais com operação forte em Portugal
+Objetivo: Priorizar parceiros institucionais, empresariais e de impacto para acelerar tração, distribuição e
+financiamento da LifeLink.
+---
+Resumo Executivo
+Este documento organiza 100 entidades por prioridade de alavancagem para a startup LifeLink. A
+sequência foi desenhada para facilitar execução comercial por prioridade e impacto institucional.
+A lógica de ranking equilibra aderência ao problema, acesso a rede, capacidade de investimento,
+velocidade de decisão e efeito de reputação.
+---
+Documento de Parceiros Estratégicos (100 entidades)
+Este documento prioriza 100 entidades (Portugal + internacionais com operação forte em Portugal) para
+acelerar a startup, ordenadas da maior para a menor alavancagem potencial.
+Critérios de ranking usados
+ Aderência ao problema (emergência, saúde, resposta local, impacto social)
+ Capacidade de distribuição e acesso institucional
+ Capacidade de financiamento e infraestrutura
+ Velocidade de execução de piloto/parceria
+ Efeito reputacional para abrir mercado
+Top 20 geral (ação imediata)
+1. INEM
+2. ANEPC
+3. SPMS
+4. DGS
+5. Cruz Vermelha Portuguesa
+6. Liga dos Bombeiros Portugueses
+7. Ministério da Saúde (Portugal)
+8. SNS 24
+LifeLink | Parceiros Estratégicos
+Página 3
+9. Unicorn Factory Lisboa
+10. Vodafone Portugal
+11. NOS
+12. MEO Empresas (Altice)
+13. Fidelidade
+14. Fundação Calouste Gulbenkian
+15. EDP
+16. Microsoft Portugal
+17. AWS (Portugal)
+18. Google Cloud (Portugal)
+19. CUF Saúde
+20. Luz Saúde
+Ranking completo 1–100 (com parceria sugerida)
+Formato: Rank. Entidade (Setor) — Porque é estratégica | Parceria sugerida | Website | Contacto
+sugerido
+1. INEM (Setor público / emergência) — autoridade operacional do SIEM | Piloto institucional e
+integração de fluxo de triagem | https://www.inem.pt | Gabinete de inovação/parcerias institucionais
+2. ANEPC (Setor público / proteção civil) — coordena proteção civil e articulação territorial | Pilotos
+regionais de resposta comunitária | https://prociv.gov.pt | Direção de planeamento/cooperação
+3. SPMS (Saúde digital pública) — infraestrutura digital do SNS | Interoperabilidade e dados
+operacionais de saúde | https://www.spms.min-saude.pt | Departamento de inovação/arquitetura
+4. DGS (Regulação e saúde pública) — normativo e validação clínica | Enquadramento técnico e
+validação de protocolos | https://www.dgs.pt | Área de saúde pública/direção técnica
+5. Cruz Vermelha Portuguesa (ONG emergência) — rede nacional de resposta e voluntariado | Canais
+de formação + pilotos operacionais | https://www.cruzvermelha.pt | Direção nacional/área de emergência
+6. Liga dos Bombeiros Portugueses (Emergência) — cobertura e capilaridade nacional | Escala
+operacional local por corporações | https://www.ligabombeiros.pt | Direção operacional/parcerias
+7. Ministério da Saúde (Portugal) (Setor público) — direção política e programas nacionais | Parceria
+institucional e compras públicas | https://www.gov.pt/ministerios/ministerio-da-saude | Gabinete
+ministerial/secretaria-geral
+8. SNS 24 (Canal digital saúde) — canal massivo de entrada em saúde | Encaminhamento e awareness
+de serviço | https://www.sns24.gov.pt | Área de serviços digitais/parcerias
+9. Unicorn Factory Lisboa (Inovação) — acesso a rede de scaleups, mentores e município | Programa
+de escala e visibilidade institucional | https://www.unicornfactorylisboa.com | Equipa de
+programas/founders
+10. Vodafone Portugal (Telecom/IoT) — cobertura móvel, dados e enterprise | Co-selling B2B + conectividade
+crítica | https://www.vodafone.pt | Vodafone Business / parcerias
+LifeLink | Parceiros Estratégicos
+Página 4
+11. NOS (Telecom/Cloud) — enterprise cloud + canal corporativo | Distribuição empresarial e cloud partnership |
+https://www.nos.pt | NOS Empresas / inovação
+12. MEO Empresas - Altice (Telecom) — base empresarial ampla em PT | Bundle comercial B2B e smart cities |
+https://www.meo.pt/empresas | Altice Empresas / parcerias
+13. Fidelidade (Seguros) — seguradora líder e capacidade de escala | Produto conjunto de prevenção/resposta
+| https://www.fidelidade.pt | Inovação/corporate ventures
+14. Fundação Calouste Gulbenkian (Fundação) — peso reputacional e impacto social/saúde |
+Co-financiamento de pilotos de impacto | https://gulbenkian.pt | Programas de coesão/saúde
+15. EDP (Utilities/impacto) — escala nacional e capacidade ESG | Programa de impacto + canais corporativos |
+https://www.edp.com | Inovação aberta/sustentabilidade
+16. Microsoft Portugal (Cloud/AI) — stack enterprise e acesso a ecossistema | Créditos cloud + go-to-market
+conjunto | https://www.microsoft.com/pt-pt | Microsoft for Startups / parceiros
+17. AWS (Portugal) (Cloud) — infraestrutura e programas de startups | Créditos + arquitetura + co-selling |
+https://aws.amazon.com/pt | AWS Startups/Partner team
+18. Google Cloud (Portugal) (Cloud/AI) — capabilities de dados/IA | PoCs com IA operacional e canal
+enterprise | https://cloud.google.com | Startup/partner manager PT
+19. CUF Saúde (Saúde privada) — rede hospitalar de referência | Piloto clínico-operacional e protocolos |
+https://www.cuf.pt | Direção de inovação clínica
+20. Luz Saúde (Saúde privada) — grande rede assistencial | Pilotos de integração com urgência e formação |
+https://www.luzsaude.pt | Inovação/transformação digital
+21. AMA – Agência para a Modernização Administrativa (Público digital) — interface serviços públicos |
+Integração com cidadania digital e canais públicos | https://www.ama.gov.pt | Área de transformação digital
+22. ANI – Agência Nacional de Inovação (Inovação pública) — instrumentos de I&D e coinvestimento |
+Candidaturas e programas mobilizadores | https://www.ani.pt | Gestão de programas/financiamento
+23. IAPMEI (Empresas públicas) — apoio a scaleups e competitividade | Programas de aceleração e
+internacionalização | https://www.iapmei.pt | Gestor de cliente/área inovação
+24. AICEP (Internacionalização) — acesso a mercados e parceiros internacionais | Expansão comercial e
+soft-landing | https://www.portugalglobal.pt | AICEP Invest/Export manager
+25. Portugal Inovação Social (Impacto) — financiamento de impacto | Estruturar instrumentos de investimento
+social | https://inovacaosocial.portugal2020.pt | Equipa de instrumentos financeiros
+26. Startup Portugal (Ecossistema nacional) — articulação de políticas e rede startups | Visibilidade nacional e
+programas oficiais | https://startupportugal.com | Partnerships/ecosystem team
+27. Câmara Municipal do Porto (Setor público local) — smart city e serviços urbanos | Piloto municipal em
+contexto urbano | https://www.cm-porto.pt | Inovação urbana/smart city
+28. ANMP – Associação Nacional de Municípios Portugueses (Setor público local) — acesso agregado a
+municípios | Escala multi-município | https://www.anmp.pt | Cooperação/intermunicipal
+29. SRPC Açores (Proteção civil regional) — testes em contexto arquipelágico | Piloto regional de resposta
+descentralizada | https://prociv.azores.gov.pt | Coordenação operacional
+30. Serviço Regional de Proteção Civil da Madeira (Proteção civil regional) — capacidade de operação
+insular | Piloto e protocolos locais | https://www.procivmadeira.pt | Direção operacional
+31. Associação Nacional de Bombeiros Profissionais (Emergência) — rede profissional complementar |
+Formação e adoção operacional | https://www.anbp.pt | Direção/parcerias técnicas
+LifeLink | Parceiros Estratégicos
+Página 5
+32. Ordem dos Médicos (Profissional de saúde) — influência clínica e guideline | Validação técnica e
+endorsement | https://ordemdosmedicos.pt | Colégio/especialidades relevantes
+33. Ordem dos Enfermeiros (Profissional de saúde) — rede de enfermagem comunitária | Formação e
+protocolos de intervenção | https://www.ordemenfermeiros.pt | Gabinete profissional/formação
+34. APIFARMA (Saúde/farma) — articulação indústria saúde | Apoio em awareness e programas de literacia |
+https://www.apifarma.pt | Relações institucionais
+35. ULS Santa Maria (Hospital público) — grande volume assistencial | Piloto clínico com medição de
+outcomes | https://www.chln.min-saude.pt | Direção clínica/inovação
+36. ULS São José (Hospital público) — forte casuística urbana | Integração com fluxos de urgência |
+https://www.ulssjose.min-saude.pt | Conselho de administração/inovação
+37. ULS Coimbra (Hospital público) — referência centro | Piloto inter-regional e investigação aplicada |
+https://www.chuc.min-saude.pt | Gabinete de investigação/inovação
+38. IPO Lisboa (Oncologia pública) — gestão de casos críticos e coordenação clínica | Programa de resposta
+assistencial em rede | https://www.ipolisboa.min-saude.pt | Direção clínica/qualidade
+39. INSA (Saúde pública/científico) — evidência e avaliação | Estudos de impacto e validação científica |
+https://www.insa.min-saude.pt | Unidade de investigação
+40. Lusíadas Saúde (Saúde privada) — rede com foco em qualidade e digital | Piloto clínico + integração de
+processos | https://www.lusiadas.pt | Direção de inovação
+41. Hospital da Luz (Saúde privada) — maturidade digital | PoC de integração assistencial |
+https://www.hospitaldaluz.pt | Transformação digital
+42. Médis (Seguro de saúde) — acesso a população segurada | Programas preventivos com incentivo |
+https://www.medis.pt | Parcerias em saúde
+43. Multicare (Seguro de saúde) — base de beneficiários ampla | Produto conjunto prevenção/resposta |
+https://www.multicare.pt | Inovação de produto
+44. AdvanceCare (Gestão de saúde) — network de prestadores e gestão de sinistro | Integração de jornada
+assistencial | https://www.advancecare.pt | Parcerias estratégicas
+45. Allianz Portugal (Seguros) — músculo corporativo e canal B2B2C | Parceria de proteção e mitigação de
+risco | https://www.allianz.pt | Corporate partnerships
+46. Ageas Seguros (Seguros) — presença forte em PT | Pilotos de prevenção com componente social |
+https://www.ageas.pt | Inovação/ESG
+47. Zurich Portugal (Seguros) — foco em prevenção e risco | Modelos de subscrição com dados de prevenção |
+https://www.zurich.pt | Produto/parcerias
+48. Tranquilidade (Seguros) — distribuição massiva | Canais comerciais e campanhas conjuntas |
+https://www.tranquilidade.pt | Desenvolvimento de negócio
+49. CA Seguros (Seguros) — presença territorial | Penetração em zonas de baixa densidade |
+https://www.ca-seguros.pt | Parcerias comerciais
+50. Fidelidade Multicare (Ecossistema Fidelidade) — sinergia saúde/seguro | Programas integrados de
+prevenção | https://www.fidelidade.pt | Inovação/ecossistema
+51. Fundação EDP (Fundação impacto) — programas sociais robustos | Co-financiamento de implementação
+local | https://www.fundacaoedp.pt | Programas sociais/inovação
+52. Fundação "la Caixa" (Fundação impacto) — forte intervenção social em PT | Apoio a escala e impacto
+territorial | https://fundacaolacaixa.pt | Área de projetos sociais
+LifeLink | Parceiros Estratégicos
+Página 6
+53. Fundação BPI "la Caixa" (Fundação + banca) — canal financeiro e social | Programas de co-financiamento
+temático | https://www.bancobpi.pt/sustentabilidade | Sustentabilidade/ação social
+54. Fundação Santander Portugal (Fundação corporativa) — programas de educação/inovação | Apoio a
+pilotos e literacia | https://www.santander.pt/fundacao | Fundação/parcerias
+55. Fundação Ageas (Fundação corporativa) — foco em inclusão e comunidade | Programas de voluntariado e
+impacto | https://www.ageas.pt | Programas comunitários
+56. Fundação Vodafone Portugal (Fundação corporativa) — tecnologia para impacto | PoCs de tecnologia
+social e conectividade | https://www.vodafone.pt/fundacao | Inovação social
+57. Fundação MEO (Fundação corporativa) — inclusão e saúde comunitária | Campanhas e ativação regional |
+https://fundacao.meo.pt | Programas/fundação
+58. Fundação Millennium bcp (Fundação corporativa) — apoio social e cultural | Co-branding e apoio
+institucional | https://ind.millenniumbcp.pt/pt/fundacao | Fundação/secretariado
+59. Fundação Montepio (Fundação corporativa) — intervenção social local | Programas comunitários em
+parceria | https://www.montepio.org/fundacao | Área de projetos
+60. Fundação Oriente (Fundação) — rede institucional e reputacional | Programas de visibilidade e parceria |
+https://www.foriente.pt | Relações institucionais
+61. Santa Casa da Misericórdia de Lisboa (Impacto social/saúde) — operador social de grande escala |
+Pilotos em vulnerabilidade urbana | https://www.scml.pt | Direção de ação social/inovação
+62. Santander Totta (Banca) — canal PME/corporate e rede nacional | Distribuição B2B + financiamento |
+https://www.santander.pt | Corporate banking/parcerias
+63. Caixa Geral de Depósitos (Banca pública) — alcance nacional e setor público | Canal institucional e
+programas setoriais | https://www.cgd.pt | Inovação/segmento empresas
+64. Millennium bcp (Banca) — rede empresarial robusta | Parcerias de distribuição e financiamento |
+https://ind.millenniumbcp.pt | PME/Corporate partnerships
+65. BPI (Banca) — integração com programas de impacto | Go-to-market com clientes empresariais |
+https://www.bancobpi.pt | Parcerias/sustentabilidade
+66. Novo Banco (Banca) — canal empresarial e institucional | Co-selling em clientes corporate |
+https://www.novobanco.pt | Segmento empresas
+67. SIBS (Pagamentos e infra digital) — infraestrutura nacional crítica | Integração de pagamentos/doações e
+fluxos digitais | https://www.sibs.com | Parcerias estratégicas
+68. CTT (Logística e capilaridade) — cobertura nacional e presença local | Campanhas e distribuição territorial |
+https://www.ctt.pt | CTT Empresas / parcerias
+69. Jerónimo Martins (Retalho) — escala e cobertura nacional | Ações de awareness e patrocínio de impacto |
+https://www.jeronimomartins.com | Sustentabilidade/parcerias
+70. Sonae (Retalho/serviços) — ecossistema multi-negócio | Canais de distribuição e co-branding |
+https://www.sonae.pt | Inovação aberta/corporate ventures
+71. Worten (Retalho tech) — alcance massivo em tecnologia | Campanhas de aquisição e bundles digitais |
+https://www.worten.pt | B2B/parcerias
+72. Galp (Energia e mobilidade) — rede de mobilidade e marca nacional | Ativação em rede física + CSR |
+https://www.galp.com | Inovação/sustentabilidade
+73. REN (Infraestrutura crítica) — operação nacional e gestão de risco | Programas de resiliência e prevenção |
+https://www.ren.pt | Segurança/continuidade de negócio
+LifeLink | Parceiros Estratégicos
+Página 7
+74. E-Redes (Distribuição elétrica) — capilaridade territorial | Cooperação em zonas de risco e resposta |
+https://www.e-redes.pt | Parcerias institucionais
+75. Brisa (Mobilidade/rodovia) — dados e operações em autoestradas | Pilotos de incidente rodoviário |
+https://www.brisa.pt | Inovação/segurança rodoviária
+76. Infraestruturas de Portugal (Infra pública) — gestão da rede viária e ferroviária | Integração para
+ocorrências críticas | https://www.infraestruturasdeportugal.pt | Operações/segurança
+77. ANA Aeroportos de Portugal (Infra aeroportuária) — ambiente crítico de emergência | Piloto em contexto
+aeroportuário | https://www.ana.pt | Operações/segurança aeroportuária
+78. CP Comboios de Portugal (Mobilidade pública) — transporte massivo | Casos de uso de emergência em
+mobilidade | https://www.cp.pt | Segurança/operações
+79. Metro de Lisboa (Mobilidade urbana) — tráfego urbano intenso | Pilotos em resposta rápida metropolitana |
+https://www.metrolisboa.pt | Operações/segurança
+80. Metro do Porto (Mobilidade urbana) — operação urbana e intermodal | Testes em ambiente multimodal |
+https://www.metrodoporto.pt | Segurança/operação
+81. Cisco Portugal (Tecnologia enterprise) — redes e segurança crítica | Arquitetura de resiliência e IoT |
+https://www.cisco.com | Partner management PT
+82. IBM Portugal (Tecnologia/consultoria) — integração enterprise e analytics | Implementação em grandes
+contas públicas/privadas | https://www.ibm.com/pt-pt | IBM Consulting/partnerships
+83. Oracle Portugal (Cloud/dados) — base enterprise relevante | Integração de dados e cloud enterprise |
+https://www.oracle.com/pt | Cloud partner team
+84. SAP Portugal (Software enterprise) — penetração em grandes organizações | Integração B2B com clientes
+SAP | https://www.sap.com/portugal | Alianças/parcerias
+85. Cloudflare (Infra internet) — performance e segurança global | Robustez, segurança e escalabilidade |
+https://www.cloudflare.com | Partnerships/startups
+86. Critical Software (Tecnologia PT) — software de missão crítica | Co-desenvolvimento técnico e
+credibilidade | https://www.criticalsoftware.com | Business development
+87. Feedzai (Fintech/AI PT) — AI de alta confiança e reputação global | Cooperação técnica em deteção e
+confiança operacional | https://www.feedzai.com | Partnerships
+88. OutSystems (Tecnologia PT) — plataforma de desenvolvimento empresarial | Escala rápida de integrações
+e front-ends | https://www.outsystems.com | Alliance management
+89. Talkdesk (SaaS PT/global) — expertise em contact center e workflows | Fluxos de atendimento e triagem
+inteligente | https://www.talkdesk.com | Strategic partnerships
+90. Sword Health (Healthtech PT/global) — referência healthtech portuguesa | Cooperação de marca e
+ecossistema healthtech | https://www.swordhealth.com | Partnerships/corporate development
+91. Universidade de Lisboa (Universidade) — massa crítica de investigação e talento | Estudos, estágios,
+evidência e recrutamento | https://www.ulisboa.pt | Gabinete de transferência de tecnologia
+92. Universidade do Porto (Universidade) — forte rede científica e técnica | Investigação aplicada e pilotos |
+https://www.up.pt | U.Porto Inovação/TT
+93. NOVA University Lisbon (Universidade) — capacidade em saúde/gestão/dados | Apoio científico +
+business validation | https://www.unl.pt | Inovação e empreendedorismo
+94. Universidade de Coimbra (Universidade) — tradição médica e investigação | Validação clínica e projetos
+colaborativos | https://www.uc.pt | Gabinete de apoio à inovação
+LifeLink | Parceiros Estratégicos
+Página 8
+95. Instituto Pedro Nunes (Incubadora/interface) — histórico forte em transferência tecnológica | Incubação e
+aceleração técnica | https://www.ipn.pt | Incubação/projetos
+96. UPTEC (Parque de Ciência e Tecnologia da U.Porto) — scaleups tech B2B | Acesso a rede empresarial e
+talento | https://uptec.up.pt | Equipa de incubação
+97. Startup Lisboa (Incubadora) — pipeline robusto de startups e corporate links | Programas de tração e
+parcerias | https://startuplisboa.com | Partnerships/programs
+98. Beta-i (Open innovation) — execução de programas com corporates | Fast-track para pilotos corporativos |
+https://www.beta-i.com | Open innovation team
+99. Casa do Impacto (Impact hub) — ecossistema de impacto e investidores | Captação de parceiros de
+impacto | https://www.casadimpacto.pt | Programas/impact partnerships
+100. Portugal Ventures (VC público) — investimento e validação de mercado | Captação de capital
+smart + rede de portfólio | https://www.portugalventures.pt | Investment team
+Separação por setores (com ranking interno)
+A) Setor público e regulação
+Ranks: 1, 2, 3, 4, 7, 8, 21, 22, 23, 24, 25, 27, 28, 29, 30
+B) Saúde e emergência
+Ranks: 5, 6, 31, 32, 33, 35, 36, 37, 38, 39, 40, 41, 42, 61
+C) Telecom, cloud e tecnologia
+Ranks: 10, 11, 12, 16, 17, 18, 81, 82, 83, 84, 85, 86, 88
+D) Seguros, banca e saúde privada
+Ranks: 13, 19, 20, 43, 44, 45, 46, 47, 48, 49, 62, 63, 64, 65, 66
+E) Fundações e impacto social
+Ranks: 14, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 99
+F) Universidades, incubadoras e inovação
+Ranks: 9, 26, 91, 92, 93, 94, 95, 96, 97, 98, 100
+G) Mobilidade, utilities e infraestruturas críticas
+Ranks: 15, 72, 73, 74, 75, 76, 77, 78, 79, 80
+H) Corporates e ecossistema privado (distribuição/media/B2B)
+Ranks: 67, 68, 69, 70, 71, 87, 89, 90
+Modelo de primeira abordagem (curto)
+Assunto: Piloto LifeLink em [entidade] para resposta de emergência comunitária
+LifeLink | Parceiros Estratégicos
+Página 9
+Mensagem:
+ Problema: tempo de resposta e coordenação local em emergência
+ Solução: plataforma de alerta, despacho local e acompanhamento em tempo real
+ Proposta: piloto de 90 dias com métricas claras (tempo de mobilização, cobertura, adesão)
+ Pedido: reunião de 30 minutos com equipa de inovação/operações
+Observações práticas
+ Para acelerar, começa por 3 trilhos paralelos: institucional (INEM/ANEPC/SPMS), distribuição
+(telecom/seguros) e funding/credibilidade (fundações).
+ Mantém a narrativa em impacto mensurável: redução de tempo, cobertura, formação e confiança
+pública.
+ Onde não houver email público direto, usar formulário institucional e LinkedIn com função alvo
+(Innovation Lead, Partnerships, Operations).
+

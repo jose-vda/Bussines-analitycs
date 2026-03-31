@@ -422,6 +422,25 @@
     }
     .cert-action-btn.secondary:hover { border-color: var(--primary); color: var(--primary); }
 
+    /* ── Certificate Type Tabs ──────────────── */
+    .cert-type-tabs {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+      margin-bottom: 20px;
+    }
+    .cert-type-tab {
+      background: var(--card-bg); border: 2px solid var(--border);
+      border-radius: 16px; padding: 18px 14px; cursor: pointer;
+      text-align: center; transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+    }
+    .cert-type-tab:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,0.07); }
+    .cert-type-tab.active-responder { border-color: #DC2626; background: #FFF1F1; }
+    .cert-type-tab.active-partner  { border-color: #0EA5E9; background: #F0F9FF; }
+    .cert-type-tab.active-founder  { border-color: #7C3AED; background: #F5F3FF; }
+    .cert-type-icon { font-size: 28px; }
+    .cert-type-name { font-size: 13px; font-weight: 900; }
+    .cert-type-sub  { font-size: 11px; color: var(--text-dim); font-weight: 600; }
+
     /* ── Certificate Editor ─────────────────── */
     .cert-editor {
       background: var(--card-bg);
@@ -489,6 +508,80 @@
     .download-btn.loading { opacity: 0.7; pointer-events: none; }
     .download-btn .btn-icon { font-size: 18px; }
 
+    /* ── Cert: Socorrista (Red/Amber) ───────── */
+    .cert-responder .cert-header {
+      background: linear-gradient(135deg, #DC2626 0%, #B91C1C 50%, #92400E 100%);
+    }
+    .cert-responder .cert-accent {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
+      padding: 4px 12px; border-radius: 99px;
+      font-size: 10px; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase;
+      color: white; margin-bottom: 10px;
+    }
+    .cert-responder .cert-seal {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: linear-gradient(135deg, #FCD34D, #F59E0B);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; box-shadow: 0 6px 20px rgba(245,158,11,0.4);
+      border: 3px solid rgba(255,255,255,0.3);
+    }
+    /* ── Cert: Parceiro (Navy/Teal) ─────────── */
+    .cert-partner .cert-header {
+      background: linear-gradient(135deg, #0F172A 0%, #1E3A5F 60%, #0EA5E9 100%);
+    }
+    .cert-partner .cert-accent {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(14,165,233,0.2); border: 1px solid rgba(14,165,233,0.4);
+      padding: 4px 12px; border-radius: 99px;
+      font-size: 10px; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase;
+      color: #7DD3FC; margin-bottom: 10px;
+    }
+    .cert-partner .cert-seal {
+      width: 64px; height: 64px; border-radius: 14px;
+      background: linear-gradient(135deg, #0EA5E9, #0369A1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; box-shadow: 0 6px 20px rgba(14,165,233,0.35);
+      border: 3px solid rgba(255,255,255,0.15);
+    }
+    .cert-partner .cert-body h2 { color: #0F172A; }
+    .cert-partner .cert-field-value { color: #0369A1; }
+    /* ── Cert: Fundador (Black/Gold/Purple) ─── */
+    .cert-founder .cert-header {
+      background: linear-gradient(135deg, #09090B 0%, #1C1917 40%, #2E1065 100%);
+      border-bottom: 2px solid rgba(253,224,71,0.2);
+    }
+    .cert-founder .cert-accent {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(253,224,71,0.1); border: 1px solid rgba(253,224,71,0.3);
+      padding: 4px 12px; border-radius: 99px;
+      font-size: 10px; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase;
+      color: #FDE047; margin-bottom: 10px;
+    }
+    .cert-founder .cert-seal {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: linear-gradient(135deg, #FDE047, #CA8A04);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; box-shadow: 0 6px 24px rgba(253,224,71,0.4);
+      border: 3px solid rgba(253,224,71,0.3);
+    }
+    .cert-founder { border: 2px solid rgba(124,58,237,0.3) !important; }
+    .cert-founder .cert-body {
+      background: linear-gradient(180deg, #FAFAF9 0%, #F5F3FF 100%);
+    }
+    .cert-founder .cert-body h2 {
+      background: linear-gradient(135deg, #7C3AED, #CA8A04);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .cert-founder .cert-footer {
+      background: #FAFAF9; border-top: 1px solid rgba(124,58,237,0.15);
+    }
+    /* Shared: cert seal row */
+    .cert-seal-row { display: flex; align-items: center; gap: 14px; margin-top: 4px; }
+    .cert-seal-info h4 { font-size: 13px; font-weight: 800; margin-bottom: 2px; }
+    .cert-seal-info p { font-size: 12px; color: var(--text-dim); }
+
     /* ── Categories ─────────────────────────── */
     .categories-grid {
       display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
@@ -541,22 +634,21 @@
       .side-accent, .brand-logo, .back-btn, .lang-toggle,
       .hero, .xp-panel, .tiers-grid, .achievements-grid,
       .categories-grid, .info-banner, .footer,
-      .section-title:not(#certSection), .cert-editor,
+      .section-title, .cert-type-tabs, .cert-editor,
       .cert-footer .cert-actions { display: none !important; }
-      #certSection { margin-top: 0 !important; }
       .container { max-width: 100% !important; padding: 0 !important; }
+      .cert-showcase[style*="display:none"],
+      .cert-showcase[style*="display: none"] { display: none !important; }
       .cert-showcase {
         border-radius: 0 !important;
         box-shadow: none !important;
-        border: 2px solid #E2E8F0 !important;
+        border: none !important;
         page-break-inside: avoid;
       }
-      .cert-header {
-        background: #0F172A !important;
-        -webkit-print-color-adjust: exact !important;
-      }
+      .cert-header { -webkit-print-color-adjust: exact !important; }
       .cert-footer { display: flex !important; }
       .cert-footer .cert-actions { display: none !important; }
+      .cert-accent { -webkit-print-color-adjust: exact !important; }
     }
 
     @media (max-width: 768px) {
@@ -790,27 +882,54 @@
       </div>
     </div>
 
-    <!-- ── Certificate ── -->
-    <div class="section-title">
-      <h2 data-i18n="certSectionTitle">Certificado Digital</h2>
-      <span class="section-badge" data-i18n="certEditorBadge">Gerador</span>
+    <!-- ── Certificates ── -->
+    <div class="section-title" id="certSection">
+      <h2>Certificados Digitais</h2>
+      <span class="section-badge">Gerador</span>
     </div>
 
-    <!-- Editor Form -->
-    <div class="cert-editor">
-      <div class="cert-editor-title">✏️ <span data-i18n="editorTitle">Personalizar certificado</span></div>
+    <!-- Type Selector -->
+    <div class="cert-type-tabs">
+      <div class="cert-type-tab active-responder" id="tab-responder" onclick="switchCert('responder')">
+        <span class="cert-type-icon">🛡️</span>
+        <span class="cert-type-name">Socorrista</span>
+        <span class="cert-type-sub">Herói de Ocorrência</span>
+      </div>
+      <div class="cert-type-tab" id="tab-partner" onclick="switchCert('partner')">
+        <span class="cert-type-icon">🤝</span>
+        <span class="cert-type-name">Parceiro</span>
+        <span class="cert-type-sub">Empresa Parceira</span>
+      </div>
+      <div class="cert-type-tab" id="tab-founder" onclick="switchCert('founder')">
+        <span class="cert-type-icon">👑</span>
+        <span class="cert-type-name">Fundador</span>
+        <span class="cert-type-sub">Membro Fundador</span>
+      </div>
+    </div>
+
+    <!-- ═══ FORM: SOCORRISTA ═══ -->
+    <div class="cert-editor" id="form-responder">
+      <div class="cert-editor-title">🛡️ <span>Certificado de Socorrista</span></div>
       <div class="editor-grid">
         <div class="editor-field">
-          <label data-i18n="editorName">Nome do Socorrista</label>
-          <input id="edNome" type="text" placeholder="Ex: Valessa Souza" value="Ana Silva" oninput="updateCert()">
+          <label>Nome do Socorrista</label>
+          <input id="r-nome" type="text" placeholder="Ex: Valessa Souza" value="Ana Silva" oninput="updateCert()">
         </div>
         <div class="editor-field">
-          <label data-i18n="editorTitle2">Título da Conquista</label>
-          <input id="edTitulo" type="text" placeholder="Ex: Herói Dedicado" value="Herói Dedicado" oninput="updateCert()">
+          <label>Tipo de Emergência</label>
+          <select id="r-tipo" onchange="updateCert()">
+            <option value="Paragem Cardíaca">❤️ Paragem Cardíaca</option>
+            <option value="Hemorragia Severa">🩸 Hemorragia Severa</option>
+            <option value="Dificuldade Respiratória">💨 Dificuldade Respiratória</option>
+            <option value="Trauma">🦴 Trauma</option>
+            <option value="Afogamento">🌊 Afogamento</option>
+            <option value="Incêndio">🔥 Incêndio</option>
+            <option value="Ocorrência Crítica" selected>🚨 Ocorrência Crítica</option>
+          </select>
         </div>
         <div class="editor-field">
-          <label data-i18n="editorTier">Nível</label>
-          <select id="edNivel" onchange="updateCert()">
+          <label>Nível de Conquista</label>
+          <select id="r-nivel" onchange="updateCert()">
             <option value="bronze">🥉 Bronze</option>
             <option value="silver">🥈 Prata</option>
             <option value="gold" selected>🥇 Ouro</option>
@@ -818,69 +937,246 @@
           </select>
         </div>
         <div class="editor-field">
-          <label data-i18n="editorOcc">Ocorrências Concluídas</label>
-          <input id="edOcorrencias" type="number" min="1" value="10" oninput="updateCert()">
+          <label>Ocorrências Concluídas</label>
+          <input id="r-ocorrencias" type="number" min="1" value="10" oninput="updateCert()">
         </div>
         <div class="editor-field">
-          <label data-i18n="editorXp">XP Acumulado</label>
-          <input id="edXp" type="text" placeholder="Ex: 1.250 XP" value="1.250 XP" oninput="updateCert()">
+          <label>Local da Ocorrência</label>
+          <input id="r-local" type="text" placeholder="Ex: Lisboa, Portugal" value="Lisboa, Portugal" oninput="updateCert()">
         </div>
         <div class="editor-field">
-          <label data-i18n="editorDate">Data de Emissão</label>
-          <input id="edData" type="text" placeholder="Ex: 24 ABR 2026" value="24 ABR 2026" oninput="updateCert()">
+          <label>Data de Emissão</label>
+          <input id="r-data" type="text" placeholder="Ex: 24 ABR 2026" value="24 ABR 2026" oninput="updateCert()">
         </div>
       </div>
-      <button class="download-btn" id="downloadBtn" onclick="downloadCert()">
-        <span class="btn-icon">⬇️</span>
-        <span id="downloadBtnText" data-i18n="downloadBtn">🖨️ Imprimir / Guardar como PDF</span>
+      <button class="download-btn" onclick="downloadCert()">
+        <span>🖨️</span> <span>Imprimir / Guardar como PDF</span>
       </button>
     </div>
 
-    <!-- Certificate Preview -->
-    <div class="cert-showcase" id="certPreview">
-      <div class="cert-header" id="certHeaderEl">
-        <div class="cert-logo-wrap">
-          <img src="lifelink_logo.png" alt="LifeLink">
+    <!-- ═══ FORM: PARCEIRO ═══ -->
+    <div class="cert-editor" id="form-partner" style="display:none;">
+      <div class="cert-editor-title">🤝 <span>Certificado de Parceiro</span></div>
+      <div class="editor-grid">
+        <div class="editor-field">
+          <label>Nome da Empresa</label>
+          <input id="p-empresa" type="text" placeholder="Ex: Grupo Saúde Lda." value="Grupo Saúde Lda." oninput="updateCert()">
         </div>
+        <div class="editor-field">
+          <label>Pessoa de Contacto</label>
+          <input id="p-contacto" type="text" placeholder="Ex: Dr. João Ferreira" value="Dr. João Ferreira" oninput="updateCert()">
+        </div>
+        <div class="editor-field">
+          <label>Tipo de Parceria</label>
+          <select id="p-tipo" onchange="updateCert()">
+            <option value="Parceiro Estratégico" selected>⭐ Parceiro Estratégico</option>
+            <option value="Parceiro Tecnológico">💻 Parceiro Tecnológico</option>
+            <option value="Parceiro de Saúde">🏥 Parceiro de Saúde</option>
+            <option value="Parceiro Institucional">🏛️ Parceiro Institucional</option>
+            <option value="Patrocinador Oficial">🎯 Patrocinador Oficial</option>
+          </select>
+        </div>
+        <div class="editor-field">
+          <label>Setor / Indústria</label>
+          <input id="p-setor" type="text" placeholder="Ex: Saúde & Tecnologia" value="Saúde & Tecnologia" oninput="updateCert()">
+        </div>
+        <div class="editor-field">
+          <label>Nº de Colaboradores Cobertos</label>
+          <input id="p-colab" type="text" placeholder="Ex: 500+" value="500+" oninput="updateCert()">
+        </div>
+        <div class="editor-field">
+          <label>Data de Parceria</label>
+          <input id="p-data" type="text" placeholder="Ex: 24 ABR 2026" value="24 ABR 2026" oninput="updateCert()">
+        </div>
+      </div>
+      <button class="download-btn" style="background:linear-gradient(135deg,#0F172A,#1E3A5F);" onclick="downloadCert()">
+        <span>🖨️</span> <span>Imprimir / Guardar como PDF</span>
+      </button>
+    </div>
+
+    <!-- ═══ FORM: FUNDADOR ═══ -->
+    <div class="cert-editor" id="form-founder" style="display:none;">
+      <div class="cert-editor-title">👑 <span>Certificado de Fundador</span></div>
+      <div class="editor-grid">
+        <div class="editor-field">
+          <label>Nome do Fundador</label>
+          <input id="f-nome" type="text" placeholder="Ex: Jose Victor Franca" value="Jose Victor Franca" oninput="updateCert()">
+        </div>
+        <div class="editor-field">
+          <label>Título / Cargo</label>
+          <input id="f-cargo" type="text" placeholder="Ex: Co-Fundador & CEO" value="Co-Fundador & CEO" oninput="updateCert()">
+        </div>
+        <div class="editor-field">
+          <label>Capítulo / Área</label>
+          <select id="f-capitulo" onchange="updateCert()">
+            <option value="Visão & Estratégia" selected>🧭 Visão & Estratégia</option>
+            <option value="Tecnologia & Produto">⚙️ Tecnologia & Produto</option>
+            <option value="Operações & Crescimento">📈 Operações & Crescimento</option>
+            <option value="Parcerias & Comunidade">🤝 Parcerias & Comunidade</option>
+            <option value="Saúde & Impacto">❤️ Saúde & Impacto</option>
+          </select>
+        </div>
+        <div class="editor-field">
+          <label>Número de Fundador</label>
+          <input id="f-numero" type="text" placeholder="Ex: #001" value="#001" oninput="updateCert()">
+        </div>
+        <div class="editor-field">
+          <label>Missão Pessoal</label>
+          <input id="f-missao" type="text" placeholder="Ex: Salvar vidas com tecnologia" value="Salvar vidas com tecnologia" oninput="updateCert()">
+        </div>
+        <div class="editor-field">
+          <label>Data de Fundação</label>
+          <input id="f-data" type="text" placeholder="Ex: 24 ABR 2026" value="24 ABR 2026" oninput="updateCert()">
+        </div>
+      </div>
+      <button class="download-btn" style="background:linear-gradient(135deg,#09090B,#2E1065);" onclick="downloadCert()">
+        <span>🖨️</span> <span>Imprimir / Guardar como PDF</span>
+      </button>
+    </div>
+
+    <!-- ═══ PREVIEW: SOCORRISTA ═══ -->
+    <div class="cert-showcase cert-responder" id="preview-responder">
+      <div class="cert-header">
+        <div class="cert-logo-wrap"><img src="lifelink_logo.png" alt="LifeLink"></div>
         <div>
-          <h3>LifeLink</h3>
-          <p data-i18n="certHeaderSub">Plataforma de Resposta a Emergências · Portugal</p>
+          <h3 style="color:white;">LifeLink Response</h3>
+          <p style="font-size:13px;opacity:0.6;font-weight:500;">Plataforma de Resposta a Emergências · Portugal</p>
         </div>
-        <div style="margin-left: auto; text-align: right;">
-          <div style="font-size:11px;opacity:0.5;margin-bottom:4px;font-weight:700;text-transform:uppercase;letter-spacing:1px" data-i18n="certDateLabel">Data de emissão</div>
-          <div style="font-size:16px;font-weight:900;" id="certDataDisplay">24 ABR 2026</div>
+        <div style="margin-left:auto;text-align:right;color:white;">
+          <div style="font-size:10px;opacity:0.5;margin-bottom:4px;font-weight:800;text-transform:uppercase;letter-spacing:1px;">Data de emissão</div>
+          <div style="font-size:15px;font-weight:900;" id="r-data-d">24 ABR 2026</div>
         </div>
       </div>
       <div class="cert-body">
-        <p style="font-size:13px;color:var(--text-dim);font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;" data-i18n="certSubtitle">Certificado de Conquista</p>
-        <h2 id="certTituloDisplay">Herói Dedicado</h2>
-        <p id="certDescDisplay" style="font-size:15px;color:var(--text-dim);margin-bottom:24px;line-height:1.6;">Este certificado reconhece e honra o contributo excecional deste socorrista na resposta a 10 ocorrências de emergência, demonstrando compromisso, coragem e excelência no auxílio à comunidade.</p>
+        <div class="cert-accent">🛡️ Certificado de Herói — Ocorrência Atendida</div>
+        <h2 id="r-titulo-d">Herói da Ocorrência</h2>
+        <p id="r-desc-d" style="font-size:15px;color:var(--text-dim);margin-bottom:24px;line-height:1.6;">
+          Este certificado reconhece a coragem e dedicação de Ana Silva no atendimento de uma Ocorrência Crítica em Lisboa, Portugal. Um verdadeiro herói da comunidade LifeLink.
+        </p>
         <div class="cert-fields">
           <div class="cert-field">
-            <div class="cert-field-label" data-i18n="certFieldName">Socorrista</div>
-            <div class="cert-field-value" id="certNomeDisplay">Ana Silva</div>
+            <div class="cert-field-label">Socorrista</div>
+            <div class="cert-field-value" id="r-nome-d">Ana Silva</div>
           </div>
           <div class="cert-field">
-            <div class="cert-field-label" data-i18n="certFieldOcc">Ocorrências</div>
-            <div class="cert-field-value" id="certOcorrenciasDisplay">10 concluídas</div>
+            <div class="cert-field-label">Tipo de Emergência</div>
+            <div class="cert-field-value" id="r-tipo-d">🚨 Ocorrência Crítica</div>
           </div>
           <div class="cert-field">
-            <div class="cert-field-label" data-i18n="certFieldXp">XP Acumulado</div>
-            <div class="cert-field-value" id="certXpDisplay" style="color:var(--gold);">1.250 XP</div>
+            <div class="cert-field-label">Ocorrências Totais</div>
+            <div class="cert-field-value" id="r-occ-d" style="color:var(--primary);">10 concluídas</div>
           </div>
         </div>
-        <div style="display:flex;align-items:center;gap:12px;">
-          <div id="certMedalDisplay" style="width:48px;height:48px;background:linear-gradient(135deg,#FCD34D,#F59E0B);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 6px 16px rgba(245,158,11,0.3);">🥇</div>
-          <div>
-            <div style="font-size:13px;font-weight:800;" id="certNivelDisplay">Nível Ouro</div>
-            <div style="font-size:12px;color:var(--text-dim);" data-i18n="certVerified">Verificado pela plataforma LifeLink</div>
+        <div class="cert-seal-row">
+          <div class="cert-seal" id="r-seal-d">🥇</div>
+          <div class="cert-seal-info">
+            <h4 id="r-nivel-d">Nível Ouro — Herói Dedicado</h4>
+            <p>Verificado pela plataforma LifeLink · Portugal</p>
           </div>
         </div>
       </div>
       <div class="cert-footer">
-        <div class="cert-number" id="certIdDisplay">ID: LLCERT-2026-0047A2F1</div>
+        <div class="cert-number" id="r-id-d">ID: LLRESP-2026-00A1</div>
         <div class="cert-actions">
-          <button class="cert-action-btn secondary" onclick="copyCertId()" data-i18n="certCopyBtn">📋 Copiar ID</button>
+          <button class="cert-action-btn secondary" onclick="copyCertId('r-id-d')">📋 Copiar ID</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ PREVIEW: PARCEIRO ═══ -->
+    <div class="cert-showcase cert-partner" id="preview-partner" style="display:none;">
+      <div class="cert-header">
+        <div class="cert-logo-wrap"><img src="lifelink_logo.png" alt="LifeLink"></div>
+        <div>
+          <h3 style="color:white;">LifeLink Network</h3>
+          <p style="font-size:13px;opacity:0.6;font-weight:500;">Programa de Parcerias Estratégicas · Portugal</p>
+        </div>
+        <div style="margin-left:auto;text-align:right;color:white;">
+          <div style="font-size:10px;opacity:0.5;margin-bottom:4px;font-weight:800;text-transform:uppercase;letter-spacing:1px;">Data de parceria</div>
+          <div style="font-size:15px;font-weight:900;" id="p-data-d">24 ABR 2026</div>
+        </div>
+      </div>
+      <div class="cert-body">
+        <div class="cert-accent">🤝 Certificado de Parceiro Oficial LifeLink</div>
+        <h2 id="p-titulo-d">Parceiro Estratégico</h2>
+        <p id="p-desc-d" style="font-size:15px;color:var(--text-dim);margin-bottom:24px;line-height:1.6;">
+          Este certificado confirma que Grupo Saúde Lda. é um Parceiro Estratégico oficial da LifeLink, contribuindo ativamente para a missão de salvar vidas em Portugal através da tecnologia de resposta a emergências.
+        </p>
+        <div class="cert-fields">
+          <div class="cert-field">
+            <div class="cert-field-label">Empresa Parceira</div>
+            <div class="cert-field-value" id="p-empresa-d">Grupo Saúde Lda.</div>
+          </div>
+          <div class="cert-field">
+            <div class="cert-field-label">Representante</div>
+            <div class="cert-field-value" id="p-contacto-d">Dr. João Ferreira</div>
+          </div>
+          <div class="cert-field">
+            <div class="cert-field-label">Colaboradores</div>
+            <div class="cert-field-value" id="p-colab-d" style="color:#0369A1;">500+</div>
+          </div>
+        </div>
+        <div class="cert-seal-row">
+          <div class="cert-seal" style="border-radius:14px;">🤝</div>
+          <div class="cert-seal-info">
+            <h4 id="p-setor-d">Saúde & Tecnologia</h4>
+            <p>Parceiro verificado · LifeLink Portugal 2026</p>
+          </div>
+        </div>
+      </div>
+      <div class="cert-footer">
+        <div class="cert-number" id="p-id-d">ID: LLPART-2026-00B2</div>
+        <div class="cert-actions">
+          <button class="cert-action-btn secondary" onclick="copyCertId('p-id-d')">📋 Copiar ID</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ PREVIEW: FUNDADOR ═══ -->
+    <div class="cert-showcase cert-founder" id="preview-founder" style="display:none;">
+      <div class="cert-header">
+        <div class="cert-logo-wrap"><img src="lifelink_logo.png" alt="LifeLink"></div>
+        <div>
+          <h3 style="color:white;letter-spacing:0.5px;">LifeLink</h3>
+          <p style="font-size:13px;opacity:0.5;font-weight:500;color:#FDE047;">Documento de Fundação · Edição Inaugural</p>
+        </div>
+        <div style="margin-left:auto;text-align:right;">
+          <div style="font-size:10px;opacity:0.4;margin-bottom:4px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#FDE047;">Data de fundação</div>
+          <div style="font-size:15px;font-weight:900;color:white;" id="f-data-d">24 ABR 2026</div>
+        </div>
+      </div>
+      <div class="cert-body">
+        <div class="cert-accent">👑 Membro Fundador Oficial · LifeLink</div>
+        <h2 id="f-titulo-d">Co-Fundador & CEO</h2>
+        <p id="f-desc-d" style="font-size:15px;color:var(--text-dim);margin-bottom:24px;line-height:1.6;">
+          Este documento certifica que Jose Victor Franca é Membro Fundador Oficial da LifeLink, co-criador da plataforma de resposta a emergências que está a mudar como Portugal salva vidas. Uma visão que se tornou missão.
+        </p>
+        <div class="cert-fields">
+          <div class="cert-field">
+            <div class="cert-field-label">Fundador</div>
+            <div class="cert-field-value" id="f-nome-d">Jose Victor Franca</div>
+          </div>
+          <div class="cert-field">
+            <div class="cert-field-label">Capítulo</div>
+            <div class="cert-field-value" id="f-capitulo-d">🧭 Visão & Estratégia</div>
+          </div>
+          <div class="cert-field">
+            <div class="cert-field-label">Nº de Fundador</div>
+            <div class="cert-field-value" id="f-numero-d" style="color:#7C3AED;">#001</div>
+          </div>
+        </div>
+        <div class="cert-seal-row">
+          <div class="cert-seal">👑</div>
+          <div class="cert-seal-info">
+            <h4 id="f-missao-d">"Salvar vidas com tecnologia"</h4>
+            <p>Fundador verificado · LifeLink Portugal · Inauguração 2026</p>
+          </div>
+        </div>
+      </div>
+      <div class="cert-footer">
+        <div class="cert-number" id="f-id-d">ID: LLFOUND-2026-00C3</div>
+        <div class="cert-actions">
+          <button class="cert-action-btn secondary" onclick="copyCertId('f-id-d')">📋 Copiar ID</button>
         </div>
       </div>
     </div>
@@ -1137,86 +1433,127 @@
       }, 400);
     });
 
-    // ── Certificate Editor ──────────────────────────────────────────────────
-    const tierConfig = {
-      bronze:   { emoji:'🥉', label:'Nível Bronze', labelEn:'Bronze Tier', grad:'linear-gradient(135deg,#CD7F32,#A0522D)', shadow:'rgba(205,127,50,0.3)', headerGrad:'linear-gradient(135deg,#1E293B,#0F172A)' },
-      silver:   { emoji:'🥈', label:'Nível Prata',  labelEn:'Silver Tier',  grad:'linear-gradient(135deg,#CBD5E1,#94A3B8)', shadow:'rgba(148,163,184,0.3)', headerGrad:'linear-gradient(135deg,#1E293B,#0F172A)' },
-      gold:     { emoji:'🥇', label:'Nível Ouro',   labelEn:'Gold Tier',    grad:'linear-gradient(135deg,#FCD34D,#F59E0B)', shadow:'rgba(245,158,11,0.3)',  headerGrad:'linear-gradient(135deg,#1E293B,#0F172A)' },
-      platinum: { emoji:'💎', label:'Nível Platina', labelEn:'Platinum Tier',grad:'linear-gradient(135deg,#A78BFA,#7C3AED)', shadow:'rgba(124,58,237,0.3)',  headerGrad:'linear-gradient(135deg,#2E1065,#0F172A)' },
+    // ── Certificate System ──────────────────────────────────────────────────
+    let activeCertType = 'responder';
+
+    const tierCfg = {
+      bronze:   { emoji:'🥉', label:'Nível Bronze',  grad:'linear-gradient(135deg,#CD7F32,#A0522D)', shadow:'rgba(205,127,50,0.35)' },
+      silver:   { emoji:'🥈', label:'Nível Prata',   grad:'linear-gradient(135deg,#CBD5E1,#94A3B8)', shadow:'rgba(148,163,184,0.35)' },
+      gold:     { emoji:'🥇', label:'Nível Ouro',    grad:'linear-gradient(135deg,#FCD34D,#F59E0B)', shadow:'rgba(245,158,11,0.35)' },
+      platinum: { emoji:'💎', label:'Nível Platina', grad:'linear-gradient(135deg,#A78BFA,#7C3AED)', shadow:'rgba(124,58,237,0.35)' },
     };
 
-    function generateId() {
-      const hex = () => Math.floor(Math.random()*0xFFFF).toString(16).toUpperCase().padStart(4,'0');
-      return `LLCERT-2026-${hex()}${hex().slice(0,4)}`;
+    function uid(prefix) {
+      const r = () => Math.floor(Math.random()*0xFFFF).toString(16).toUpperCase().padStart(4,'0');
+      return `${prefix}-2026-${r().slice(0,4)}${r().slice(0,2)}`;
     }
-    // Stable ID per session (regenerated on page load only)
-    const sessionCertId = generateId();
+    const ids = { responder: uid('LLRESP'), partner: uid('LLPART'), founder: uid('LLFOUND') };
+
+    function switchCert(type) {
+      activeCertType = type;
+      ['responder','partner','founder'].forEach(t => {
+        document.getElementById(`form-${t}`).style.display    = t === type ? '' : 'none';
+        document.getElementById(`preview-${t}`).style.display = t === type ? '' : 'none';
+        const tab = document.getElementById(`tab-${t}`);
+        tab.className = 'cert-type-tab' + (t === type ? ` active-${t}` : '');
+      });
+      updateCert();
+    }
 
     function updateCert() {
-      const nome       = document.getElementById('edNome').value.trim() || 'Socorrista';
-      const titulo     = document.getElementById('edTitulo').value.trim() || 'Conquista';
-      const nivel      = document.getElementById('edNivel').value;
-      const occ        = document.getElementById('edOcorrencias').value || '1';
-      const xp         = document.getElementById('edXp').value.trim() || '—';
-      const data       = document.getElementById('edData').value.trim() || '—';
-      const cfg        = tierConfig[nivel];
-      const isEn       = lang === 'en';
-
-      document.getElementById('certNomeDisplay').textContent        = nome;
-      document.getElementById('certTituloDisplay').textContent      = titulo;
-      document.getElementById('certOcorrenciasDisplay').textContent = isEn ? `${occ} completed` : `${occ} concluídas`;
-      document.getElementById('certXpDisplay').textContent          = xp;
-      document.getElementById('certDataDisplay').textContent        = data;
-      document.getElementById('certNivelDisplay').textContent       = isEn ? cfg.labelEn : cfg.label;
-      document.getElementById('certIdDisplay').textContent          = `ID: ${sessionCertId}`;
-
-      // Medal
-      const medal = document.getElementById('certMedalDisplay');
-      medal.textContent = cfg.emoji;
-      medal.style.background = cfg.grad;
-      medal.style.boxShadow  = `0 6px 16px ${cfg.shadow}`;
-
-      // Dynamic description
-      const descEl = document.getElementById('certDescDisplay');
-      if (isEn) {
-        descEl.textContent = `This certificate recognizes and honours the exceptional contribution of ${nome} in attending ${occ} emergency occurrence${occ==1?'':'s'}, demonstrating commitment, courage and excellence in community aid.`;
-      } else {
-        descEl.textContent = `Este certificado reconhece e honra o contributo excecional de ${nome} na resposta a ${occ} ocorrência${occ==1?'':'s'} de emergência, demonstrando compromisso, coragem e excelência no auxílio à comunidade.`;
-      }
+      if (activeCertType === 'responder') updateResponder();
+      else if (activeCertType === 'partner') updatePartner();
+      else updateFounder();
     }
 
-    function copyCertId() {
-      navigator.clipboard.writeText(sessionCertId).then(() => {
+    function updateResponder() {
+      const nome  = document.getElementById('r-nome').value.trim() || 'Socorrista';
+      const tipo  = document.getElementById('r-tipo').value;
+      const nivel = document.getElementById('r-nivel').value;
+      const occ   = document.getElementById('r-ocorrencias').value || '1';
+      const local = document.getElementById('r-local').value.trim() || 'Portugal';
+      const data  = document.getElementById('r-data').value.trim() || '—';
+      const cfg   = tierCfg[nivel];
+
+      set('r-nome-d',   nome);
+      set('r-tipo-d',   tipo);
+      set('r-occ-d',    `${occ} concluída${occ==1?'':'s'}`);
+      set('r-data-d',   data);
+      set('r-nivel-d',  `${cfg.label} — Herói Dedicado`);
+      set('r-titulo-d', 'Herói da Ocorrência');
+      set('r-id-d',     `ID: ${ids.responder}`);
+      set('r-desc-d',   `Este certificado reconhece a coragem e dedicação de ${nome} no atendimento de uma ${tipo} em ${local}. Um verdadeiro herói da comunidade LifeLink.`);
+
+      const seal = document.getElementById('r-seal-d');
+      seal.textContent = cfg.emoji;
+      seal.style.background  = cfg.grad;
+      seal.style.boxShadow   = `0 6px 20px ${cfg.shadow}`;
+    }
+
+    function updatePartner() {
+      const empresa  = document.getElementById('p-empresa').value.trim()  || 'Empresa';
+      const contacto = document.getElementById('p-contacto').value.trim() || '—';
+      const tipo     = document.getElementById('p-tipo').value;
+      const setor    = document.getElementById('p-setor').value.trim()    || '—';
+      const colab    = document.getElementById('p-colab').value.trim()    || '—';
+      const data     = document.getElementById('p-data').value.trim()     || '—';
+
+      set('p-empresa-d',  empresa);
+      set('p-contacto-d', contacto);
+      set('p-colab-d',    colab);
+      set('p-setor-d',    setor);
+      set('p-data-d',     data);
+      set('p-titulo-d',   tipo.replace(/^[^\s]+\s/, ''));
+      set('p-id-d',       `ID: ${ids.partner}`);
+      set('p-desc-d',     `Este certificado confirma que ${empresa} é um ${tipo} oficial da LifeLink, contribuindo ativamente para a missão de salvar vidas em Portugal através da tecnologia de resposta a emergências.`);
+    }
+
+    function updateFounder() {
+      const nome     = document.getElementById('f-nome').value.trim()     || 'Fundador';
+      const cargo    = document.getElementById('f-cargo').value.trim()    || '—';
+      const capitulo = document.getElementById('f-capitulo').value;
+      const numero   = document.getElementById('f-numero').value.trim()   || '#001';
+      const missao   = document.getElementById('f-missao').value.trim()   || '—';
+      const data     = document.getElementById('f-data').value.trim()     || '—';
+
+      set('f-nome-d',     nome);
+      set('f-capitulo-d', capitulo);
+      set('f-numero-d',   numero);
+      set('f-missao-d',   `"${missao}"`);
+      set('f-data-d',     data);
+      set('f-titulo-d',   cargo);
+      set('f-id-d',       `ID: ${ids.founder}`);
+      set('f-desc-d',     `Este documento certifica que ${nome} é Membro Fundador Oficial da LifeLink, co-criador da plataforma de resposta a emergências que está a mudar como Portugal salva vidas. Uma visão que se tornou missão.`);
+    }
+
+    function set(id, val) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = val;
+    }
+
+    function copyCertId(elId) {
+      const el = document.getElementById(elId);
+      const txt = el ? el.textContent.replace('ID: ','') : '';
+      navigator.clipboard.writeText(txt).then(() => {
         const btn = event.currentTarget;
-        const original = btn.textContent;
+        const orig = btn.textContent;
         btn.textContent = '✅ Copiado!';
-        setTimeout(() => { btn.textContent = original; }, 2000);
+        setTimeout(() => { btn.textContent = orig; }, 2000);
       });
     }
 
     function downloadCert() {
-      // Show a hint the first time
-      const nome = document.getElementById('edNome').value.trim() || 'Socorrista';
-      const hint = lang === 'en'
-        ? `The print dialog will open.\n\nTo save as PDF:\n• Chrome/Edge: Choose "Save as PDF" as destination\n• Firefox: Choose "Microsoft Print to PDF" or "Save as PDF"\n• Safari: Click the PDF button at bottom-left`
-        : `O diálogo de impressão vai abrir.\n\nPara guardar como PDF:\n• Chrome/Edge: escolhe "Guardar como PDF" no destino\n• Firefox: escolhe "Microsoft Print to PDF" ou "Guardar como PDF"\n• Safari: clica no botão PDF no canto inferior esquerdo`;
-
       if (!sessionStorage.getItem('printHintShown')) {
         sessionStorage.setItem('printHintShown', '1');
-        if (!confirm(hint + '\n\n' + (lang === 'en' ? 'Continue?' : 'Continuar?'))) return;
+        const msg = 'O diálogo de impressão vai abrir.\n\nPara guardar como PDF:\n• Chrome/Edge: escolhe "Guardar como PDF" no destino\n• Safari: clica no botão PDF no canto inferior esquerdo\n\nContinuar?';
+        if (!confirm(msg)) return;
       }
-
       window.print();
     }
 
-    // Keep cert in sync with language toggle
-    const _origApplyLang = applyLang;
-    // Override applyLang to also refresh cert text after language switch
-    document.getElementById('langToggle').addEventListener('click', () => {
-      setTimeout(updateCert, 10);
-    });
+    // Sync cert on language toggle
+    document.getElementById('langToggle').addEventListener('click', () => setTimeout(updateCert, 10));
 
-    // Init on page load
     window.addEventListener('load', () => {
       updateCert();
     });

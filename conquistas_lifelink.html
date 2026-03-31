@@ -630,26 +630,47 @@
     /* ── Print / PDF ────────────────────────── */
     @media print {
       * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
       body { padding: 0 !important; background: white !important; background-image: none !important; }
+
       .side-accent, .brand-logo, .back-btn, .lang-toggle,
       .hero, .xp-panel, .tiers-grid, .achievements-grid,
       .categories-grid, .info-banner, .footer,
       .section-title, .cert-type-tabs, .cert-editor,
       .cert-footer .cert-actions { display: none !important; }
+
       .container { max-width: 100% !important; padding: 0 !important; }
+
       .cert-showcase[style*="display:none"],
       .cert-showcase[style*="display: none"] { display: none !important; }
+
       .cert-showcase {
         border-radius: 0 !important;
         box-shadow: none !important;
         border: none !important;
         page-break-inside: avoid;
+        width: 100% !important;
+        height: auto !important;
       }
+
+      /* Founder: A3 portrait — diploma format */
+      body.print-founder .cert-founder .cert-header { padding: 40px 52px !important; }
+      body.print-founder .cert-founder .cert-body   { padding: 44px 52px !important; }
+      body.print-founder .cert-founder .cert-body h2 { font-size: 38px !important; }
+      body.print-founder .cert-founder .cert-body p  { font-size: 17px !important; }
+      body.print-founder .cert-founder .cert-seal    { width: 80px !important; height: 80px !important; font-size: 36px !important; }
+      body.print-founder .cert-founder .cert-fields  { gap: 24px !important; margin-bottom: 32px !important; }
+      body.print-founder .cert-founder .cert-field   { padding: 22px !important; }
+      body.print-founder .cert-founder .cert-field-value { font-size: 19px !important; }
+
       .cert-header { -webkit-print-color-adjust: exact !important; }
       .cert-footer { display: flex !important; }
       .cert-footer .cert-actions { display: none !important; }
       .cert-accent { -webkit-print-color-adjust: exact !important; }
     }
+
+    /* Page size injected dynamically by JS — defined here as fallback */
+    @page { margin: 10mm; }
 
     @media (max-width: 768px) {
       body { padding: 80px 16px 40px 26px; }
@@ -1538,13 +1559,40 @@
       });
     }
 
+    const paperSizes = {
+      responder: { size: 'A4', orientation: 'landscape', label: 'A4 horizontal' },
+      partner:   { size: 'A4', orientation: 'landscape', label: 'A4 horizontal' },
+      founder:   { size: 'A3', orientation: 'portrait',  label: 'A3 vertical (diploma)' },
+    };
+
     function downloadCert() {
+      const paper = paperSizes[activeCertType];
+
       if (!sessionStorage.getItem('printHintShown')) {
         sessionStorage.setItem('printHintShown', '1');
-        const msg = 'O diálogo de impressão vai abrir.\n\nPara guardar como PDF:\n• Chrome/Edge: escolhe "Guardar como PDF" no destino\n• Safari: clica no botão PDF no canto inferior esquerdo\n\nContinuar?';
+        const founderNote = activeCertType === 'founder'
+          ? '\n\n📄 Este certificado usa formato A3 vertical (297 × 420 mm).\nCarregue papel A3 na impressora, ou escolha "Guardar como PDF" e leve a um copy center para impressão em A3.'
+          : '';
+        const msg = `O diálogo de impressão vai abrir.\n\nPara guardar como PDF:\n• Chrome/Edge: escolhe "Guardar como PDF" no destino\n• Safari: clica no botão PDF no canto inferior esquerdo${founderNote}\n\nContinuar?`;
         if (!confirm(msg)) return;
       }
+
+      // Inject dynamic @page size
+      let styleEl = document.getElementById('print-page-style');
+      if (!styleEl) {
+        styleEl = document.createElement('style');
+        styleEl.id = 'print-page-style';
+        document.head.appendChild(styleEl);
+      }
+      styleEl.textContent = `@page { size: ${paper.size} ${paper.orientation}; margin: 10mm; }`;
+
+      // Add body class for founder scaling
+      document.body.classList.toggle('print-founder', activeCertType === 'founder');
+
       window.print();
+
+      // Clean up after print dialog closes
+      setTimeout(() => { document.body.classList.remove('print-founder'); }, 2000);
     }
 
     // Sync cert on language toggle

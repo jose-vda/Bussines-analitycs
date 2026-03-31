@@ -1017,10 +1017,6 @@
           </select>
         </div>
         <div class="editor-field">
-          <label>Número de Fundador</label>
-          <input id="f-numero" type="text" placeholder="Ex: #001" value="#001" oninput="updateCert()">
-        </div>
-        <div class="editor-field">
           <label>Missão Pessoal</label>
           <input id="f-missao" type="text" placeholder="Ex: Salvar vidas com tecnologia" value="Salvar vidas com tecnologia" oninput="updateCert()">
         </div>
@@ -1161,8 +1157,8 @@
             <div class="cert-field-value" id="f-capitulo-d">🧭 Visão & Estratégia</div>
           </div>
           <div class="cert-field">
-            <div class="cert-field-label">Nº de Fundador</div>
-            <div class="cert-field-value" id="f-numero-d" style="color:#7C3AED;">#001</div>
+            <div class="cert-field-label">Data de Fundação</div>
+            <div class="cert-field-value" id="f-numero-d" style="color:#7C3AED;">24 ABR 2026</div>
           </div>
         </div>
         <div class="cert-seal-row">
@@ -1512,7 +1508,7 @@
       const nome     = document.getElementById('f-nome').value.trim()     || 'Fundador';
       const cargo    = document.getElementById('f-cargo').value.trim()    || '—';
       const capitulo = document.getElementById('f-capitulo').value;
-      const numero   = document.getElementById('f-numero').value.trim()   || '#001';
+      const numero   = document.getElementById('f-data').value.trim()     || '—';
       const missao   = document.getElementById('f-missao').value.trim()   || '—';
       const data     = document.getElementById('f-data').value.trim()     || '—';
 

@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeLink — Conquistas & Reconhecimento</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #DC2626;
+      --primary-dark: #991B1B;
+      --primary-light: #FEE2E2;
+      --bg: #F1F5F9;
+      --text: #0F172A;
+      --text-dim: #64748B;
+      --card-bg: #FFFFFF;
+      --border: #E2E8F0;
+      --radius: 20px;
+
+      --bronze: #CD7F32;
+      --bronze-light: #FEF3C7;
+      --silver: #94A3B8;
+      --silver-light: #F1F5F9;
+      --gold: #F59E0B;
+      --gold-light: #FFFBEB;
+      --platinum: #7C3AED;
+      --platinum-light: #EDE9FE;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 80px 20px 60px 26px;
+      background-image:
+        radial-gradient(circle at 10% 10%, rgba(220, 38, 38, 0.07) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(124, 58, 237, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.04) 0%, transparent 60%);
+      overflow-x: hidden;
+    }
+
+    /* ── Chrome ─────────────────────────────── */
+    .side-accent {
+      position: fixed; left: 0; top: 0; bottom: 0; width: 6px;
+      background: linear-gradient(to bottom, var(--primary), var(--platinum));
+      z-index: 2000;
+      box-shadow: 2px 0 12px rgba(220, 38, 38, 0.2);
+    }
+
+    .brand-logo {
+      position: fixed; top: 30px; left: 30px;
+      width: 48px; height: 48px; z-index: 2001;
+      border-radius: 12px; overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      text-decoration: none;
+    }
+    .brand-logo:hover { transform: scale(1.1) rotate(-5deg); }
+    .brand-logo img { width: 100%; height: 100%; object-fit: cover; }
+
+    .lang-toggle {
+      position: fixed; top: 30px; right: 30px;
+      background: white; border: 1px solid var(--border);
+      padding: 10px 18px; border-radius: 99px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700; font-size: 13px;
+      cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      transition: 0.2s; color: var(--text);
+    }
+    .lang-toggle:hover { border-color: var(--primary); transform: translateY(-2px); }
+
+    .back-btn {
+      position: fixed; top: 30px; left: 96px;
+      background: white; border: 1px solid var(--border);
+      padding: 10px 18px; border-radius: 99px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700; font-size: 13px;
+      cursor: pointer; text-decoration: none; color: var(--text-dim);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      transition: 0.2s; display: flex; align-items: center; gap: 6px;
+    }
+    .back-btn:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
+
+    /* ── Layout ─────────────────────────────── */
+    .container { max-width: 900px; margin: 0 auto; }
+
+    /* ── Hero Header ────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, #DC2626 0%, #B91C1C 40%, #7C3AED 100%);
+      border-radius: 28px;
+      padding: 56px 48px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+      color: white;
+      box-shadow: 0 20px 60px rgba(220, 38, 38, 0.25), 0 0 0 1px rgba(255,255,255,0.1) inset;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -40px; right: -40px;
+      width: 300px; height: 300px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -60px; left: 30%;
+      width: 200px; height: 200px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 50%;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 6px 16px; border-radius: 99px;
+      font-size: 11px; font-weight: 900;
+      letter-spacing: 2px; text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 58px);
+      font-weight: 900;
+      letter-spacing: -2.5px;
+      line-height: 0.95;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { opacity: 0.7; }
+    .hero p {
+      font-size: 18px; line-height: 1.6;
+      opacity: 0.85; max-width: 560px;
+      font-weight: 500;
+    }
+    .hero-stats {
+      display: flex; gap: 32px;
+      margin-top: 36px;
+      flex-wrap: wrap;
+    }
+    .hero-stat { display: flex; flex-direction: column; gap: 2px; }
+    .hero-stat-value {
+      font-size: 28px; font-weight: 900;
+      letter-spacing: -1px;
+    }
+    .hero-stat-label {
+      font-size: 12px; font-weight: 700;
+      opacity: 0.65; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .hero-trophy {
+      position: absolute; right: 48px; top: 50%;
+      transform: translateY(-50%);
+      font-size: 96px; opacity: 0.18;
+      user-select: none; pointer-events: none;
+    }
+
+    /* ── Section Title ──────────────────────── */
+    .section-title {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 20px; margin-top: 48px;
+    }
+    .section-title h2 {
+      font-size: 22px; font-weight: 900; letter-spacing: -0.5px;
+    }
+    .section-badge {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 11px; font-weight: 900;
+      letter-spacing: 1px; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 99px;
+    }
+
+    /* ── XP System Bar ──────────────────────── */
+    .xp-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin-bottom: 12px;
+      display: flex; align-items: center; gap: 32px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    .xp-circle {
+      width: 80px; height: 80px; flex-shrink: 0;
+      background: linear-gradient(135deg, #F59E0B, #EF4444);
+      border-radius: 50%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      box-shadow: 0 8px 24px rgba(245, 158, 11, 0.3);
+      color: white;
+    }
+    .xp-circle-value { font-size: 22px; font-weight: 900; line-height: 1; }
+    .xp-circle-label { font-size: 9px; font-weight: 900; letter-spacing: 1px; opacity: 0.9; }
+    .xp-info { flex: 1; }
+    .xp-info h3 { font-size: 18px; font-weight: 800; margin-bottom: 4px; }
+    .xp-info p { font-size: 13px; color: var(--text-dim); margin-bottom: 14px; }
+    .xp-bar-wrap {
+      background: #F1F5F9; border-radius: 99px; height: 10px; overflow: hidden;
+    }
+    .xp-bar-fill {
+      height: 100%; border-radius: 99px;
+      background: linear-gradient(to right, #F59E0B, #EF4444);
+      width: 62%;
+      transition: width 1s ease;
+    }
+    .xp-bar-labels {
+      display: flex; justify-content: space-between;
+      margin-top: 6px; font-size: 11px; font-weight: 700; color: var(--text-dim);
+    }
+    .xp-chips {
+      display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+    }
+    .xp-chip {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 12px; padding: 10px 16px;
+      text-align: center; min-width: 100px;
+    }
+    .xp-chip-value { font-size: 20px; font-weight: 900; }
+    .xp-chip-label { font-size: 10px; font-weight: 800; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* ── Tiers ──────────────────────────────── */
+    .tiers-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+      margin-bottom: 12px;
+    }
+    .tier-card {
+      background: var(--card-bg);
+      border: 2px solid var(--border);
+      border-radius: 18px;
+      padding: 24px 16px;
+      text-align: center;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: default;
+    }
+    .tier-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+    .tier-card.bronze { border-color: rgba(205, 127, 50, 0.4); }
+    .tier-card.bronze:hover { border-color: var(--bronze); box-shadow: 0 20px 40px rgba(205,127,50,0.15); }
+    .tier-card.silver { border-color: rgba(148, 163, 184, 0.4); }
+    .tier-card.silver:hover { border-color: var(--silver); box-shadow: 0 20px 40px rgba(148,163,184,0.2); }
+    .tier-card.gold { border-color: rgba(245, 158, 11, 0.4); }
+    .tier-card.gold:hover { border-color: var(--gold); box-shadow: 0 20px 40px rgba(245,158,11,0.2); }
+    .tier-card.platinum { border-color: rgba(124, 58, 237, 0.4); }
+    .tier-card.platinum:hover { border-color: var(--platinum); box-shadow: 0 20px 40px rgba(124,58,237,0.15); }
+
+    .tier-medal {
+      width: 56px; height: 56px; border-radius: 50%;
+      margin: 0 auto 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px;
+    }
+    .tier-medal.bronze { background: linear-gradient(135deg, #CD7F32, #A0522D); box-shadow: 0 6px 18px rgba(205,127,50,0.35); }
+    .tier-medal.silver { background: linear-gradient(135deg, #CBD5E1, #94A3B8); box-shadow: 0 6px 18px rgba(148,163,184,0.35); }
+    .tier-medal.gold   { background: linear-gradient(135deg, #FCD34D, #F59E0B); box-shadow: 0 6px 18px rgba(245,158,11,0.35); }
+    .tier-medal.platinum { background: linear-gradient(135deg, #A78BFA, #7C3AED); box-shadow: 0 6px 18px rgba(124,58,237,0.35); }
+
+    .tier-name { font-size: 16px; font-weight: 900; margin-bottom: 4px; }
+    .tier-name.bronze { color: var(--bronze); }
+    .tier-name.silver { color: var(--silver); }
+    .tier-name.gold   { color: var(--gold); }
+    .tier-name.platinum { color: var(--platinum); }
+
+    .tier-desc { font-size: 12px; color: var(--text-dim); line-height: 1.5; margin-bottom: 12px; }
+    .tier-xp {
+      font-size: 13px; font-weight: 900;
+      padding: 4px 12px; border-radius: 99px;
+      display: inline-block;
+    }
+    .tier-xp.bronze   { background: var(--bronze-light); color: var(--bronze); }
+    .tier-xp.silver   { background: var(--silver-light); color: #475569; }
+    .tier-xp.gold     { background: var(--gold-light); color: #92400E; }
+    .tier-xp.platinum { background: var(--platinum-light); color: var(--platinum); }
+
+    /* ── Achievement Cards ──────────────────── */
+    .achievements-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
+    }
+    .achievement-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      display: flex; gap: 16px; align-items: flex-start;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative; overflow: hidden;
+    }
+    .achievement-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.07);
+    }
+    .achievement-card.locked {
+      opacity: 0.55;
+      filter: grayscale(0.4);
+    }
+    .achievement-card.locked:hover { opacity: 0.7; }
+
+    .achievement-icon-wrap {
+      width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; flex-shrink: 0;
+    }
+    .achievement-card .achievement-info { flex: 1; min-width: 0; }
+    .achievement-card .achievement-name {
+      font-size: 14px; font-weight: 800; margin-bottom: 4px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .achievement-card .achievement-desc {
+      font-size: 12px; color: var(--text-dim); line-height: 1.5; margin-bottom: 10px;
+    }
+    .achievement-meta {
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .badge-tier {
+      font-size: 10px; font-weight: 900; padding: 3px 10px; border-radius: 99px;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .badge-xp {
+      font-size: 11px; font-weight: 900; color: var(--gold);
+    }
+    .badge-cert {
+      font-size: 10px; font-weight: 800;
+      background: #DBEAFE; color: #1D4ED8;
+      padding: 3px 10px; border-radius: 99px;
+    }
+    .badge-locked {
+      font-size: 10px; font-weight: 800;
+      background: #F1F5F9; color: #94A3B8;
+      padding: 3px 10px; border-radius: 99px;
+    }
+    /* Progress bar inside card */
+    .card-progress-wrap {
+      margin-top: 10px;
+      background: #F1F5F9; border-radius: 99px; height: 6px; overflow: hidden;
+    }
+    .card-progress-fill {
+      height: 100%; border-radius: 99px;
+    }
+    .card-progress-label {
+      font-size: 11px; font-weight: 700; color: var(--text-dim);
+      margin-top: 4px;
+    }
+    /* Unlocked ribbon */
+    .ribbon {
+      position: absolute; top: 12px; right: -22px;
+      background: #22C55E; color: white;
+      font-size: 9px; font-weight: 900;
+      letter-spacing: 1px; text-transform: uppercase;
+      padding: 4px 28px;
+      transform: rotate(30deg);
+      box-shadow: 0 2px 8px rgba(34,197,94,0.3);
+    }
+
+    /* ── Certificate Section ────────────────── */
+    .cert-showcase {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 0;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+      margin-bottom: 12px;
+    }
+    .cert-header {
+      background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+      padding: 32px 36px;
+      color: white;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .cert-logo-wrap {
+      width: 56px; height: 56px; border-radius: 14px;
+      overflow: hidden; flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+      border: 2px solid rgba(255,255,255,0.1);
+    }
+    .cert-logo-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .cert-header h3 { font-size: 20px; font-weight: 900; margin-bottom: 4px; }
+    .cert-header p { font-size: 13px; opacity: 0.6; font-weight: 500; }
+    .cert-body { padding: 32px 36px; }
+    .cert-body h2 {
+      font-size: 28px; font-weight: 900; letter-spacing: -1px;
+      margin-bottom: 8px;
+    }
+    .cert-body p {
+      font-size: 15px; color: var(--text-dim); margin-bottom: 24px; line-height: 1.6;
+    }
+    .cert-fields {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px;
+    }
+    .cert-field {
+      background: var(--bg); border-radius: 12px; padding: 16px;
+    }
+    .cert-field-label {
+      font-size: 10px; font-weight: 900; color: var(--text-dim);
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;
+    }
+    .cert-field-value { font-size: 15px; font-weight: 800; }
+    .cert-footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 36px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .cert-number { font-size: 12px; color: var(--text-dim); font-family: monospace; font-weight: 700; }
+    .cert-actions { display: flex; gap: 10px; }
+    .cert-action-btn {
+      padding: 10px 20px; border-radius: 10px;
+      font-size: 13px; font-weight: 800; cursor: pointer;
+      border: none; transition: 0.2s; text-decoration: none;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .cert-action-btn.primary {
+      background: linear-gradient(135deg, #EF4444, #DC2626);
+      color: white;
+      box-shadow: 0 4px 12px rgba(220,38,38,0.25);
+    }
+    .cert-action-btn.primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(220,38,38,0.3); }
+    .cert-action-btn.secondary {
+      background: var(--bg); color: var(--text-dim);
+      border: 1px solid var(--border);
+    }
+    .cert-action-btn.secondary:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* ── Certificate Editor ─────────────────── */
+    .cert-editor {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    .cert-editor-title {
+      font-size: 14px; font-weight: 900; margin-bottom: 20px;
+      display: flex; align-items: center; gap: 8px; color: var(--text-dim);
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    .editor-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+    }
+    .editor-field { display: flex; flex-direction: column; gap: 6px; }
+    .editor-field label {
+      font-size: 11px; font-weight: 900; color: var(--text-dim);
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    .editor-field input,
+    .editor-field select {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px; font-weight: 700;
+      padding: 10px 14px;
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      outline: none;
+      transition: 0.2s;
+      appearance: none;
+    }
+    .editor-field input:focus,
+    .editor-field select:focus {
+      border-color: var(--primary);
+      background: white;
+      box-shadow: 0 0 0 3px rgba(220,38,38,0.08);
+    }
+    .editor-field input::placeholder { color: #CBD5E1; font-weight: 500; }
+    .download-btn {
+      margin-top: 20px;
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, #1E293B, #0F172A);
+      color: white;
+      border: none;
+      border-radius: 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px; font-weight: 900;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 8px 24px rgba(15,23,42,0.15);
+      letter-spacing: -0.3px;
+    }
+    .download-btn:hover {
+      background: linear-gradient(135deg, #EF4444, #DC2626);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 32px rgba(220,38,38,0.25);
+    }
+    .download-btn:active { transform: translateY(0); }
+    .download-btn.loading { opacity: 0.7; pointer-events: none; }
+    .download-btn .btn-icon { font-size: 18px; }
+
+    /* ── Categories ─────────────────────────── */
+    .categories-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
+    }
+    .category-card {
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px;
+      transition: all 0.3s; cursor: default;
+    }
+    .category-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.07); border-color: var(--primary); }
+    .cat-icon {
+      width: 48px; height: 48px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin-bottom: 14px;
+    }
+    .category-card h3 { font-size: 16px; font-weight: 800; margin-bottom: 6px; }
+    .category-card p { font-size: 13px; color: var(--text-dim); line-height: 1.5; margin-bottom: 14px; }
+    .cat-count {
+      font-size: 12px; font-weight: 900;
+      background: var(--bg); border: 1px solid var(--border);
+      padding: 4px 12px; border-radius: 99px; display: inline-block;
+      color: var(--text-dim);
+    }
+
+    /* ── Info Banner ────────────────────────── */
+    .info-banner {
+      background: linear-gradient(135deg, rgba(220,38,38,0.06), rgba(124,58,237,0.06));
+      border: 1px solid rgba(220,38,38,0.15);
+      border-radius: var(--radius); padding: 24px 28px;
+      margin-top: 40px;
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .info-banner-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+    .info-banner h3 { font-size: 16px; font-weight: 800; margin-bottom: 6px; }
+    .info-banner p { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+
+    /* ── Footer ─────────────────────────────── */
+    .footer {
+      text-align: center; margin-top: 60px;
+      padding-top: 32px; border-top: 1px solid var(--border);
+    }
+    .footer p { font-size: 12px; color: var(--text-dim); font-weight: 600; }
+    .footer span { color: var(--primary); }
+
+    /* ── Responsive ─────────────────────────── */
+    /* ── Print / PDF ────────────────────────── */
+    @media print {
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      body { padding: 0 !important; background: white !important; background-image: none !important; }
+      .side-accent, .brand-logo, .back-btn, .lang-toggle,
+      .hero, .xp-panel, .tiers-grid, .achievements-grid,
+      .categories-grid, .info-banner, .footer,
+      .section-title:not(#certSection), .cert-editor,
+      .cert-footer .cert-actions { display: none !important; }
+      #certSection { margin-top: 0 !important; }
+      .container { max-width: 100% !important; padding: 0 !important; }
+      .cert-showcase {
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        border: 2px solid #E2E8F0 !important;
+        page-break-inside: avoid;
+      }
+      .cert-header {
+        background: #0F172A !important;
+        -webkit-print-color-adjust: exact !important;
+      }
+      .cert-footer { display: flex !important; }
+      .cert-footer .cert-actions { display: none !important; }
+    }
+
+    @media (max-width: 768px) {
+      body { padding: 80px 16px 40px 26px; }
+      .brand-logo { top: 16px; left: 16px; width: 40px; height: 40px; }
+      .lang-toggle { top: 16px; right: 16px; padding: 8px 14px; font-size: 12px; }
+      .back-btn { top: 16px; left: 70px; padding: 8px 12px; font-size: 12px; }
+      .hero { padding: 36px 24px; }
+      .hero h1 { font-size: 36px; letter-spacing: -1.5px; }
+      .hero p { font-size: 15px; }
+      .hero-trophy { display: none; }
+      .hero-stats { gap: 20px; }
+      .tiers-grid { grid-template-columns: repeat(2, 1fr); }
+      .achievements-grid { grid-template-columns: 1fr; }
+      .categories-grid { grid-template-columns: 1fr; }
+      .cert-fields { grid-template-columns: 1fr; gap: 10px; }
+      .editor-grid { grid-template-columns: 1fr; }
+      .cert-header { padding: 24px 20px; flex-direction: column; align-items: flex-start; gap: 14px; }
+      .cert-body { padding: 24px 20px; }
+      .cert-footer { padding: 16px 20px; flex-direction: column; gap: 12px; align-items: flex-start; }
+      .xp-panel { flex-direction: column; gap: 20px; }
+      .xp-chips { flex-direction: row; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="side-accent"></div>
+
+  <a href="index.html" class="brand-logo">
+    <img src="lifelink_logo.png" alt="LifeLink">
+  </a>
+  <a href="index.html" class="back-btn">← <span data-i18n="backHub">Hub</span></a>
+  <button id="langToggle" class="lang-toggle">PT</button>
+
+  <div class="container">
+
+    <!-- ── Hero ── -->
+    <div class="hero">
+      <div class="hero-eyebrow">🏅 <span data-i18n="heroEyebrow">Sistema de Conquistas</span></div>
+      <h1 data-i18n="heroTitle">Heróis <span>merecem</span><br>ser reconhecidos.</h1>
+      <p data-i18n="heroDesc">Cada ocorrência atendida, cada vida salva, cada curso concluído — transformado em medalhas, certificados e pontos de experiência que valorizam o socorrista.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-value">4</span>
+          <span class="hero-stat-label" data-i18n="statTiers">Níveis</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">12+</span>
+          <span class="hero-stat-label" data-i18n="statAchievements">Conquistas</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">XP</span>
+          <span class="hero-stat-label" data-i18n="statPoints">Sistema de Pontos</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">∞</span>
+          <span class="hero-stat-label" data-i18n="statCerts">Certificados</span>
+        </div>
+      </div>
+      <div class="hero-trophy">🏆</div>
+    </div>
+
+    <!-- ── XP System ── -->
+    <div class="section-title">
+      <h2 data-i18n="xpSectionTitle">Sistema de XP</h2>
+      <span class="section-badge" data-i18n="xpBadge">Pontos de Experiência</span>
+    </div>
+
+    <div class="xp-panel">
+      <div class="xp-circle">
+        <span class="xp-circle-value">620</span>
+        <span class="xp-circle-label">XP</span>
+      </div>
+      <div class="xp-info">
+        <h3 data-i18n="xpTitle">Nível Prata — Veterano</h3>
+        <p data-i18n="xpDesc">Mais 380 XP para atingir o nível Ouro e desbloquear o Certificado de Herói Dedicado.</p>
+        <div class="xp-bar-wrap">
+          <div class="xp-bar-fill" id="xpBar"></div>
+        </div>
+        <div class="xp-bar-labels">
+          <span>600 XP</span>
+          <span>1000 XP</span>
+        </div>
+      </div>
+      <div class="xp-chips">
+        <div class="xp-chip">
+          <div class="xp-chip-value">5</div>
+          <div class="xp-chip-label" data-i18n="xpChipMedals">Medalhas</div>
+        </div>
+        <div class="xp-chip">
+          <div class="xp-chip-value">2</div>
+          <div class="xp-chip-label" data-i18n="xpChipCerts">Certificados</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Tiers ── -->
+    <div class="section-title">
+      <h2 data-i18n="tierSectionTitle">Níveis de Conquista</h2>
+    </div>
+
+    <div class="tiers-grid">
+      <div class="tier-card bronze">
+        <div class="tier-medal bronze">🥉</div>
+        <div class="tier-name bronze" data-i18n="tierBronze">Bronze</div>
+        <div class="tier-desc" data-i18n="tierBronzeDesc">Primeiros passos. Desbloqueia ao responder à primeira ocorrência.</div>
+        <span class="tier-xp bronze">+50–100 XP</span>
+      </div>
+      <div class="tier-card silver">
+        <div class="tier-medal silver">🥈</div>
+        <div class="tier-name silver" data-i18n="tierSilver">Prata</div>
+        <div class="tier-desc" data-i18n="tierSilverDesc">Veterano. 5 ou mais ocorrências concluídas ou especialização em tipo de emergência.</div>
+        <span class="tier-xp silver">+200–300 XP</span>
+      </div>
+      <div class="tier-card gold">
+        <div class="tier-medal gold">🥇</div>
+        <div class="tier-name gold" data-i18n="tierGold">Ouro</div>
+        <div class="tier-desc" data-i18n="tierGoldDesc">Herói Dedicado. 10+ ocorrências. Inclui Certificado Digital partilhável.</div>
+        <span class="tier-xp gold">+500 XP + Cert.</span>
+      </div>
+      <div class="tier-card platinum">
+        <div class="tier-medal platinum">💎</div>
+        <div class="tier-name platinum" data-i18n="tierPlatinum">Platina</div>
+        <div class="tier-desc" data-i18n="tierPlatinumDesc">Lenda LifeLink. 50+ ocorrências. O mais alto reconhecimento da plataforma.</div>
+        <span class="tier-xp platinum">+2000 XP + Cert.</span>
+      </div>
+    </div>
+
+    <!-- ── Achievements ── -->
+    <div class="section-title" style="margin-top: 48px;">
+      <h2 data-i18n="achSectionTitle">Conquistas em Destaque</h2>
+      <span class="section-badge" data-i18n="achBadge">Exemplo</span>
+    </div>
+
+    <div class="achievements-grid">
+      <!-- Unlocked -->
+      <div class="achievement-card" style="border-color: rgba(205,127,50,0.45);">
+        <div class="achievement-icon-wrap" style="background: linear-gradient(135deg, #CD7F32, #A0522D);">⭐</div>
+        <div class="achievement-info">
+          <div class="achievement-name" data-i18n="ach1Name">Primeiro Atendimento ✓</div>
+          <div class="achievement-desc" data-i18n="ach1Desc">Respondeste à tua primeira ocorrência de emergência. O início de uma jornada heroica.</div>
+          <div class="achievement-meta">
+            <span class="badge-tier" style="background:#FEF3C7;color:#92400E;" data-i18n="tierBronzeLabel">Bronze</span>
+            <span class="badge-xp">+100 XP</span>
+          </div>
+        </div>
+        <div class="ribbon" data-i18n="ribbonUnlocked">OBTIDA</div>
+      </div>
+
+      <!-- Unlocked + Cert -->
+      <div class="achievement-card" style="border-color: rgba(245,158,11,0.4);">
+        <div class="achievement-icon-wrap" style="background: linear-gradient(135deg, #FCD34D, #F59E0B);">🏆</div>
+        <div class="achievement-info">
+          <div class="achievement-name">
+            <span data-i18n="ach2Name">Herói Dedicado</span>
+            <span style="font-size: 14px;">✓</span>
+          </div>
+          <div class="achievement-desc" data-i18n="ach2Desc">10 ocorrências concluídas com sucesso. Um verdadeiro pilar da comunidade de socorro.</div>
+          <div class="achievement-meta">
+            <span class="badge-tier" style="background:#FFFBEB;color:#92400E;" data-i18n="tierGoldLabel">Ouro</span>
+            <span class="badge-xp">+500 XP</span>
+            <span class="badge-cert" data-i18n="badgeCert">Certificado</span>
+          </div>
+        </div>
+        <div class="ribbon" data-i18n="ribbonUnlocked">OBTIDA</div>
+      </div>
+
+      <!-- In Progress -->
+      <div class="achievement-card" style="border-color: rgba(148,163,184,0.4);">
+        <div class="achievement-icon-wrap" style="background: linear-gradient(135deg, #CBD5E1, #94A3B8);">🎖️</div>
+        <div class="achievement-info">
+          <div class="achievement-name" data-i18n="ach3Name">Veterano</div>
+          <div class="achievement-desc" data-i18n="ach3Desc">Completa 5 ocorrências de emergência para te tornares um socorrista veterano.</div>
+          <div class="achievement-meta">
+            <span class="badge-tier" style="background:#F1F5F9;color:#475569;" data-i18n="tierSilverLabel">Prata</span>
+            <span class="badge-xp">+200 XP</span>
+          </div>
+          <div class="card-progress-wrap">
+            <div class="card-progress-fill" style="width: 60%; background: linear-gradient(to right, #CBD5E1, #64748B);"></div>
+          </div>
+          <div class="card-progress-label" data-i18n="ach3Progress">3 / 5 ocorrências</div>
+        </div>
+      </div>
+
+      <!-- Locked Specialization -->
+      <div class="achievement-card locked" style="border-color: rgba(239,68,68,0.3);">
+        <div class="achievement-icon-wrap" style="background: linear-gradient(135deg, #FCA5A5, #EF4444);">❤️</div>
+        <div class="achievement-info">
+          <div class="achievement-name" data-i18n="ach4Name">Especialista Cardíaco</div>
+          <div class="achievement-desc" data-i18n="ach4Desc">Responde a uma ocorrência de paragem cardíaca. Conhecimento que salva vidas no momento crítico.</div>
+          <div class="achievement-meta">
+            <span class="badge-tier" style="background:#F1F5F9;color:#475569;" data-i18n="tierSilverLabel">Prata</span>
+            <span class="badge-xp">+300 XP</span>
+            <span class="badge-locked" data-i18n="badgeLocked">🔒 Bloqueada</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Locked Aquatic -->
+      <div class="achievement-card locked" style="border-color: rgba(14,165,233,0.3);">
+        <div class="achievement-icon-wrap" style="background: linear-gradient(135deg, #7DD3FC, #0EA5E9);">🌊</div>
+        <div class="achievement-info">
+          <div class="achievement-name" data-i18n="ach5Name">Guardião Aquático</div>
+          <div class="achievement-desc" data-i18n="ach5Desc">Responde a uma ocorrência de afogamento. Uma conquista de especialização crítica.</div>
+          <div class="achievement-meta">
+            <span class="badge-tier" style="background:#F1F5F9;color:#475569;" data-i18n="tierSilverLabel">Prata</span>
+            <span class="badge-xp">+300 XP</span>
+            <span class="badge-locked" data-i18n="badgeLocked">🔒 Bloqueada</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Locked Platinum -->
+      <div class="achievement-card locked" style="border-color: rgba(124,58,237,0.3);">
+        <div class="achievement-icon-wrap" style="background: linear-gradient(135deg, #A78BFA, #7C3AED);">💎</div>
+        <div class="achievement-info">
+          <div class="achievement-name" data-i18n="ach6Name">Lenda LifeLink</div>
+          <div class="achievement-desc" data-i18n="ach6Desc">50 ocorrências concluídas. O reconhecimento máximo da plataforma. Certificado exclusivo.</div>
+          <div class="achievement-meta">
+            <span class="badge-tier" style="background:#EDE9FE;color:#7C3AED;" data-i18n="tierPlatinumLabel">Platina</span>
+            <span class="badge-xp">+2000 XP</span>
+            <span class="badge-cert" data-i18n="badgeCert">Certificado</span>
+            <span class="badge-locked" data-i18n="badgeLocked">🔒 Bloqueada</span>
+          </div>
+          <div class="card-progress-wrap">
+            <div class="card-progress-fill" style="width: 20%; background: linear-gradient(to right, #A78BFA, #7C3AED);"></div>
+          </div>
+          <div class="card-progress-label" data-i18n="ach6Progress">10 / 50 ocorrências</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Certificate ── -->
+    <div class="section-title">
+      <h2 data-i18n="certSectionTitle">Certificado Digital</h2>
+      <span class="section-badge" data-i18n="certEditorBadge">Gerador</span>
+    </div>
+
+    <!-- Editor Form -->
+    <div class="cert-editor">
+      <div class="cert-editor-title">✏️ <span data-i18n="editorTitle">Personalizar certificado</span></div>
+      <div class="editor-grid">
+        <div class="editor-field">
+          <label data-i18n="editorName">Nome do Socorrista</label>
+          <input id="edNome" type="text" placeholder="Ex: Valessa Souza" value="Ana Silva" oninput="updateCert()">
+        </div>
+        <div class="editor-field">
+          <label data-i18n="editorTitle2">Título da Conquista</label>
+          <input id="edTitulo" type="text" placeholder="Ex: Herói Dedicado" value="Herói Dedicado" oninput="updateCert()">
+        </div>
+        <div class="editor-field">
+          <label data-i18n="editorTier">Nível</label>
+          <select id="edNivel" onchange="updateCert()">
+            <option value="bronze">🥉 Bronze</option>
+            <option value="silver">🥈 Prata</option>
+            <option value="gold" selected>🥇 Ouro</option>
+            <option value="platinum">💎 Platina</option>
+          </select>
+        </div>
+        <div class="editor-field">
+          <label data-i18n="editorOcc">Ocorrências Concluídas</label>
+          <input id="edOcorrencias" type="number" min="1" value="10" oninput="updateCert()">
+        </div>
+        <div class="editor-field">
+          <label data-i18n="editorXp">XP Acumulado</label>
+          <input id="edXp" type="text" placeholder="Ex: 1.250 XP" value="1.250 XP" oninput="updateCert()">
+        </div>
+        <div class="editor-field">
+          <label data-i18n="editorDate">Data de Emissão</label>
+          <input id="edData" type="text" placeholder="Ex: 24 ABR 2026" value="24 ABR 2026" oninput="updateCert()">
+        </div>
+      </div>
+      <button class="download-btn" id="downloadBtn" onclick="downloadCert()">
+        <span class="btn-icon">⬇️</span>
+        <span id="downloadBtnText" data-i18n="downloadBtn">🖨️ Imprimir / Guardar como PDF</span>
+      </button>
+    </div>
+
+    <!-- Certificate Preview -->
+    <div class="cert-showcase" id="certPreview">
+      <div class="cert-header" id="certHeaderEl">
+        <div class="cert-logo-wrap">
+          <img src="lifelink_logo.png" alt="LifeLink">
+        </div>
+        <div>
+          <h3>LifeLink</h3>
+          <p data-i18n="certHeaderSub">Plataforma de Resposta a Emergências · Portugal</p>
+        </div>
+        <div style="margin-left: auto; text-align: right;">
+          <div style="font-size:11px;opacity:0.5;margin-bottom:4px;font-weight:700;text-transform:uppercase;letter-spacing:1px" data-i18n="certDateLabel">Data de emissão</div>
+          <div style="font-size:16px;font-weight:900;" id="certDataDisplay">24 ABR 2026</div>
+        </div>
+      </div>
+      <div class="cert-body">
+        <p style="font-size:13px;color:var(--text-dim);font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;" data-i18n="certSubtitle">Certificado de Conquista</p>
+        <h2 id="certTituloDisplay">Herói Dedicado</h2>
+        <p id="certDescDisplay" style="font-size:15px;color:var(--text-dim);margin-bottom:24px;line-height:1.6;">Este certificado reconhece e honra o contributo excecional deste socorrista na resposta a 10 ocorrências de emergência, demonstrando compromisso, coragem e excelência no auxílio à comunidade.</p>
+        <div class="cert-fields">
+          <div class="cert-field">
+            <div class="cert-field-label" data-i18n="certFieldName">Socorrista</div>
+            <div class="cert-field-value" id="certNomeDisplay">Ana Silva</div>
+          </div>
+          <div class="cert-field">
+            <div class="cert-field-label" data-i18n="certFieldOcc">Ocorrências</div>
+            <div class="cert-field-value" id="certOcorrenciasDisplay">10 concluídas</div>
+          </div>
+          <div class="cert-field">
+            <div class="cert-field-label" data-i18n="certFieldXp">XP Acumulado</div>
+            <div class="cert-field-value" id="certXpDisplay" style="color:var(--gold);">1.250 XP</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div id="certMedalDisplay" style="width:48px;height:48px;background:linear-gradient(135deg,#FCD34D,#F59E0B);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 6px 16px rgba(245,158,11,0.3);">🥇</div>
+          <div>
+            <div style="font-size:13px;font-weight:800;" id="certNivelDisplay">Nível Ouro</div>
+            <div style="font-size:12px;color:var(--text-dim);" data-i18n="certVerified">Verificado pela plataforma LifeLink</div>
+          </div>
+        </div>
+      </div>
+      <div class="cert-footer">
+        <div class="cert-number" id="certIdDisplay">ID: LLCERT-2026-0047A2F1</div>
+        <div class="cert-actions">
+          <button class="cert-action-btn secondary" onclick="copyCertId()" data-i18n="certCopyBtn">📋 Copiar ID</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Categories ── -->
+    <div class="section-title">
+      <h2 data-i18n="catSectionTitle">Categorias de Conquistas</h2>
+    </div>
+
+    <div class="categories-grid">
+      <div class="category-card">
+        <div class="cat-icon" style="background:#FEE2E2;">🎯</div>
+        <h3 data-i18n="catMilestoneName">Marcos de Resposta</h3>
+        <p data-i18n="catMilestoneDesc">Conquistas baseadas no número de ocorrências atendidas. Da primeira resposta até às 50 ocorrências — cada marco é reconhecido.</p>
+        <span class="cat-count" data-i18n="catMilestoneCount">4 conquistas</span>
+      </div>
+      <div class="category-card">
+        <div class="cat-icon" style="background:#DBEAFE;">⚡</div>
+        <h3 data-i18n="catSpecName">Especialização</h3>
+        <p data-i18n="catSpecDesc">Medalhas por tipo de emergência atendida: cardíaca, afogamento, trauma, respiratória. O socorrista constrói o seu perfil de especialista.</p>
+        <span class="cat-count" data-i18n="catSpecCount">5 conquistas</span>
+      </div>
+      <div class="category-card">
+        <div class="cat-icon" style="background:#FFFBEB;">🌟</div>
+        <h3 data-i18n="catCommunityName">Comunidade</h3>
+        <p data-i18n="catCommunityDesc">Herói da Semana, Herói do Mês — reconhecimento baseado no ranking da comunidade e impacto gerado no período.</p>
+        <span class="cat-count" data-i18n="catCommunityCount">3 conquistas</span>
+      </div>
+      <div class="category-card">
+        <div class="cat-icon" style="background:#EDE9FE;">🎓</div>
+        <h3 data-i18n="catLearningName">Formação</h3>
+        <p data-i18n="catLearningDesc">Conquistas pela conclusão de cursos na LifeLink Academy: SBV, DAE, Trauma. O saber também é reconhecido.</p>
+        <span class="cat-count" data-i18n="catLearningCount">3 conquistas</span>
+      </div>
+    </div>
+
+    <!-- ── Info Banner ── -->
+    <div class="info-banner">
+      <div class="info-banner-icon">💡</div>
+      <div>
+        <h3 data-i18n="infoTitle">Como funciona o sistema de conquistas?</h3>
+        <p data-i18n="infoDesc">As conquistas são atribuídas automaticamente após o fecho de cada ocorrência ou conclusão de curso. O socorrista recebe uma notificação em tempo real na app. Certificados de nível Ouro e Platina são documentos digitais verificáveis que podem ser partilhados no LinkedIn ou descarregados em PDF.</p>
+      </div>
+    </div>
+
+    <!-- ── Footer ── -->
+    <div class="footer">
+      <p>LifeLink <span>©</span> 2026 · <span data-i18n="footerTagline">Valorizar quem salva vidas.</span></p>
+    </div>
+
+  </div><!-- /container -->
+
+  <script>
+    const dict = {
+      pt: {
+        backHub: "Hub",
+        heroEyebrow: "Sistema de Conquistas",
+        heroTitle: "Heróis <span>merecem</span><br>ser reconhecidos.",
+        heroDesc: "Cada ocorrência atendida, cada vida salva, cada curso concluído — transformado em medalhas, certificados e pontos de experiência que valorizam o socorrista.",
+        statTiers: "Níveis",
+        statAchievements: "Conquistas",
+        statPoints: "Sistema de Pontos",
+        statCerts: "Certificados",
+        xpSectionTitle: "Sistema de XP",
+        xpBadge: "Pontos de Experiência",
+        xpTitle: "Nível Prata — Veterano",
+        xpDesc: "Mais 380 XP para atingir o nível Ouro e desbloquear o Certificado de Herói Dedicado.",
+        xpChipMedals: "Medalhas",
+        xpChipCerts: "Certificados",
+        tierSectionTitle: "Níveis de Conquista",
+        tierBronze: "Bronze",
+        tierBronzeDesc: "Primeiros passos. Desbloqueia ao responder à primeira ocorrência.",
+        tierSilver: "Prata",
+        tierSilverDesc: "Veterano. 5 ou mais ocorrências concluídas ou especialização em tipo de emergência.",
+        tierGold: "Ouro",
+        tierGoldDesc: "Herói Dedicado. 10+ ocorrências. Inclui Certificado Digital partilhável.",
+        tierPlatinum: "Platina",
+        tierPlatinumDesc: "Lenda LifeLink. 50+ ocorrências. O mais alto reconhecimento da plataforma.",
+        achSectionTitle: "Conquistas em Destaque",
+        achBadge: "Exemplo",
+        ach1Name: "Primeiro Atendimento ✓",
+        ach1Desc: "Respondeste à tua primeira ocorrência de emergência. O início de uma jornada heroica.",
+        ach2Name: "Herói Dedicado",
+        ach2Desc: "10 ocorrências concluídas com sucesso. Um verdadeiro pilar da comunidade de socorro.",
+        ach3Name: "Veterano",
+        ach3Desc: "Completa 5 ocorrências de emergência para te tornares um socorrista veterano.",
+        ach3Progress: "3 / 5 ocorrências",
+        ach4Name: "Especialista Cardíaco",
+        ach4Desc: "Responde a uma ocorrência de paragem cardíaca. Conhecimento que salva vidas no momento crítico.",
+        ach5Name: "Guardião Aquático",
+        ach5Desc: "Responde a uma ocorrência de afogamento. Uma conquista de especialização crítica.",
+        ach6Name: "Lenda LifeLink",
+        ach6Desc: "50 ocorrências concluídas. O reconhecimento máximo da plataforma. Certificado exclusivo.",
+        ach6Progress: "10 / 50 ocorrências",
+        tierBronzeLabel: "Bronze",
+        tierSilverLabel: "Prata",
+        tierGoldLabel: "Ouro",
+        tierPlatinumLabel: "Platina",
+        badgeCert: "Certificado",
+        badgeLocked: "🔒 Bloqueada",
+        ribbonUnlocked: "OBTIDA",
+        certSectionTitle: "Certificado Digital",
+        certEditorBadge: "Gerador",
+        editorTitle: "Personalizar certificado",
+        editorName: "Nome do Socorrista",
+        editorTitle2: "Título da Conquista",
+        editorTier: "Nível",
+        editorOcc: "Ocorrências Concluídas",
+        editorXp: "XP Acumulado",
+        editorDate: "Data de Emissão",
+        downloadBtn: "🖨️ Imprimir / Guardar como PDF",
+        certBadge: "Gerador",
+        certHeaderSub: "Plataforma de Resposta a Emergências · Portugal",
+        certDateLabel: "Data de emissão",
+        certSubtitle: "Certificado de Conquista",
+        certTitle: "Herói Dedicado",
+        certDesc: "Este certificado reconhece e honra o contributo excecional deste socorrista na resposta a 10 ocorrências de emergência, demonstrando compromisso, coragem e excelência no auxílio à comunidade.",
+        certFieldName: "Socorrista",
+        certFieldOcc: "Ocorrências",
+        certFieldXp: "XP Acumulado",
+        certTierLabel: "Nível Ouro",
+        certVerified: "Verificado pela plataforma LifeLink",
+        certCopyBtn: "📋 Copiar ID",
+        certShareBtn: "↗ Partilhar",
+        catSectionTitle: "Categorias de Conquistas",
+        catMilestoneName: "Marcos de Resposta",
+        catMilestoneDesc: "Conquistas baseadas no número de ocorrências atendidas. Da primeira resposta até às 50 ocorrências — cada marco é reconhecido.",
+        catMilestoneCount: "4 conquistas",
+        catSpecName: "Especialização",
+        catSpecDesc: "Medalhas por tipo de emergência atendida: cardíaca, afogamento, trauma, respiratória. O socorrista constrói o seu perfil de especialista.",
+        catSpecCount: "5 conquistas",
+        catCommunityName: "Comunidade",
+        catCommunityDesc: "Herói da Semana, Herói do Mês — reconhecimento baseado no ranking da comunidade e impacto gerado no período.",
+        catCommunityCount: "3 conquistas",
+        catLearningName: "Formação",
+        catLearningDesc: "Conquistas pela conclusão de cursos na LifeLink Academy: SBV, DAE, Trauma. O saber também é reconhecido.",
+        catLearningCount: "3 conquistas",
+        infoTitle: "Como funciona o sistema de conquistas?",
+        infoDesc: "As conquistas são atribuídas automaticamente após o fecho de cada ocorrência ou conclusão de curso. O socorrista recebe uma notificação em tempo real na app. Certificados de nível Ouro e Platina são documentos digitais verificáveis que podem ser partilhados no LinkedIn ou descarregados em PDF.",
+        footerTagline: "Valorizar quem salva vidas.",
+      },
+      en: {
+        backHub: "Hub",
+        heroEyebrow: "Achievements System",
+        heroTitle: "Heroes <span>deserve</span><br>to be recognized.",
+        heroDesc: "Every occurrence attended, every life saved, every course completed — turned into medals, certificates and experience points that honour the responder.",
+        statTiers: "Tiers",
+        statAchievements: "Achievements",
+        statPoints: "Points System",
+        statCerts: "Certificates",
+        xpSectionTitle: "XP System",
+        xpBadge: "Experience Points",
+        xpTitle: "Silver Tier — Veteran",
+        xpDesc: "380 more XP to reach Gold tier and unlock the Dedicated Hero Certificate.",
+        xpChipMedals: "Medals",
+        xpChipCerts: "Certs",
+        tierSectionTitle: "Achievement Tiers",
+        tierBronze: "Bronze",
+        tierBronzeDesc: "First steps. Unlocks by responding to the first emergency occurrence.",
+        tierSilver: "Silver",
+        tierSilverDesc: "Veteran. 5 or more completed occurrences, or specialization in an emergency type.",
+        tierGold: "Gold",
+        tierGoldDesc: "Dedicated Hero. 10+ occurrences. Includes a shareable Digital Certificate.",
+        tierPlatinum: "Platinum",
+        tierPlatinumDesc: "LifeLink Legend. 50+ occurrences. The platform's highest recognition.",
+        achSectionTitle: "Featured Achievements",
+        achBadge: "Example",
+        ach1Name: "First Response ✓",
+        ach1Desc: "You responded to your first emergency occurrence. The beginning of a heroic journey.",
+        ach2Name: "Dedicated Hero",
+        ach2Desc: "10 occurrences successfully completed. A true pillar of the rescue community.",
+        ach3Name: "Veteran",
+        ach3Desc: "Complete 5 emergency occurrences to become a veteran responder.",
+        ach3Progress: "3 / 5 occurrences",
+        ach4Name: "Cardiac Specialist",
+        ach4Desc: "Respond to a cardiac arrest occurrence. Life-saving knowledge in the critical moment.",
+        ach5Name: "Aquatic Guardian",
+        ach5Desc: "Respond to a drowning occurrence. A critical specialization achievement.",
+        ach6Name: "LifeLink Legend",
+        ach6Desc: "50 completed occurrences. The platform's maximum recognition. Exclusive certificate.",
+        ach6Progress: "10 / 50 occurrences",
+        tierBronzeLabel: "Bronze",
+        tierSilverLabel: "Silver",
+        tierGoldLabel: "Gold",
+        tierPlatinumLabel: "Platinum",
+        badgeCert: "Certificate",
+        badgeLocked: "🔒 Locked",
+        ribbonUnlocked: "EARNED",
+        certSectionTitle: "Digital Certificate",
+        certEditorBadge: "Generator",
+        editorTitle: "Customize certificate",
+        editorName: "Responder Name",
+        editorTitle2: "Achievement Title",
+        editorTier: "Tier",
+        editorOcc: "Completed Occurrences",
+        editorXp: "Accumulated XP",
+        editorDate: "Issue Date",
+        downloadBtn: "🖨️ Print / Save as PDF",
+        certBadge: "Generator",
+        certHeaderSub: "Emergency Response Platform · Portugal",
+        certDateLabel: "Issue date",
+        certSubtitle: "Achievement Certificate",
+        certTitle: "Dedicated Hero",
+        certDesc: "This certificate recognizes and honours the exceptional contribution of this responder in attending 10 emergency occurrences, demonstrating commitment, courage, and excellence in community aid.",
+        certFieldName: "Responder",
+        certFieldOcc: "Occurrences",
+        certFieldXp: "Accumulated XP",
+        certTierLabel: "Gold Tier",
+        certVerified: "Verified by the LifeLink platform",
+        certCopyBtn: "📋 Copy ID",
+        certShareBtn: "↗ Share",
+        catSectionTitle: "Achievement Categories",
+        catMilestoneName: "Response Milestones",
+        catMilestoneDesc: "Achievements based on the number of occurrences attended — from the first response to 50 occurrences, every milestone is recognized.",
+        catMilestoneCount: "4 achievements",
+        catSpecName: "Specialization",
+        catSpecDesc: "Medals by emergency type: cardiac, drowning, trauma, respiratory. The responder builds their specialist profile.",
+        catSpecCount: "5 achievements",
+        catCommunityName: "Community",
+        catCommunityDesc: "Hero of the Week, Hero of the Month — recognition based on community ranking and impact generated in the period.",
+        catCommunityCount: "3 achievements",
+        catLearningName: "Learning",
+        catLearningDesc: "Achievements for completing LifeLink Academy courses: BLS, AED, Trauma. Knowledge is also recognized.",
+        catLearningCount: "3 achievements",
+        infoTitle: "How does the achievements system work?",
+        infoDesc: "Achievements are automatically awarded after every occurrence is closed or a course is completed. The responder receives a real-time notification in the app. Gold and Platinum tier certificates are verifiable digital documents that can be shared on LinkedIn or downloaded as PDF.",
+        footerTagline: "Honouring those who save lives.",
+      }
+    };
+
+    let lang = "pt";
+    const btn = document.getElementById("langToggle");
+
+    function applyLang() {
+      btn.textContent = lang.toUpperCase();
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.dataset.i18n;
+        if (dict[lang][key] !== undefined) {
+          el.innerHTML = dict[lang][key];
+        }
+      });
+    }
+
+    btn.onclick = () => {
+      lang = lang === "pt" ? "en" : "pt";
+      applyLang();
+    };
+
+    // Animate XP bar on load
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const bar = document.getElementById('xpBar');
+        if (bar) bar.style.width = '62%';
+      }, 400);
+    });
+
+    // ── Certificate Editor ──────────────────────────────────────────────────
+    const tierConfig = {
+      bronze:   { emoji:'🥉', label:'Nível Bronze', labelEn:'Bronze Tier', grad:'linear-gradient(135deg,#CD7F32,#A0522D)', shadow:'rgba(205,127,50,0.3)', headerGrad:'linear-gradient(135deg,#1E293B,#0F172A)' },
+      silver:   { emoji:'🥈', label:'Nível Prata',  labelEn:'Silver Tier',  grad:'linear-gradient(135deg,#CBD5E1,#94A3B8)', shadow:'rgba(148,163,184,0.3)', headerGrad:'linear-gradient(135deg,#1E293B,#0F172A)' },
+      gold:     { emoji:'🥇', label:'Nível Ouro',   labelEn:'Gold Tier',    grad:'linear-gradient(135deg,#FCD34D,#F59E0B)', shadow:'rgba(245,158,11,0.3)',  headerGrad:'linear-gradient(135deg,#1E293B,#0F172A)' },
+      platinum: { emoji:'💎', label:'Nível Platina', labelEn:'Platinum Tier',grad:'linear-gradient(135deg,#A78BFA,#7C3AED)', shadow:'rgba(124,58,237,0.3)',  headerGrad:'linear-gradient(135deg,#2E1065,#0F172A)' },
+    };
+
+    function generateId() {
+      const hex = () => Math.floor(Math.random()*0xFFFF).toString(16).toUpperCase().padStart(4,'0');
+      return `LLCERT-2026-${hex()}${hex().slice(0,4)}`;
+    }
+    // Stable ID per session (regenerated on page load only)
+    const sessionCertId = generateId();
+
+    function updateCert() {
+      const nome       = document.getElementById('edNome').value.trim() || 'Socorrista';
+      const titulo     = document.getElementById('edTitulo').value.trim() || 'Conquista';
+      const nivel      = document.getElementById('edNivel').value;
+      const occ        = document.getElementById('edOcorrencias').value || '1';
+      const xp         = document.getElementById('edXp').value.trim() || '—';
+      const data       = document.getElementById('edData').value.trim() || '—';
+      const cfg        = tierConfig[nivel];
+      const isEn       = lang === 'en';
+
+      document.getElementById('certNomeDisplay').textContent        = nome;
+      document.getElementById('certTituloDisplay').textContent      = titulo;
+      document.getElementById('certOcorrenciasDisplay').textContent = isEn ? `${occ} completed` : `${occ} concluídas`;
+      document.getElementById('certXpDisplay').textContent          = xp;
+      document.getElementById('certDataDisplay').textContent        = data;
+      document.getElementById('certNivelDisplay').textContent       = isEn ? cfg.labelEn : cfg.label;
+      document.getElementById('certIdDisplay').textContent          = `ID: ${sessionCertId}`;
+
+      // Medal
+      const medal = document.getElementById('certMedalDisplay');
+      medal.textContent = cfg.emoji;
+      medal.style.background = cfg.grad;
+      medal.style.boxShadow  = `0 6px 16px ${cfg.shadow}`;
+
+      // Dynamic description
+      const descEl = document.getElementById('certDescDisplay');
+      if (isEn) {
+        descEl.textContent = `This certificate recognizes and honours the exceptional contribution of ${nome} in attending ${occ} emergency occurrence${occ==1?'':'s'}, demonstrating commitment, courage and excellence in community aid.`;
+      } else {
+        descEl.textContent = `Este certificado reconhece e honra o contributo excecional de ${nome} na resposta a ${occ} ocorrência${occ==1?'':'s'} de emergência, demonstrando compromisso, coragem e excelência no auxílio à comunidade.`;
+      }
+    }
+
+    function copyCertId() {
+      navigator.clipboard.writeText(sessionCertId).then(() => {
+        const btn = event.currentTarget;
+        const original = btn.textContent;
+        btn.textContent = '✅ Copiado!';
+        setTimeout(() => { btn.textContent = original; }, 2000);
+      });
+    }
+
+    function downloadCert() {
+      // Show a hint the first time
+      const nome = document.getElementById('edNome').value.trim() || 'Socorrista';
+      const hint = lang === 'en'
+        ? `The print dialog will open.\n\nTo save as PDF:\n• Chrome/Edge: Choose "Save as PDF" as destination\n• Firefox: Choose "Microsoft Print to PDF" or "Save as PDF"\n• Safari: Click the PDF button at bottom-left`
+        : `O diálogo de impressão vai abrir.\n\nPara guardar como PDF:\n• Chrome/Edge: escolhe "Guardar como PDF" no destino\n• Firefox: escolhe "Microsoft Print to PDF" ou "Guardar como PDF"\n• Safari: clica no botão PDF no canto inferior esquerdo`;
+
+      if (!sessionStorage.getItem('printHintShown')) {
+        sessionStorage.setItem('printHintShown', '1');
+        if (!confirm(hint + '\n\n' + (lang === 'en' ? 'Continue?' : 'Continuar?'))) return;
+      }
+
+      window.print();
+    }
+
+    // Keep cert in sync with language toggle
+    const _origApplyLang = applyLang;
+    // Override applyLang to also refresh cert text after language switch
+    document.getElementById('langToggle').addEventListener('click', () => {
+      setTimeout(updateCert, 10);
+    });
+
+    // Init on page load
+    window.addEventListener('load', () => {
+      updateCert();
+    });
+  </script>
+
+</body>
+</html>
